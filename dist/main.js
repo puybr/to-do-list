@@ -1,0 +1,1 @@
+(()=>{"use strict";var o,e,l,s;console.log("Hello World"),(o="Code",e="Add some features & fix bugs",l=[2014,1,11],s="Low",{newToDo:()=>{console.log(o+e+l+s)}}).newToDo()})();
