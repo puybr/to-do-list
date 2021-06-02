@@ -3,12 +3,12 @@ const controller = () => {
     const addTask = (object) => {
         console.log('Hi, this is the task adding features');
         items.push(object);
-        console.log(items);
 
     };
     const getInfo = () => {
         const taskButton = document.querySelector('#submit');
         console.log(taskButton);
+        console.log(items);
     }
     return { addTask, getInfo }
 };
