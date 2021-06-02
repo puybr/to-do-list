@@ -1,10 +1,12 @@
 import controller from './controller';
 import taskManager from './to-dos';
 
-const list = controller('Fred');
-list.getInfo();
+// Set up the main controller
+const list = controller();
+const item1 = taskManager('Code', 'Add some features & fix bugs', 2021, 'Low');
+item1.listTask();
+const item2 = taskManager('Code', 'Add some features & fix bugs', 2021, 'Low');
+item2.listTask();
+list.addTask(item1);
+list.addTask(item2);
 
-
-
-const item = taskManager('Code', 'Add some features & fix bugs', 2021, 'Low');
-item.listTask();
