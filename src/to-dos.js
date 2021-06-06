@@ -1,20 +1,25 @@
-const taskManager = (title, description, dueDate, priority) => {
-    const listTask = () => {
-        const container = document.querySelector('#container');
-        const item = `
-            <tr>
-            <input type="radio" id="delete" name="delete">
-            <td>${title}</td>
-            <td>${description}</td>
-            <td>${dueDate}</td>
-            <td>${priority}</td>
-            </tr>
-            `;
-        container.insertAdjacentHTML('afterbegin', item); 
+const taskManager = (title, description, date, priority) => {
+    const container = document.querySelector('#container');
 
+    const renderList = (items) => {
+        container.innerHTML = '';
+        items.forEach((item) => {
+            console.log('haifdh');
+            const todo = `
+                <tr>
+                <input type="radio" id="delete" name="delete">
+                <td>${title}</td>
+                <td>${description}</td>
+                <td>${date}</td>
+                <td>${priority}</td>
+                </tr>
+                `;
+        container.insertAdjacentHTML('afterbegin', todo);
 
+        })
     };
-    return { listTask }
+
+    return { renderList }
 };
 
 export default taskManager

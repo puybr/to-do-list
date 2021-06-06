@@ -7,14 +7,15 @@ const controller = () => {
     const dateField = document.querySelector('#date');
     const priorityField = document.querySelector('#priority');
     const taskButton = document.querySelector('#submit');
+    const deleteButton = document.querySelector('#delete');
 
     const addTask = () => {
         taskButton.addEventListener('click', (e) => {
             e.preventDefault(); // prevent page reload
             const newItem = taskManager(titleField.value, descriptionField.value, dateField.value, priorityField.value);
             items.push(newItem);
-            newItem.listTask();
             console.log(items);
+            newItem.renderList(items);
 
         });
 
