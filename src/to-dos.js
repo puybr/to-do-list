@@ -2,8 +2,7 @@ const taskManager = (title, description, date, priority) => {
     const container = document.querySelector('#container');
 
     const renderList = (items) => {
-        container.innerHTML = '';
-        items.forEach((item) => {
+        items.forEach((i) => {
             const todo = `
                 <tr>
                 <input type="radio" id="delete" name="delete">
@@ -14,7 +13,6 @@ const taskManager = (title, description, date, priority) => {
                 </tr>
                 `;
         container.insertAdjacentHTML('afterbegin', todo);
-
         })
     };
 
