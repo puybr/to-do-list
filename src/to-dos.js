@@ -4,7 +4,6 @@ const taskManager = (title, description, date, priority) => {
     const renderList = (items) => {
         container.innerHTML = '';
         items.forEach((item) => {
-            console.log('haifdh');
             const todo = `
                 <tr>
                 <input type="radio" id="delete" name="delete">
