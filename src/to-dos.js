@@ -2,12 +2,13 @@ const taskManager = (title, description, dueDate, priority) => {
     const listTask = () => {
         const container = document.querySelector('#container');
         const item = `
-            <ul>
-            <li>${title}</li>
-            <li>${description}</li>
-            <li>${dueDate}</li>
-            <li>${priority}</li>
-            </ul>
+            <tr>
+            <input type="radio" id="delete" name="delete">
+            <td>${title}</td>
+            <td>${description}</td>
+            <td>${dueDate}</td>
+            <td>${priority}</td>
+            </tr>
             `;
         container.insertAdjacentHTML('afterbegin', item); 
 
