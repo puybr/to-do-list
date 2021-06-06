@@ -1,16 +1,26 @@
+import taskManager from './to-dos';
+
 const controller = () => {
     let items = [];
-    const addTask = (object) => {
-        console.log('Hi, this is the task adding features');
-        items.push(object);
 
-    };
-    const getInfo = () => {
+    const addTask = () => {
+        const titleField = document.querySelector('#title');
+        const descriptionField = document.querySelector('#description');
+        const dateField = document.querySelector('#date');
+        const priorityField = document.querySelector('#priority');
         const taskButton = document.querySelector('#submit');
-        console.log(taskButton);
-        console.log(items);
+        taskButton.addEventListener('click', (e) => {
+            e.preventDefault(); // prevent page reload
+            const newItem = taskManager(titleField.value, descriptionField.value, dateField.value, priorityField.value);
+            items.push(newItem);
+            newItem.listTask();
+            console.log(items);
+
+        });
+
     }
-    return { addTask, getInfo }
+
+    return { addTask }
 };
 
 export default controller
