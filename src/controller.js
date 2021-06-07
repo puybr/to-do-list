@@ -15,7 +15,6 @@ const controller = () => {
             items.push(newItem);
             newItem.renderList(items);
             checkList();
-            console.log(items)
         });
 
     };
@@ -23,7 +22,8 @@ const controller = () => {
         const deleteButton = document.querySelectorAll('#delete');
         deleteButton.forEach((button) => {
             button.addEventListener('click', (e) => {
-                console.log(e.target.parentNode.innerText);
+                const currentTarget = e.target.parentNode.innerText
+                console.log(currentTarget);
             });
         });
 
