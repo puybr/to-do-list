@@ -14,19 +14,21 @@ const controller = () => {
             const newItem = taskManager(titleField.value, descriptionField.value, dateField.value, priorityField.value);
             items.push(newItem);
             newItem.renderList(items);
-            checkList();
+            getItem(items);
         });
 
     };
-    const checkList = () => {
+
+    const getItem = (items) => {
+        items.forEach((i) => {
+            console.log(`${title.value}`);
+        })
         const deleteButton = document.querySelectorAll('#delete');
         deleteButton.forEach((button) => {
             button.addEventListener('click', (e) => {
-                const currentTarget = e.target.parentNode.innerText
-                console.log(currentTarget);
+                const currentTarget = e.target.parentNode.innerText;
             });
         });
-
     };
 
 
