@@ -3,12 +3,7 @@ const projectManager = (project) => {
     const renderList = (items) => {
         items.forEach((i) => {
             const todo = `
-                <div>
-                    <tr>
-                    <td><input type="radio" id="delete" name="delete"></td>
-                    <td>${project}</td>
-                    </tr>
-                </div>
+                <div><h4>${project}</h4></div>
                 `;
         container.insertAdjacentHTML('afterbegin', todo);
         })
