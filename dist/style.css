@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+  font-family: 'Roboto';
+  color: darkslategray;
+  font-size: larger;
+  text-align:center;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
     margin: 0; 
   }
+
+#icon {
+  color: orangered;
+}

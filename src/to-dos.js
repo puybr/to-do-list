@@ -18,8 +18,6 @@ const taskManager = (title, description, date, priority) => {
         })
     };
 
-    
-
     return { renderList }
 };
 
