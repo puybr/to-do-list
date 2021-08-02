@@ -1,4 +1,5 @@
 import taskManager from './to-dos';
+import projectManager from './projects';
 
 const controller = () => {
     const titleField = document.querySelector('#title');
@@ -6,11 +7,22 @@ const controller = () => {
     const dateField = document.querySelector('#date');
     const priorityField = document.querySelector('#priority');
     const taskButton = document.querySelector('#submit');
+    const projectButton = document.querySelector('#addproject');
+
+    const addProject = () => {
+        projectButton.addEventListener('click', (e) => {
+            e.preventDefault(); // prevent page reload
+            let projects = [];
+            const newProject = projectManager(project.value);
+            projects.push(newProject);
+            newProject.renderList(projects);
+        });
+    }
 
     const addTask = () => {
         taskButton.addEventListener('click', (e) => {
-            let items = [];
             e.preventDefault(); // prevent page reload
+            let items = [];
             const newItem = taskManager(titleField.value, descriptionField.value, dateField.value, priorityField.value);
             items.push(newItem);
             newItem.renderList(items);
@@ -32,7 +44,7 @@ const controller = () => {
     };
 
 
-    return { addTask }
+    return { addTask, addProject }
 };
 
 export default controller

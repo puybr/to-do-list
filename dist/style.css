@@ -16,3 +16,22 @@ ul {
 #icon {
   color: orangered;
 }
+
+input#project {
+  font-size: 2rem;
+}
+
+button#addproject {
+  position: relative;
+  background-color: orangered;
+  border: none;
+  color: #FFFFFF;
+  padding: 10px;
+  width: 4rem;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
