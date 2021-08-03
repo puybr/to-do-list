@@ -46,6 +46,6 @@ input,
   float: left;
 }
 
-.taskform {
+#taskform {
   display: none;
 }

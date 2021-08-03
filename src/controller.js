@@ -26,10 +26,10 @@ const controller = () => {
         const list = document.querySelectorAll('.projectlist');
         list.forEach((project) => {
             project.addEventListener('click', (e) => {
+                document.getElementById("taskform").style.display = "block";
                 console.log(e.target.innerText);
-
-            });
-        });
+            })
+        })
     }
 
     const addTask = () => {
