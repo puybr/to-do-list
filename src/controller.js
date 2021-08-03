@@ -8,6 +8,7 @@ const controller = () => {
     const priorityField = document.querySelector('#priority');
     const taskButton = document.querySelector('#submit');
     const projectButton = document.querySelector('#addproject');
+    const projectInput = document.querySelector('#project')
 
     const addProject = () => {
         projectButton.addEventListener('click', (e) => {
@@ -16,6 +17,7 @@ const controller = () => {
             const newProject = projectManager(project.value);
             projects.push(newProject);
             newProject.renderList(projects);
+            projectInput.value = '';
         });
     }
 
