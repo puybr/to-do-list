@@ -6,8 +6,8 @@ const projectManager = (project) => {
                 <div>
                 <tr>
                 <td>
-                <i class="fa fa-trash" aria-hidden="true"></i>
-                <h4>${project}</h4>
+                <i class="fa fa-trash" aria-hidden="true" id="icon"></i>
+                ${project}
                 </td>
                 </tr>
                 </div>

@@ -4,7 +4,6 @@ html {
   font-family: 'Roboto';
   color: darkslategray;
   font-size: larger;
-  text-align: center;
 }
 
 ul {
@@ -13,8 +12,7 @@ ul {
   margin: 0;
 }
 
-#icon,
-h4 {
+#icon {
   color: orangered;
 }
 
@@ -41,7 +39,7 @@ input,
 }
 
 .projectmenu {
-  margin: 0px auto;
+  margin: 2rem;
   position: relative;
   padding-top: 0px;
   width: 240px;
