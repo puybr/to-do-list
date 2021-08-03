@@ -3,13 +3,9 @@ const projectManager = (project) => {
     const renderList = (items) => {
         items.forEach((i) => {
             const todo = `
-                <div>
-                <tr>
-                <td>
+                <div class="projectlist">
                 <i class="fa fa-trash" aria-hidden="true" id="icon"></i>
                 ${project}
-                </td>
-                </tr>
                 </div>
                 `;
         container.insertAdjacentHTML('afterbegin', todo);

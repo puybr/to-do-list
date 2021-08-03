@@ -8,7 +8,7 @@ const controller = () => {
     const priorityField = document.querySelector('#priority');
     const taskButton = document.querySelector('#submit');
     const projectButton = document.querySelector('#addproject');
-    const projectInput = document.querySelector('#project')
+    const projectInput = document.querySelector('#project');
 
     const addProject = () => {
         projectButton.addEventListener('click', (e) => {
@@ -18,6 +18,17 @@ const controller = () => {
             projects.push(newProject);
             newProject.renderList(projects);
             projectInput.value = '';
+            selectProject();
+        });
+    }
+
+    const selectProject = () => {
+        const list = document.querySelectorAll('.projectlist');
+        list.forEach((project) => {
+            project.addEventListener('click', (e) => {
+                console.log(e.target.innerText);
+
+            });
         });
     }
 
