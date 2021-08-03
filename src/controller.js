@@ -26,7 +26,11 @@ const controller = () => {
         const list = document.querySelectorAll('.projectlist');
         list.forEach((project) => {
             project.addEventListener('click', (e) => {
+                const p = `
+                <h3>${e.target.innerText}'s todos</h3>
+                `
                 document.getElementById("taskform").style.display = "block";
+                document.getElementById("project-todos").innerHTML = p;
                 console.log(e.target.innerText);
             })
         })
