@@ -9,6 +9,57 @@ const controller = () => {
     const taskButton = document.querySelector('#submit');
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
+    let myProjects = [{
+        name: "default project",
+        todos: [{
+            title: "Code",
+            description: "Test 01", 
+            date: "Test 01",
+            priority: "Test 01"
+        },
+        {
+            title: "Eat",
+            description: "Test 02", 
+            date: "Test 03",
+            priority: "Test 04"
+        }
+    ]},
+    {
+        name: "work project",
+        todos: [{
+            title: "create a powerpoint presentation",
+            description: "Test 01", 
+            date: "Test 01",
+            priority: "Test 01"
+        },
+        {
+            title: "Test 02",
+            description: "Test 02", 
+            date: "Test 03",
+            priority: "Test 04"
+        }
+    ]
+    }
+    ]; // end of dummy tasks
+
+    const renderProjects = () => {
+        const container = document.querySelector('#projectnav');
+        // console.log(myProjects[1].todos[0].title);
+        myProjects.forEach((project) => {
+            console.log(project);
+            const proj = `
+            <div class="projectlist">
+            <i class="fa fa-trash" aria-hidden="true" id="icon"></i>
+            ${project.name}
+            </div>
+            `;
+        container.insertAdjacentHTML('afterbegin', proj);
+
+        });
+
+
+    };
+    renderProjects();
 
     const addProject = () => {
         projectButton.addEventListener('click', (e) => {
@@ -19,6 +70,7 @@ const controller = () => {
             newProject.renderList(projects);
             projectInput.value = '';
             selectProject();
+
         });
     }
 
