@@ -66,22 +66,15 @@ const controller = () => {
 
     const addProject = () => {
         projectButton.addEventListener('click', (e) => {
-            e.preventDefault(); // prevent page 
-            console.log(project.value)
+            e.preventDefault(); // prevent page reloading
             const projectTemplate = {
                 name: project.value,
                 todos: [] 
             };
             const newProject = Object.create(projectTemplate);
             myProjects.push(newProject);
-
-            // const newProject = projectManager(project.value);
-            // console.log(newProject);
-            // myProjects.push(newProject);
-            // newProject.renderList(projects);
             projectInput.value = '';
-            console.log('Adding a project ...');
-            console.log(myProjects[0]);
+            console.log('Add the project: ' + newProject.name);
             renderProjects();
             selectProject();
             
