@@ -1,5 +1,4 @@
 import taskManager from './to-dos';
-import projectManager from './projects';
 
 const controller = () => {
     const titleField = document.querySelector('#title');
