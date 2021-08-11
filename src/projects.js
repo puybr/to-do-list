@@ -1,4 +1,8 @@
-const projectManager = (project) => {
+const projectManager = (name) => {
+    console.log(name);
+    name.name = name;
+    // let keys = Object.keys(project);
+    // console.log(keys);
     const container = document.querySelector('#projectnav');
     const renderList = (items) => {
         items.forEach((i) => {

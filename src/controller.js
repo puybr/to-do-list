@@ -9,6 +9,7 @@ const controller = () => {
     const taskButton = document.querySelector('#submit');
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
+
     let myProjects = [{
         name: "default project",
         todos: [{
@@ -42,8 +43,10 @@ const controller = () => {
     }
     ]; // end of dummy tasks
 
+
     const renderProjects = () => {
         const container = document.querySelector('#projectnav');
+        container.innerHTML = '';
         // console.log(myProjects[1].todos[0].title);
         myProjects.forEach((project) => {
             console.log(project);
@@ -63,14 +66,25 @@ const controller = () => {
 
     const addProject = () => {
         projectButton.addEventListener('click', (e) => {
-            e.preventDefault(); // prevent page reload
-            let projects = [];
-            const newProject = projectManager(project.value);
-            projects.push(newProject);
-            newProject.renderList(projects);
-            projectInput.value = '';
-            selectProject();
+            e.preventDefault(); // prevent page 
+            console.log(project.value)
+            const projectTemplate = {
+                name: project.value,
+                todos: [] 
+            };
+            const newProject = Object.create(projectTemplate);
+            myProjects.push(newProject);
 
+            // const newProject = projectManager(project.value);
+            // console.log(newProject);
+            // myProjects.push(newProject);
+            // newProject.renderList(projects);
+            projectInput.value = '';
+            console.log('Adding a project ...');
+            console.log(myProjects[0]);
+            renderProjects();
+            selectProject();
+            
         });
     }
 
@@ -78,6 +92,7 @@ const controller = () => {
         const list = document.querySelectorAll('.projectlist');
         list.forEach((project) => {
             project.addEventListener('click', (e) => {
+                console.log('add todo...')
                 const p = `
                 <h3>${e.target.innerText}'s todos</h3>
                 `
@@ -85,8 +100,10 @@ const controller = () => {
                 document.getElementById("project-todos").innerHTML = p;
                 console.log(e.target.innerText);
             })
+             
         })
     }
+    selectProject();
 
     const addTask = () => {
         taskButton.addEventListener('click', (e) => {
