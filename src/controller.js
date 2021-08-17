@@ -8,7 +8,6 @@ const controller = () => {
     const taskButton = document.querySelector('#submit');
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
-    const subTasks = document.querySelector('#subtasks');
 
     let myProjects = [{
         name: "default project",
@@ -49,7 +48,6 @@ const controller = () => {
         container.innerHTML = '';
         // console.log(myProjects[1].todos[0].title);
         myProjects.forEach((project) => {
-            console.log(project);
             const proj = `
             <div class="projectlist">
             ${project.name}
@@ -74,7 +72,6 @@ const controller = () => {
             myProjects.push(newProject);
             console.log('Proto: '+ Object.getPrototypeOf(newProject));
             projectInput.value = '';
-            console.log('Add the project: ' + newProject.name);
             renderProjects();
             selectProject();
             
@@ -109,7 +106,23 @@ const controller = () => {
     };
 
     const renderTodoList = (index) => {
+        const subTasks = document.querySelector('#subtasks');
+        subTasks.innerHTML = '';
         console.log(myProjects[index].todos);
+        myProjects[index].todos.forEach((todo) => {
+            const t = `
+                <div>
+                    <tr>
+                    <td><input type="radio" id="delete" name="delete"></td>
+                    <td>${todo.title}</td>
+                    <td>${todo.description}</td>
+                    <td>${todo.date}</td>
+                    <td>${todo.priority}</td>
+                    </tr>
+                </div>
+                `;
+            subTasks.insertAdjacentHTML('afterbegin', t);
+        })
     };
 
 
