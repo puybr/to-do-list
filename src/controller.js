@@ -49,9 +49,12 @@ const controller = () => {
         // console.log(myProjects[1].todos[0].title);
         myProjects.forEach((project) => {
             const proj = `
-            <div class="projectlist">
+            <tr>
+            <td>
             ${project.name}
-            </div><i class="fa fa-trash" aria-hidden="true" id="icon"></i>
+            </td>
+            <td><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+            </tr>
             `;
         container.insertAdjacentHTML('afterbegin', proj);
 
@@ -110,15 +113,13 @@ const controller = () => {
         subTasks.innerHTML = '';
         myProjects[index].todos.forEach((todo) => {
             const t = `
-                    <table>
                     <tr>
-                    <td><input type="radio" id="delete" name="delete"></td>
+                    <td id="delete-me"><input type="radio" id="delete" name="delete"></td>
                     <td>${todo.title}</td>
                     <td>${todo.description}</td>
                     <td>${todo.date}</td>
                     <td>${todo.priority}</td>
                     </tr>
-                    </table>
                 `;
             subTasks.insertAdjacentHTML('afterbegin', t);
         })
