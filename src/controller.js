@@ -8,6 +8,7 @@ const controller = () => {
     const taskButton = document.querySelector('#submit');
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
+    const subTasks = document.querySelector('#subtasks');
 
     let myProjects = [{
         name: "default project",
@@ -51,7 +52,6 @@ const controller = () => {
             console.log(project);
             const proj = `
             <div class="projectlist">
-            <i class="fa fa-trash" aria-hidden="true" id="icon"></i>
             ${project.name}
             </div>
             `;
@@ -72,6 +72,7 @@ const controller = () => {
             };
             const newProject = Object.create(projectTemplate);
             myProjects.push(newProject);
+            console.log('Proto: '+ Object.getPrototypeOf(newProject));
             projectInput.value = '';
             console.log('Add the project: ' + newProject.name);
             renderProjects();
@@ -84,18 +85,32 @@ const controller = () => {
         const list = document.querySelectorAll('.projectlist');
         list.forEach((project) => {
             project.addEventListener('click', (e) => {
+                //this is what happens when you select a project :)
                 console.log('add todo...')
                 const p = `
                 <h3>${e.target.innerText}'s todos</h3>
                 `
                 document.getElementById("taskform").style.display = "block";
                 document.getElementById("project-todos").innerHTML = p;
-                console.log(e.target.innerText);
+                // need to get the index of e.target.innerText
+                getProjectIndex(e.target.innerText);
             })
              
         })
     }
     selectProject();
+
+    const getProjectIndex = (projectName) => {
+          myProjects.forEach((project, index) => {
+            console.log(`${project.name}: ${index}`);
+            console.log(`${projectName}`);
+            // ima stuck here!
+            if (project.name === projectName) {
+                console.log(index);
+            }
+        });
+
+    }
 
     const addTask = () => {
         taskButton.addEventListener('click', (e) => {
