@@ -12,31 +12,31 @@ const controller = () => {
     let myProjects = [{
         name: "default project",
         todos: [{
-            title: "Code",
-            description: "Test 01", 
-            date: "Test 01",
-            priority: "Test 01"
+            title: "code",
+            description: "try creating a web interface and a dynamic todo list", 
+            date: "Monday",
+            priority: "High"
         },
         {
-            title: "Eat",
-            description: "Test 02", 
-            date: "Test 03",
-            priority: "Test 04"
+            title: "cook dinner",
+            description: "A warming vegan supper with porcini mushrooms, leeks, carrots, and butternut squash.", 
+            date: "Wednesday",
+            priority: "Medium"
         }
     ]},
     {
         name: "work project",
         todos: [{
             title: "create a powerpoint presentation",
-            description: "Test 01", 
-            date: "Test 01",
-            priority: "Test 01"
+            description: "for the finacial team",
+            date: "Tuesday",
+            priority: "Low"
         },
         {
-            title: "Test 02",
-            description: "Test 02", 
-            date: "Test 03",
-            priority: "Test 04"
+            title: "admin tasks",
+            description: "office cleanup", 
+            date: "Friday",
+            priority: "Low"
         }
     ]
     }
@@ -108,7 +108,6 @@ const controller = () => {
     const renderTodoList = (index) => {
         const subTasks = document.querySelector('#subtasks');
         subTasks.innerHTML = '';
-        console.log(myProjects[index].todos);
         myProjects[index].todos.forEach((todo) => {
             const t = `
                 <div>
