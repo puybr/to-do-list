@@ -103,10 +103,8 @@ const controller = () => {
     const getProjectIndex = (projectName) => {
           myProjects.forEach((project, index) => {
             console.log(`${project.name}: ${index}`);
-            console.log(`${projectName}`);
-            // ima stuck here!
             if (project.name === projectName) {
-                console.log(index);
+                console.log(myProjects[index]);
             }
         });
 
