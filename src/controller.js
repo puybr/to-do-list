@@ -53,7 +53,7 @@ const controller = () => {
             const proj = `
             <div class="projectlist">
             ${project.name}
-            </div>
+            </div><i class="fa fa-trash" aria-hidden="true" id="icon"></i>
             `;
         container.insertAdjacentHTML('afterbegin', proj);
 
@@ -102,9 +102,9 @@ const controller = () => {
 
     const getProjectIndex = (projectName) => {
           myProjects.forEach((project, index) => {
-            console.log(`${project.name}: ${index}`);
             if (project.name === projectName) {
                 console.log(myProjects[index]);
+                console.log(index);
             }
         });
 
