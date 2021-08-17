@@ -49,3 +49,7 @@ input,
 #taskform {
   display: none;
 }
+
+td {
+  padding: 15px;
+}

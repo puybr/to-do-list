@@ -110,7 +110,7 @@ const controller = () => {
         subTasks.innerHTML = '';
         myProjects[index].todos.forEach((todo) => {
             const t = `
-                <div>
+                    <table>
                     <tr>
                     <td><input type="radio" id="delete" name="delete"></td>
                     <td>${todo.title}</td>
@@ -118,7 +118,7 @@ const controller = () => {
                     <td>${todo.date}</td>
                     <td>${todo.priority}</td>
                     </tr>
-                </div>
+                    </table>
                 `;
             subTasks.insertAdjacentHTML('afterbegin', t);
         })
