@@ -92,7 +92,6 @@ const controller = () => {
                 `
                 document.getElementById("taskform").style.display = "block";
                 document.getElementById("project-todos").innerHTML = p;
-                // need to get the index of e.target.innerText
                 getProjectIndex(e.target.innerText);
             })
              
@@ -103,12 +102,16 @@ const controller = () => {
     const getProjectIndex = (projectName) => {
           myProjects.forEach((project, index) => {
             if (project.name === projectName) {
-                console.log(myProjects[index]);
-                console.log(index);
+                renderTodoList(index);
             }
         });
 
-    }
+    };
+
+    const renderTodoList = (index) => {
+        console.log(myProjects[index].todos);
+    };
+
 
     const addTask = () => {
         taskButton.addEventListener('click', (e) => {
