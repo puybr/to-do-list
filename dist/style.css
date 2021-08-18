@@ -56,3 +56,17 @@ td {
 #delete-me {
   width: 10px;
 }
+
+.projectlist:hover {
+  cursor: pointer;
+  color: lightgray;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.to-do-row:hover {
+  cursor: pointer;
+  color: lightgray;
+}

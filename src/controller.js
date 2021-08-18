@@ -116,6 +116,7 @@ const controller = () => {
     taskButton.addEventListener('click', (e) => {
         e.preventDefault(); // prevent page reloading
         addTodo();
+        // reset default values
         titleField.value = '';
         descriptionField.value = '';
         dateField.value = '';
@@ -127,7 +128,7 @@ const controller = () => {
         subTasks.innerHTML = '';
         myProjects[index].todos.forEach((todo) => {
             const t = `
-                    <tr>
+                    <tr class="to-do-row">
                     <td id="delete-me"><input type="radio" id="delete" name="delete"></td>
                     <td>${todo.title}</td>
                     <td>${todo.description}</td>
