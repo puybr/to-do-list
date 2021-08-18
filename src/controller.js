@@ -88,6 +88,7 @@ const controller = () => {
         list.forEach((project) => {
             project.addEventListener('click', (e) => {
                 //this is what happens when you select a project :)
+                e.preventDefault(); // prevent page reloading
                 console.log('add todo...');
                 document.getElementById("project-todos").innerHTML = '';
                 const p = `
@@ -162,6 +163,7 @@ const controller = () => {
         const deleteButton = document.querySelectorAll('#delete');
         deleteButton.forEach((button) => {
             button.addEventListener('click', (e) => {
+                e.preventDefault(); // prevent page reloading
                 const currentTarget = e.target.parentNode.innerText;
             });
         });
