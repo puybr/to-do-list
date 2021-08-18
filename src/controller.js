@@ -116,6 +116,10 @@ const controller = () => {
     taskButton.addEventListener('click', (e) => {
         e.preventDefault(); // prevent page reloading
         addTodo();
+        titleField.value = '';
+        descriptionField.value = '';
+        dateField.value = '';
+        priorityField.value = '';
 
     });
 
