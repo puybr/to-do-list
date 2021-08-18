@@ -108,10 +108,10 @@ const controller = () => {
         });
 
     };
-    
+
+    // this is not being called by any function
     taskButton.addEventListener('click', (e) => {
         e.preventDefault(); // prevent page reloading
-        console.log('fadsfaa');
         addTodo();
 
     });
