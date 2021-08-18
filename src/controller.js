@@ -11,6 +11,7 @@ const controller = () => {
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
     const subTasks = document.querySelector('#subtasks');
+    const projectList = document.querySelectorAll(".projectlist")
 
     let myProjects = [{
         name: "default project",
@@ -89,7 +90,6 @@ const controller = () => {
             project.addEventListener('click', (e) => {
                 //this is what happens when you select a project :)
                 e.preventDefault(); // prevent page reloading
-                console.log('add todo...');
                 document.getElementById("project-todos").innerHTML = '';
                 const p = `
                 <h3 id="project-title">${e.target.innerText}</h3>
@@ -97,6 +97,12 @@ const controller = () => {
                 document.getElementById("taskform").style.display = "block";
                 document.getElementById("project-todos").innerHTML = p;
                 getProjectIndex(e.target.innerText);
+                console.log(project);
+                // change the colour of the project when selected
+                if (e.target.innerText === project.innerText) {
+                    project.style.color = 'orangered';
+                    console.log(project.innerText);
+                }
             });
              
         });
@@ -107,7 +113,7 @@ const controller = () => {
           myProjects.forEach((project, index) => {
             if (project.name === projectName) {
                 renderTodoList(index);
-            }
+            };
         });
 
     };
@@ -159,20 +165,6 @@ const controller = () => {
                 });
             };
 
-
-
-    const getItem = (items) => {
-        items.forEach((i) => {
-            console.log(`${title.value}`);
-        })
-        const deleteButton = document.querySelectorAll('#delete');
-        deleteButton.forEach((button) => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault(); // prevent page reloading
-                const currentTarget = e.target.parentNode.innerText;
-            });
-        });
-    };
 
 
     return { addProject }
