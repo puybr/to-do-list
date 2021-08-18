@@ -1,21 +1,11 @@
 const taskManager = (title, description, date, priority) => {
-    const container = document.querySelector('#container');
+    const taskButton = document.querySelector('#submit');
+    const renderList = () => {
+        taskButton.addEventListener('click', (e) => {
+            e.preventDefault(); // prevent page reloading
+            console.log('CLICK!');
 
-    const renderList = (items) => {
-        items.forEach((i) => {
-            const todo = `
-                <div>
-                    <tr>
-                    <td><input type="radio" id="delete" name="delete"></td>
-                    <td>${title}</td>
-                    <td>${description}</td>
-                    <td>${date}</td>
-                    <td>${priority}</td>
-                    </tr>
-                </div>
-                `;
-        container.insertAdjacentHTML('afterbegin', todo);
-        })
+        });
     };
 
     return { renderList }

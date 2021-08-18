@@ -1,5 +1,7 @@
 import taskManager from './to-dos';
 
+const todoList = taskManager();
+todoList.renderList();
 const controller = () => {
     const titleField = document.querySelector('#title');
     const descriptionField = document.querySelector('#description');
@@ -76,7 +78,7 @@ const controller = () => {
             projectInput.value = '';
             renderProjects();
             selectProject();
-            
+            getProjectIndex(document.getElementById("project-todos").innerText);           
         });
     }
 
@@ -152,9 +154,6 @@ const controller = () => {
             };
 
 
-    const createTodo = () => {
-
-    };
 
     const getItem = (items) => {
         items.forEach((i) => {
