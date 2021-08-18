@@ -8,6 +8,7 @@ const controller = () => {
     const taskButton = document.querySelector('#submit');
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
+    const subTasks = document.querySelector('#subtasks');
 
     let myProjects = [{
         name: "default project",
@@ -50,10 +51,8 @@ const controller = () => {
         myProjects.forEach((project) => {
             const proj = `
             <tr>
-            <td>
-            ${project.name}
-            </td>
-            <td><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+            <td class="projectlist" >${project.name}</td>
             </tr>
             `;
         container.insertAdjacentHTML('afterbegin', proj);
@@ -83,20 +82,22 @@ const controller = () => {
 
     const selectProject = () => {
         const list = document.querySelectorAll('.projectlist');
+        subTasks.innerHTML = '';
         list.forEach((project) => {
             project.addEventListener('click', (e) => {
                 //this is what happens when you select a project :)
-                console.log('add todo...')
+                console.log('add todo...');
+                document.getElementById("project-todos").innerHTML = '';
                 const p = `
-                <h3>${e.target.innerText}'s todos</h3>
+                <h3 id="project-title">${e.target.innerText}</h3>
                 `
                 document.getElementById("taskform").style.display = "block";
                 document.getElementById("project-todos").innerHTML = p;
                 getProjectIndex(e.target.innerText);
-            })
+            });
              
-        })
-    }
+        });
+    };
     selectProject();
 
     const getProjectIndex = (projectName) => {
@@ -107,9 +108,15 @@ const controller = () => {
         });
 
     };
+    
+    taskButton.addEventListener('click', (e) => {
+        e.preventDefault(); // prevent page reloading
+        console.log('fadsfaa');
+        addTodo();
+
+    });
 
     const renderTodoList = (index) => {
-        const subTasks = document.querySelector('#subtasks');
         subTasks.innerHTML = '';
         myProjects[index].todos.forEach((todo) => {
             const t = `
@@ -122,19 +129,30 @@ const controller = () => {
                     </tr>
                 `;
             subTasks.insertAdjacentHTML('afterbegin', t);
-        })
+        });
     };
 
 
-    const addTask = () => {
-        taskButton.addEventListener('click', (e) => {
-            e.preventDefault(); // prevent page reload
-            let items = [];
-            const newItem = taskManager(titleField.value, descriptionField.value, dateField.value, priorityField.value);
-            items.push(newItem);
-            newItem.renderList(items);
-            getItem(items);
-        });
+    const addTodo = () => {
+        myProjects.forEach((p, index) => {
+            if (p.name === (document.getElementById("project-todos").innerText)) {
+                    console.log(index);
+                    const todoTemplate = {
+                        title: title.value,
+                        description: description.value, 
+                        date: date.value,
+                        priority: priority.value
+                    };
+                    const newTodo = Object.create(todoTemplate);
+                    myProjects[index].todos.push(newTodo);
+                    renderTodoList(index);
+                    console.log(myProjects);
+                    }  // end of if statement                          
+                });
+            };
+
+
+    const createTodo = () => {
 
     };
 
@@ -151,7 +169,7 @@ const controller = () => {
     };
 
 
-    return { addTask, addProject }
+    return { addProject }
 };
 
 export default controller
