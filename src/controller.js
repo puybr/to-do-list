@@ -119,7 +119,7 @@ const controller = () => {
         titleField.value = '';
         descriptionField.value = '';
         dateField.value = '';
-        priorityField.value = '';
+        priorityField.value = 'low';
 
     });
 
