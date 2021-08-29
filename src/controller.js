@@ -48,8 +48,6 @@ const controller = () => {
     const renderProjects = () => {
         const container = document.querySelector('#projectnav');
         container.innerHTML = '';
-        document.getElementById("formContainer").style.display = "none";
-        // console.log(myProjects[1].todos[0].title);
         myProjects.forEach((project) => {
             const proj = `
             <tr>
@@ -66,7 +64,6 @@ const controller = () => {
     renderProjects();
 
     const addProject = () => {
-        document.getElementById("formContainer").style.display = "none";
         projectButton.addEventListener('click', (e) => {
             e.preventDefault(); // prevent page reloading
             const projectTemplate = {
@@ -95,13 +92,11 @@ const controller = () => {
 
 
     const selectProject = () => {
-        document.getElementById("formContainer").innerHTML = '';
         const list = document.querySelectorAll('.projectlist');
         subTasks.innerHTML = '';
         list.forEach((project) => {
             project.addEventListener('click', (e) => {
                 //this is what happens when you select a project :)
-                document.getElementById("formContainer").style.display = "none";
                 e.preventDefault(); // prevent page reloading
                 document.getElementById("project-todos").innerHTML = '';
                 const p = `<h4 id="project-title">${e.target.innerText}</h4>`;
@@ -167,12 +162,22 @@ const controller = () => {
     };
 
     const editTodoList = () => {
-        document.getElementById("formContainer").innerHTML = '';
         const editButton = document.querySelectorAll('.edit');
+        const list = document.querySelectorAll('.projectlist');
         editButton.forEach((button) => {
             button.addEventListener('click', (e) => {
-                console.log(e.currentTarget.parentNode.childNodes[3].textContent);
-
+                list.forEach((item, itemindex) => {
+                    if (item.id === 'selected') {
+                        return itemindex
+                    };
+                    myProjects[itemindex].todos.forEach((todo, tindex) => {
+                        if (e.currentTarget.parentNode.childNodes[3].textContent === todo.title) {
+                            console.log(myProjects[itemindex].todos[tindex].title);
+                            return tindex;
+                        };
+            
+                    });
+                });
             });
 
         });
