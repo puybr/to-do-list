@@ -144,7 +144,7 @@ const controller = () => {
                     <td id="delete-me"><input type="radio" id="delete" name="delete"></td>
                     <td>${todo.title}</td>
                     <td>${todo.date}</td>
-                    <td><i class="fas fa-edit"></i></td>
+                    <td class="edit"><i class="fas fa-edit"></i></td>
                     </tr>
                 `;
             subTasks.insertAdjacentHTML('afterbegin', t);
@@ -168,16 +168,11 @@ const controller = () => {
 
     const editTodoList = () => {
         document.getElementById("formContainer").innerHTML = '';
-        const todos = document.querySelectorAll('.to-do-row');
-        todos.forEach((todo) => {
-            todo.addEventListener('click', (e) => {
-                const t = `
-                        <div id="task">
-                        <h1>${e.target.innerText}</h1>
-                        </div>
-                        `;
-                document.getElementById("formContainer").style.display = "block";
-                document.getElementById("formContainer").innerHTML = t;
+        const editButton = document.querySelectorAll('.edit');
+        editButton.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                console.log(e.currentTarget.parentNode.childNodes[3].textContent);
+
             });
 
         });

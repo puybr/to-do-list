@@ -62,6 +62,12 @@ td {
   color: lightgray;
 }
 
+.edit:hover {
+  cursor: pointer;
+  color: orangered;
+
+}
+
 button:hover {
   cursor: pointer;
 }
