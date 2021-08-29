@@ -13,28 +13,23 @@
     <form>
         <h1>
             <i class="fas fa-check" id="icon"></i>todos
-            <input type="text" id="project" name="project" placeholder="Project">
+            <input type="text" id="project" name="project" placeholder="project">
             <button id="addproject">+</button>
         </h1>
     </form>
 
     <span class="projectmenu">
-        <h3>Projects</h3>
+        <h3>projects</h3>
         <table id="projectnav"></table>
     </span>
     <form id="taskform">
         <h3 id="project-todos"></h3>
-        <input type="text" id="title" name="title" placeholder="Title">
-        <input type="text" id="description" name="description" placeholder="Description">
-        <input type="number" id="date" name="date" placeholder="Due Date">
-        <select id="priority" name="priority">
-            <option value="low">low</option>
-            <option value="medium">medium</option>
-            <option value="high">high</option>
-        </select>
+        <input type="text" id="title" name="title" placeholder="title">
+        <input type="date" id="date" name="date">
         <button id="submit">+</button>
     </form>
     <table id="subtasks"></table>
+    <div id="formContainer"><h3>edit your todo</h3></div>
     <script src="main.js"></script>
 </body>
 
