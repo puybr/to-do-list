@@ -11,7 +11,6 @@ const controller = () => {
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
     const subTasks = document.querySelector('#subtasks');
-    const projectList = document.querySelectorAll(".projectlist")
 
     let myProjects = [{
         name: "default project",
@@ -75,13 +74,24 @@ const controller = () => {
             };
             const newProject = Object.create(projectTemplate);
             myProjects.push(newProject);
-            console.log('Proto: '+ Object.getPrototypeOf(newProject));
+            // console.log('Proto: '+ Object.getPrototypeOf(newProject));
             projectInput.value = '';
             renderProjects();
             selectProject();
             getProjectIndex(document.getElementById("project-todos").innerText);           
         });
-    }
+    };
+
+    const changeProjectColor = () => { // change the colour of the project when selected
+        const list = document.querySelectorAll('.projectlist');
+        const title = document.querySelector("#project-title").textContent;
+        list.forEach((project) => {
+            if (title === project.innerText) {
+                project.id = 'selected';
+            } else project.id = 'unselected';
+        });
+    };
+
 
     const selectProject = () => {
         const list = document.querySelectorAll('.projectlist');
@@ -91,18 +101,12 @@ const controller = () => {
                 //this is what happens when you select a project :)
                 e.preventDefault(); // prevent page reloading
                 document.getElementById("project-todos").innerHTML = '';
-                const p = `
-                <h3 id="project-title">${e.target.innerText}</h3>
-                `
+                const p = `<h4 id="project-title">${e.target.innerText}</h4>`;
                 document.getElementById("taskform").style.display = "block";
                 document.getElementById("project-todos").innerHTML = p;
+                project.id = '';
                 getProjectIndex(e.target.innerText);
-                console.log(project);
-                // change the colour of the project when selected
-                if (e.target.innerText === project.innerText) {
-                    project.style.color = 'orangered';
-                    console.log(project.innerText);
-                }
+                changeProjectColor();
             });
              
         });
@@ -117,6 +121,8 @@ const controller = () => {
         });
 
     };
+
+
 
     // this is not being called by any function
     taskButton.addEventListener('click', (e) => {
@@ -144,13 +150,42 @@ const controller = () => {
                 `;
             subTasks.insertAdjacentHTML('afterbegin', t);
         });
+        deleteTodo();
     };
 
+    const deleteTodo = () => {
+        const todos = document.querySelectorAll('.to-do-row');
+        todos.forEach((todo) => {
+            todo.addEventListener('click', (e) => {
+                if (todo.childNodes[1].childNodes[0].checked) {
+                    getTodoIndex(todo.children[1].innerText);
+                }
+            });
+
+        });
+        
+    };
+
+    const getTodoIndex = (todoName) => {
+        const proj = document.querySelector("#project-title").textContent;
+        myProjects.forEach((project, projectIndex) => {
+            if (project.name === proj) {
+                myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
+                    if (todo.title === todoName) {
+                        console.log(todoIndex);
+                        myProjects[projectIndex].todos.splice(todoIndex, 1); // at position index, remove 1 item
+                        renderTodoList(projectIndex);
+
+                    };
+
+                });
+            };
+        });
+       };
 
     const addTodo = () => {
         myProjects.forEach((p, index) => {
             if (p.name === (document.getElementById("project-todos").innerText)) {
-                    console.log(index);
                     const todoTemplate = {
                         title: title.value,
                         description: description.value, 
@@ -160,7 +195,6 @@ const controller = () => {
                     const newTodo = Object.create(todoTemplate);
                     myProjects[index].todos.push(newTodo);
                     renderTodoList(index);
-                    console.log(myProjects);
                     }  // end of if statement                          
                 });
             };

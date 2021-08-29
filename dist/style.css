@@ -57,7 +57,7 @@ td {
   width: 10px;
 }
 
-.projectlist:hover {
+.projectlist:hover, #selected:hover, #unselected:hover {
   cursor: pointer;
   color: lightgray;
 }
@@ -70,3 +70,14 @@ button:hover {
   cursor: pointer;
   color: lightgray;
 }
+
+
+#selected {
+  color: orangered;
+}
+
+
+#unselected {
+  color: darkslategray;
+}
+
