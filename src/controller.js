@@ -174,11 +174,19 @@ const controller = () => {
                             //the array to get all the html elements on the page
                             Array.from(document.querySelectorAll('.to-do-row')).forEach((task) => {
                                 if (task.childNodes[3].innerText === myProjects[itemindex].todos[tindex].title) {
-                                    const editTask = `<tr>
+                                    const editTask = `<tr class="to-do-row">
+                                                <td id="delete-me"><input type="radio" id="delete" name="delete"></td>
                                                 <td><input placeholder=${myProjects[itemindex].todos[tindex].title}></input></td>
                                                 <td><input placeholder=${myProjects[itemindex].todos[tindex].description}></input></td>
                                                 <td><input placeholder=${myProjects[itemindex].todos[tindex].date}></input></td>
-                                                <td><input placeholder=${myProjects[itemindex].todos[tindex].priority}></input></td>
+                                                <td>
+                                                <select>
+                                                <option value="Low">Low</option>
+                                                <option value="Medium">Medium</option>
+                                                <option value="High">High</option>
+                                                </select>
+                                                </td>
+                                                <td><i class="fas fa-save"></i></td>
                                                 </tr>`;
                                     task.innerHTML = '';
                                     task.innerHTML = editTask;
