@@ -170,11 +170,19 @@ const controller = () => {
                     if (item.id === 'selected') {
                         return itemindex
                     };
+                    //the array to get all the html elements on the page
+                    Array.from(document.querySelectorAll('.to-do-row')).forEach((task) => {
+                        console.log(task.childNodes[3].innerText);
+                    });
+                    //the array to get the item in the main array                
                     myProjects[itemindex].todos.forEach((todo, tindex) => {
                         if (e.currentTarget.parentNode.childNodes[3].textContent === todo.title) {
                             console.log(myProjects[itemindex].todos[tindex].title);
+                            console.log(tindex);
+                        
                             return tindex;
                         };
+                        
             
                     });
                 });
