@@ -167,23 +167,27 @@ const controller = () => {
         editButton.forEach((button) => {
             button.addEventListener('click', (e) => {
                 list.forEach((item, itemindex) => {
-                    if (item.id === 'selected') {
-                        return itemindex
-                    };
-                    //the array to get all the html elements on the page
-                    Array.from(document.querySelectorAll('.to-do-row')).forEach((task) => {
-                        console.log(task.childNodes[3].innerText);
-                    });
+                    if (item.id === 'selected') { return itemindex };
                     //the array to get the item in the main array                
                     myProjects[itemindex].todos.forEach((todo, tindex) => {
                         if (e.currentTarget.parentNode.childNodes[3].textContent === todo.title) {
-                            console.log(myProjects[itemindex].todos[tindex].title);
-                            console.log(tindex);
-                        
-                            return tindex;
+                            //the array to get all the html elements on the page
+                            Array.from(document.querySelectorAll('.to-do-row')).forEach((task) => {
+                                if (task.childNodes[3].innerText === myProjects[itemindex].todos[tindex].title) {
+                                    const editTask = `<tr>
+                                                <td><input placeholder=${myProjects[itemindex].todos[tindex].title}></input></td>
+                                                <td><input placeholder=${myProjects[itemindex].todos[tindex].description}></input></td>
+                                                <td><input placeholder=${myProjects[itemindex].todos[tindex].date}></input></td>
+                                                <td><input placeholder=${myProjects[itemindex].todos[tindex].priority}></input></td>
+                                                </tr>`;
+                                    task.innerHTML = '';
+                                    task.innerHTML = editTask;
+                                    console.log(myProjects[itemindex].todos[tindex].description);
+    
+                                };
+                            });
                         };
                         
-            
                     });
                 });
             });
