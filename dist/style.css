@@ -47,15 +47,10 @@ input[type=text], input[type=date], select, textarea {
   color: orangered;
 }
 
-input#project {
-  font-size: 2rem;
-}
 
 
-
-button#addproject {
+button {
   position: relative;
-  font-size: 2rem;
   border: none;
   color: orangered;
   text-align: center;
@@ -68,14 +63,12 @@ button#addproject {
 input,
 ::placeholder {
   color: lightgray;
-
 }
 
 .projectmenu {
-  margin: 2rem;
   position: relative;
-  padding-top: 0px;
-  width: 240px;
+  width: 100%;
+  font-size: xx-large;
   float: left;
 }
 
@@ -120,3 +113,4 @@ button:hover {
 #formContainer {
   display: block;
 }
+
