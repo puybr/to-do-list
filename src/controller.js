@@ -175,7 +175,7 @@ const controller = () => {
                             //the array to get all the html elements on the page
                             Array.from(document.querySelectorAll('.to-do-row')).forEach((task) => {
                                 if (task.childNodes[3].innerText === myProjects[itemindex].todos[tindex].title) {
-                                    const editTask = `<tr class="to-do-row">
+                                    const editTask = `<tr class="edited-to-do">
                                                 <td id="delete-me"><input type="radio" id="delete" name="delete"></td>
                                                 <td class="edit-prop" id="title">${myProjects[itemindex].todos[tindex].title}</td>
                                                 <td class="edit-prop" id="description">${myProjects[itemindex].todos[tindex].description}</td>
@@ -229,7 +229,7 @@ const controller = () => {
                     e.target.innerHTML = `<input type="text" name="title" value="${title}">`;               
                 };
                 if (e.target.id === 'description') {
-                    e.target.innerHTML = `<input type="text" name="description" value="${description}">`;            
+                    e.target.innerHTML = `<textarea>${description}</textarea>`;            
                 };
                 if (e.target.id === 'date') {
                     e.target.innerHTML = `<input type="date" name="date" value="${date}">`;            
@@ -260,9 +260,9 @@ const controller = () => {
             if (p.name === (document.getElementById("project-todos").innerText)) {
                     const todoTemplate = {
                         title: title.value,
-                        description: '', 
+                        description: 'Enter your description here ...', 
                         date: date.value,
-                        priority: ''
+                        priority: 'Low'
                     };
                     const newTodo = Object.create(todoTemplate);
                     myProjects[index].todos.push(newTodo);
