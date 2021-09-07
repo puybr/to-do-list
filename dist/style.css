@@ -62,7 +62,7 @@ td {
   color: lightgray;
 }
 
-.edit:hover {
+.edit:hover, #save-me:hover {
   cursor: pointer;
   color: orangered;
 
@@ -72,7 +72,7 @@ button:hover {
   cursor: pointer;
 }
 
-.to-do-row:hover {
+.edit-prop:hover {
   cursor: pointer;
   color: lightgray;
 }

@@ -42,7 +42,7 @@ const controller = () => {
         }
     ]
     }
-    ]; // end of dummy tasks
+    ]; //end of dummy tasks
 
 
     const renderProjects = () => {
@@ -177,9 +177,9 @@ const controller = () => {
                                 if (task.childNodes[3].innerText === myProjects[itemindex].todos[tindex].title) {
                                     const editTask = `<tr class="to-do-row">
                                                 <td id="delete-me"><input type="radio" id="delete" name="delete"></td>
-                                                <td>${myProjects[itemindex].todos[tindex].title}</td>
-                                                <td>${myProjects[itemindex].todos[tindex].description}</td>
-                                                <td>${myProjects[itemindex].todos[tindex].date}</td>
+                                                <td class="edit-prop">${myProjects[itemindex].todos[tindex].title}</td>
+                                                <td class="edit-prop">${myProjects[itemindex].todos[tindex].description}</td>
+                                                <td class="edit-prop">${myProjects[itemindex].todos[tindex].date}</td>
                                                 <td>
                                                 <select>
                                                 <option value="Low">Low</option>
@@ -187,10 +187,11 @@ const controller = () => {
                                                 <option value="High">High</option>
                                                 </select>
                                                 </td>
-                                                <td><i class="fas fa-save"></i></td>
+                                                <td id="save-me"><i class="fas fa-save"></i></td>
                                                 </tr>`;
                                     task.innerHTML = '';
                                     task.innerHTML = editTask;
+                                    editProp(myProjects[itemindex].todos[tindex].title);
     
                                 };
                             });
@@ -204,13 +205,34 @@ const controller = () => {
 
     };
 
+    const editProp = () => {
+        const prop = document.querySelectorAll('.edit-prop');
+        prop.forEach((p) => {
+            p.addEventListener('click', (e) => {
+                e.preventDefault(); // prevent page reloading
+                //refresher function
+                e.target.parentNode.childNodes.forEach((node) => {
+                    if (node.id === 'edit-me') {
+                        node.removeAttribute('id');
+                    };
+
+                });
+                e.target.id = 'edit-me';
+                e.target.innerHTML = `<input value=${e.currentTarget.innerText}>`;
+                
+            });
+        });
+
+    };
+
+
     const getTodoIndex = (todoName) => {
         const proj = document.querySelector("#project-title").textContent;
         myProjects.forEach((project, projectIndex) => {
             if (project.name === proj) {
                 myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
                     if (todo.title === todoName) {
-                        myProjects[projectIndex].todos.splice(todoIndex, 1); //at position index, remove 1 item
+                        myProjects[projectIndex].todos.splice(todoIndex, 1);//at position index, remove 1 item
                         renderTodoList(projectIndex);
                     };
                 });
