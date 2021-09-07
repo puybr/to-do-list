@@ -214,25 +214,25 @@ const controller = () => {
                 e.target.parentNode.childNodes.forEach((node) => {
                     switch (node.id) {
                         case 'title':
-                            node.innerHTML = `<td class="edit-prop" id="title">${title}</td>`;
+                            node.innerHTML = `<td class="edit-prop">${title}</td>`;
                             return title;
                         case 'description':
-                            node.innerHTML = `<td class="edit-prop" id="description">${description}</td>`;
+                            node.innerHTML = `<td class="edit-prop">${description}</td>`;
                             return description;
                         case 'date':
-                            node.innerHTML = `<td class="edit-prop" id="date">${date}</td>`;
+                            node.innerHTML = `<td class="edit-prop">${date}</td>`;
                             return date;
                     };
 
                 });
                 if (e.target.id === 'title') {
-                    e.target.innerHTML = `<input value=${title}>`;               
+                    e.target.innerHTML = `<input type="text" name="title" value="${title}">`;               
                 };
                 if (e.target.id === 'description') {
-                    e.target.innerHTML = `<input value=${description}>`;               
+                    e.target.innerHTML = `<input type="text" name="description" value="${description}">`;            
                 };
                 if (e.target.id === 'date') {
-                    e.target.innerHTML = `<input value=${date}>`;               
+                    e.target.innerHTML = `<input type="date" name="date" value="${date}">`;            
                 };
                 
             });
