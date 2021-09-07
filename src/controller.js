@@ -177,9 +177,9 @@ const controller = () => {
                                 if (task.childNodes[3].innerText === myProjects[itemindex].todos[tindex].title) {
                                     const editTask = `<tr class="to-do-row">
                                                 <td id="delete-me"><input type="radio" id="delete" name="delete"></td>
-                                                <td class="edit-prop">${myProjects[itemindex].todos[tindex].title}</td>
-                                                <td class="edit-prop">${myProjects[itemindex].todos[tindex].description}</td>
-                                                <td class="edit-prop">${myProjects[itemindex].todos[tindex].date}</td>
+                                                <td class="edit-prop" id="title">${myProjects[itemindex].todos[tindex].title}</td>
+                                                <td class="edit-prop" id="description">${myProjects[itemindex].todos[tindex].description}</td>
+                                                <td class="edit-prop" id="date">${myProjects[itemindex].todos[tindex].date}</td>
                                                 <td>
                                                 <select>
                                                 <option value="Low">Low</option>
@@ -191,7 +191,7 @@ const controller = () => {
                                                 </tr>`;
                                     task.innerHTML = '';
                                     task.innerHTML = editTask;
-                                    editProp(myProjects[itemindex].todos[tindex].title);
+                                    editProp(myProjects[itemindex].todos[tindex].title, myProjects[itemindex].todos[tindex].description, myProjects[itemindex].todos[tindex].date);
     
                                 };
                             });
@@ -205,20 +205,35 @@ const controller = () => {
 
     };
 
-    const editProp = () => {
+    const editProp = (title, description, date) => {
         const prop = document.querySelectorAll('.edit-prop');
         prop.forEach((p) => {
             p.addEventListener('click', (e) => {
                 e.preventDefault(); // prevent page reloading
                 //refresher function
                 e.target.parentNode.childNodes.forEach((node) => {
-                    if (node.id === 'edit-me') {
-                        node.removeAttribute('id');
+                    switch (node.id) {
+                        case 'title':
+                            node.innerHTML = `<td class="edit-prop" id="title">${title}</td>`;
+                            return title;
+                        case 'description':
+                            node.innerHTML = `<td class="edit-prop" id="description">${description}</td>`;
+                            return description;
+                        case 'date':
+                            node.innerHTML = `<td class="edit-prop" id="date">${date}</td>`;
+                            return date;
                     };
 
                 });
-                e.target.id = 'edit-me';
-                e.target.innerHTML = `<input value=${e.currentTarget.innerText}>`;
+                if (e.target.id === 'title') {
+                    e.target.innerHTML = `<input value=${title}>`;               
+                };
+                if (e.target.id === 'description') {
+                    e.target.innerHTML = `<input value=${description}>`;               
+                };
+                if (e.target.id === 'date') {
+                    e.target.innerHTML = `<input value=${date}>`;               
+                };
                 
             });
         });
