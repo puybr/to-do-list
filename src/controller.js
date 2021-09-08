@@ -50,8 +50,8 @@ const controller = () => {
         myProjects.forEach((project) => {
             const proj = `
             <tr>
-            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
             <td class="projectlist">${project.name}</td>
+            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
             </tr>
             `;
             project.todos.forEach((todo) => {

@@ -3,7 +3,7 @@
 html {
   font-family: 'Roboto';
   color: darkslategray;
-  font-size: larger;
+  font-size: xx-large;
 }
 
 ul {
@@ -12,15 +12,21 @@ ul {
   margin: 0;
 }
 
-/* table {
+table {
   width: 100%;
-} */
+}
+
 
 td {
-  padding: 15px;
   width: 100%;
+  padding: 1rem;
+  margin: auto;
   text-align: left;
   border-bottom: 1px solid #ddd;
+}
+
+#delete-me {
+  width: 10px;
 }
 
 textarea {
@@ -66,25 +72,17 @@ input,
   color: lightgray;
 }
 
-.projectmenu {
-  width: 100%;
-  font-size: xx-large;
-  float: left;
-}
 
 .to-do-row {
   display: none;
-  width: 100%;
 }
+
 .active {
   display: block;
   color: lightgray;
 
 }
 
-#delete-me {
-  width: 10px;
-}
 
 .projectlist:hover, #selected:hover, #unselected:hover {
   cursor: pointer;
@@ -107,12 +105,19 @@ button:hover {
 }
 
 
+#selected {
+  color: orangered;
+  
+
+
+}
+
+#unselected {
+  color: darkslategray;
+}
+
 #formContainer {
   display: block;
 }
 
-.projectlist {
-  display: block;
-  font-size: 50px;
-}
 
