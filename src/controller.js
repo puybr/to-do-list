@@ -9,7 +9,7 @@ const controller = () => {
     const taskButton = document.querySelector('#submit');
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
-    const subTasks = document.querySelector('#subtasks');
+    const container = document.querySelector('#projectnav');
 
     let myProjects = [{
         name: "default project",
@@ -46,21 +46,19 @@ const controller = () => {
 
 
     const renderProjects = () => {
-        const container = document.querySelector('#projectnav');
-        container.innerHTML = '';
         myProjects.forEach((project) => {
             const proj = `
-            <tr>
+            <tr id="${project.name}">
             <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
-            <td class="projectlist" >${project.name}</td>
+            <td class="projectlist">${project.name}</td>
             </tr>
             `;
         container.insertAdjacentHTML('afterbegin', proj);
+    
 
         });
-
-
     };
+
     renderProjects();
 
     const addProject = () => {
@@ -74,17 +72,17 @@ const controller = () => {
             myProjects.push(newProject);
             // console.log('Proto: '+ Object.getPrototypeOf(newProject));
             projectInput.value = '';
+            container.innerHTML = `<table id="projectnav"></table>`;
             renderProjects();
             selectProject();
-            getProjectIndex(document.getElementById("project-todos").innerText);           
+              
         });
     };
 
-    const changeProjectColor = () => { // change the colour of the project when selected
+    const changeProjectColor = (projectName) => { // change the colour of the project when selected
         const list = document.querySelectorAll('.projectlist');
-        const title = document.querySelector("#project-title").textContent;
         list.forEach((project) => {
-            if (title === project.innerText) {
+            if (projectName === project.innerText) {
                 project.id = 'selected';
             } else project.id = 'unselected';
         });
@@ -93,23 +91,25 @@ const controller = () => {
 
     const selectProject = () => {
         const list = document.querySelectorAll('.projectlist');
-        subTasks.innerHTML = '';
         list.forEach((project) => {
             project.addEventListener('click', (e) => {
+                console.log('click')
                 //this is what happens when you select a project :)
                 e.preventDefault(); // prevent page reloading
-                document.getElementById("project-todos").innerHTML = '';
-                const p = `<h4 id="project-title">${e.target.innerText}</h4>`;
                 document.getElementById("taskform").style.display = "block";
-                document.getElementById("project-todos").innerHTML = p;
-                project.id = '';
+                project.id = 'selected';
+                // container.innerHTML = `<table id="projectnav"></table>`;
+                renderProjects();
                 getProjectIndex(e.target.innerText);
-                changeProjectColor();
+                changeProjectColor(e.target.innerText);
             });
              
         });
+    
     };
     selectProject();
+
+
 
     const getProjectIndex = (projectName) => {
           myProjects.forEach((project, index) => {
@@ -132,19 +132,21 @@ const controller = () => {
     });
 
     const renderTodoList = (index) => {
-        subTasks.innerHTML = '';
+        const projectName = document.querySelector('#selected').textContent;
+        const node = document.getElementById(projectName);
+    
         myProjects[index].todos.forEach((todo) => {
             const t = `
                     <tr class="to-do-row">
-                    <td id="delete-me"><input type="radio" id="delete" name="delete"></td>
+                    <td id="delete-me"><input type="checkbox" id="delete" name="delete"></td>
                     <td>${todo.title}</td>
                     <td>${todo.date}</td>
                     <td class="edit"><i class="fas fa-edit"></i></td>
                     </tr>
                 `;
-            subTasks.insertAdjacentHTML('afterbegin', t);
+            node.insertAdjacentHTML('afterend', t);
         });
-        deleteTodo();
+        deleteTodo();   
         editTodoList();
     };
 
@@ -152,8 +154,8 @@ const controller = () => {
         const todos = document.querySelectorAll('.to-do-row');
         todos.forEach((todo) => {
             todo.addEventListener('click', (e) => {
-                if (todo.childNodes[1].childNodes[0].checked) {
-                    getTodoIndex(todo.children[1].innerText);
+                if (todo.childNodes[1].children[0].checked) {
+                    getTodoIndex(todo.children[1].textContent);
                 }
             });
 
@@ -242,7 +244,7 @@ const controller = () => {
 
 
     const getTodoIndex = (todoName) => {
-        const proj = document.querySelector("#project-title").textContent;
+        const proj = document.querySelector("#selected").textContent;
         myProjects.forEach((project, projectIndex) => {
             if (project.name === proj) {
                 myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
