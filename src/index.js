@@ -8,3 +8,5 @@ import '@fortawesome/fontawesome-free/js/brands'
 const list = controller();
 
 list.addProject();
+list.renderProjects();
+list.selectProject();

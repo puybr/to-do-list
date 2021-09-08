@@ -9,7 +9,8 @@ const controller = () => {
     const taskButton = document.querySelector('#submit');
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
-    const container = document.querySelector('#projectnav');
+    const container = document.querySelector('#container');
+    const todoRow = document.querySelectorAll('.to-do-row');
 
     let myProjects = [{
         name: "default project",
@@ -48,18 +49,27 @@ const controller = () => {
     const renderProjects = () => {
         myProjects.forEach((project) => {
             const proj = `
-            <tr id="${project.name}">
+            <tr>
             <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
             <td class="projectlist">${project.name}</td>
             </tr>
             `;
+            project.todos.forEach((todo) => {
+                const t = `
+                    <tr class="to-do-row" id="${project.name}">
+                    <td id="delete-me"><input type="checkbox" id="delete" name="delete"></td>
+                    <td>${todo.title}</td>
+                    <td>${todo.date}</td>
+                    <td class="edit"><i class="fas fa-edit"></i></td>
+                    </tr>
+                `;
+                container.insertAdjacentHTML('afterbegin', t);
+            });
         container.insertAdjacentHTML('afterbegin', proj);
     
-
         });
     };
 
-    renderProjects();
 
     const addProject = () => {
         projectButton.addEventListener('click', (e) => {
@@ -72,12 +82,32 @@ const controller = () => {
             myProjects.push(newProject);
             // console.log('Proto: '+ Object.getPrototypeOf(newProject));
             projectInput.value = '';
-            container.innerHTML = `<table id="projectnav"></table>`;
             renderProjects();
             selectProject();
-              
+            getProjectIndex(document.getElementById('selected').innerText);           
         });
     };
+
+    const selectProject = () => {
+        const list = document.querySelectorAll('.projectlist');
+        list.forEach((project) => {
+            project.addEventListener('click', (e) => {
+                //this is what happens when you select a project :)
+                e.preventDefault(); // prevent page reloading
+                document.getElementById("taskform").style.display = "block";
+                e.currentTarget.id = 'selected';
+                changeProjectColor(e.target.textContent);
+                document.querySelectorAll('.to-do-row').forEach((row) => {
+                    if (row.id === e.target.textContent) {
+                        row.classList.toggle('active');
+                    } else return;
+                });
+            });
+             
+        });
+    
+    };
+
 
     const changeProjectColor = (projectName) => { // change the colour of the project when selected
         const list = document.querySelectorAll('.projectlist');
@@ -87,28 +117,6 @@ const controller = () => {
             } else project.id = 'unselected';
         });
     };
-
-
-    const selectProject = () => {
-        const list = document.querySelectorAll('.projectlist');
-        list.forEach((project) => {
-            project.addEventListener('click', (e) => {
-                console.log('click')
-                //this is what happens when you select a project :)
-                e.preventDefault(); // prevent page reloading
-                document.getElementById("taskform").style.display = "block";
-                project.id = 'selected';
-                // container.innerHTML = `<table id="projectnav"></table>`;
-                renderProjects();
-                getProjectIndex(e.target.innerText);
-                changeProjectColor(e.target.innerText);
-            });
-             
-        });
-    
-    };
-    selectProject();
-
 
 
     const getProjectIndex = (projectName) => {
@@ -275,7 +283,7 @@ const controller = () => {
 
 
 
-    return { addProject }
+    return { addProject, renderProjects, selectProject }
 };
 
 export default controller

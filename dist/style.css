@@ -12,12 +12,13 @@ ul {
   margin: 0;
 }
 
-table {
+/* table {
   width: 100%;
-}
+} */
 
 td {
   padding: 15px;
+  width: 100%;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
@@ -66,14 +67,19 @@ input,
 }
 
 .projectmenu {
-  position: relative;
   width: 100%;
   font-size: xx-large;
   float: left;
 }
 
-#taskform {
+.to-do-row {
   display: none;
+  width: 100%;
+}
+.active {
+  display: block;
+  color: lightgray;
+
 }
 
 #delete-me {
@@ -101,16 +107,12 @@ button:hover {
 }
 
 
-#selected {
-  color: orangered;
-}
-
-
-#unselected {
-  color: darkslategray;
-}
-
 #formContainer {
   display: block;
+}
+
+.projectlist {
+  display: block;
+  font-size: 50px;
 }
 
