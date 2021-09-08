@@ -16,6 +16,9 @@ table {
   width: 100%;
 }
 
+.projectlist {
+  font-size: 2rem;
+}
 
 td {
   width: 100%;
@@ -27,6 +30,7 @@ td {
 
 #delete-me {
   width: 10px;
+  font-size: 1.5rem;
 }
 
 textarea {
@@ -48,7 +52,9 @@ input[type=text], input[type=date], select, textarea {
   resize: vertical;
 }
 
-
+#logo {
+  padding: 0 2rem;
+}
 
 #icon {
   color: orangered;
