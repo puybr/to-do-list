@@ -20,12 +20,20 @@ table {
   font-size: 2rem;
 }
 
+tr {
+  margin: auto;
+  text-align: left;
+  display: block;
+}
+
+
 td {
   width: 100%;
   padding: 1rem;
   margin: auto;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  
 }
 
 #delete-me {
@@ -77,11 +85,7 @@ input,
 }
 
 
-.to-do-row {
-  display: none;
-}
-
-#addTodoForm {
+#addTodoForm, .to-do-row {
   display: none;
 }
 
