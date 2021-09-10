@@ -103,7 +103,6 @@ const controller = () => {
                     form.style.display = 'none';
                 });
                 if (project.id === 'selected') {
-                    console.log(project.parentNode.childNodes[3].childNodes[1]);
                     project.parentNode.childNodes[3].childNodes[1].style.display = 'block';
                 } else return;
                 const projectName = document.querySelector('#selected').textContent;
@@ -155,7 +154,6 @@ const controller = () => {
 
     const getProjectIndex = (projectName) => {
           myProjects.forEach((project, index) => {
-              console.log(project);
             // if (project.name === projectName) {
             //     renderTodoList(index);
             // };
