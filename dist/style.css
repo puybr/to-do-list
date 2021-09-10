@@ -54,6 +54,7 @@ input[type=text], input[type=date], select, textarea {
 
 #logo {
   padding: 0 2rem;
+  font-size: 2.5rem;
 }
 
 #icon {
@@ -67,7 +68,8 @@ button {
   border: none;
   color: orangered;
   text-align: center;
-  transition-duration: 0.4s;
+  font-size: 2rem;
+  width: 3rem;
   text-decoration: none;
   overflow: hidden;
   cursor: pointer;
@@ -80,6 +82,10 @@ input,
 
 
 .to-do-row {
+  display: none;
+}
+
+#addTodoForm {
   display: none;
 }
 

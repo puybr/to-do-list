@@ -1,14 +1,19 @@
-const taskManager = (title, description, date, priority) => {
-    const taskButton = document.querySelector('#submit');
-    const renderList = () => {
-        taskButton.addEventListener('click', (e) => {
-            e.preventDefault(); // prevent page reloading
-            console.log('CLICK!');
+const todoManager = (title, description, date, priority) => {
+    const deleteTodo = () => {
+        document.querySelectorAll('#delete-checkbox').forEach((del) => {
+            del.addEventListener('click', (e) => {
+                if (del.checked) {
+                    console.log(myProjects)
+                   
+                    // getTodoIndex(todo.children[1].textContent);
+                }
+            });
 
         });
+        
     };
 
-    return { renderList }
+    return { deleteTodo }
 };
 
-export default taskManager
+export default todoManager
