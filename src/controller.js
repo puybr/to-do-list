@@ -97,13 +97,20 @@ const controller = () => {
             project.addEventListener('click', (e) => {
                 //this is what happens when you select a project :)
                 e.preventDefault(); // prevent page reloading
-                document.getElementById("addTodoForm").style.display = "block";
                 e.currentTarget.id = 'selected';
                 changeProjectColor(e.target.textContent);
+                document.querySelectorAll('#addTodoForm').forEach((form) => {
+                    form.style.display = 'none';
+                });
+                if (project.id === 'selected') {
+                    console.log(project.parentNode.childNodes[3].childNodes[1]);
+                    project.parentNode.childNodes[3].childNodes[1].style.display = 'block';
+                } else return;
+                const projectName = document.querySelector('#selected').textContent;
                 document.querySelectorAll('.to-do-row').forEach((row) => {
-                    if (row.id === e.target.textContent) {
-                        row.classList.toggle('active');
-                    } else return;
+                    if (row.id === projectName) {
+                        row.style.display = 'block';
+                    } else row.style.display = 'none';      
                 });
             });
              

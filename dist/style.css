@@ -89,12 +89,6 @@ input,
   display: none;
 }
 
-.active {
-  display: block;
-  color: lightgray;
-
-}
-
 
 .projectlist:hover, #selected:hover, #unselected:hover {
   cursor: pointer;
