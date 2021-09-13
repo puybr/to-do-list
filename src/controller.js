@@ -4,9 +4,8 @@ import { format } from 'date-fns';
 const todoList = todoManager(); //init the todolist module
 
 const controller = () => {
-    const titleField = document.querySelector('#title');
-    const dateField = document.querySelector('#date');
-    const todoButton = document.querySelector('#submit');
+    const titleFields = document.querySelector('#title');
+    const dateFields = document.querySelector('#date');
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
     const container = document.querySelector('#container');
@@ -54,7 +53,7 @@ const controller = () => {
                             <form id="addTodoForm" style="display: none;">
                             <input type="text" id="title" name="title" placeholder="title">
                             <input type="date" id="date" name="date">
-                            <button id="submit">+</button>
+                            <button class="addtodo">+</button>
                             </form>
                             </td>
                             <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
@@ -108,7 +107,7 @@ const controller = () => {
                             <form id="addTodoForm" style="display: block;">
                             <input type="text" id="title" name="title" placeholder="title">
                             <input type="date" id="date" name="date">
-                            <button id="submit">+</button>
+                            <button class="addtodo">+</button>
                             </form>
                             </td>
                             <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
@@ -123,7 +122,7 @@ const controller = () => {
                             <form id="addTodoForm" style="display: none;">
                             <input type="text" id="title" name="title" placeholder="title">
                             <input type="date" id="date" name="date">
-                            <button id="submit">+</button>
+                            <button class="addtodo">+</button>
                             </form>
                             </td>
                             <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
@@ -148,7 +147,8 @@ const controller = () => {
             // console.log('Proto: '+ Object.getPrototypeOf(newProject));
             renderProjects(project.value);
             projectInput.value = '';
-            selectProject();        
+            selectProject();
+            addTodo();        
         });
     };
 
@@ -165,6 +165,7 @@ const controller = () => {
                 });
                 if (project.id === 'selected') {
                     project.parentNode.childNodes[3].childNodes[1].style.display = 'block';
+                    addTodo();
                 } else return;
                 const projectName = document.querySelector('#selected').textContent;
                 document.querySelectorAll('.to-do-row').forEach((row) => {
@@ -192,7 +193,6 @@ const controller = () => {
             if (project.name === proj) {
                 myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
                     if (todo.title === todoName) {
-                        console.log('delete todo')
                         myProjects[projectIndex].todos.splice(todoIndex, 1);//at position index, remove 1 item
                         renderProjects(myProjects[projectIndex].name);
                         changeProjectColor(myProjects[projectIndex].name);
@@ -212,6 +212,35 @@ const controller = () => {
             } else project.id = 'unselected';
         });
     };
+
+
+    const addTodo = () => {
+        // myProjects.forEach((p, index) => {
+        //     if (p.name === (document.getElementById("project-todos").innerText)) {
+        //             const todoTemplate = {
+        //                 title: title.value,
+        //                 description: 'Enter your description here ...', 
+        //                 date: date.value,
+        //                 priority: 'Low'
+        //             };
+        //             const newTodo = Object.create(todoTemplate);
+        //             myProjects[index].todos.push(newTodo);
+        //             renderTodoList(index);
+        //             }  // end of if statement                          
+        //         });
+
+        document.querySelectorAll('.addtodo').forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // prevent page reloading
+                // reset default values
+                // titleField.value = '';
+                // dateField.value = '';
+                console.log(e);
+            });
+        });
+    };
+
+    addTodo();
 
 
 
@@ -294,32 +323,6 @@ const controller = () => {
         });
 
     };
-
-
-    const addTodo = () => {
-        // set up main event listeners
-        todoButton.addEventListener('click', (e) => {
-            e.preventDefault(); // prevent page reloading
-            addTodo();
-            // reset default values
-            titleField.value = '';
-            dateField.value = '';
-        });
-        myProjects.forEach((p, index) => {
-            if (p.name === (document.getElementById("project-todos").innerText)) {
-                    const todoTemplate = {
-                        title: title.value,
-                        description: 'Enter your description here ...', 
-                        date: date.value,
-                        priority: 'Low'
-                    };
-                    const newTodo = Object.create(todoTemplate);
-                    myProjects[index].todos.push(newTodo);
-                    renderTodoList(index);
-                    }  // end of if statement                          
-                });
-            };
-
 
 
     return { addProject, renderProjects, selectProject }
