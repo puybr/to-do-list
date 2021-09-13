@@ -51,7 +51,7 @@ const controller = () => {
                             <tr>
                             <td class="projectlist">${project.name}</td>
                             <td>
-                            <form id="addTodoForm">
+                            <form id="addTodoForm" style="display: none;">
                             <input type="text" id="title" name="title" placeholder="title">
                             <input type="date" id="date" name="date">
                             <button id="submit">+</button>
@@ -105,7 +105,7 @@ const controller = () => {
                             <tr>
                             <td class="projectlist" id="selected">${project.name}</td>
                             <td>
-                            <form id="addTodoForm">
+                            <form id="addTodoForm" style="display: block;">
                             <input type="text" id="title" name="title" placeholder="title">
                             <input type="date" id="date" name="date">
                             <button id="submit">+</button>
@@ -120,7 +120,7 @@ const controller = () => {
                             <tr>
                             <td class="projectlist">${project.name}</td>
                             <td>
-                            <form id="addTodoForm">
+                            <form id="addTodoForm" style="display: none;">
                             <input type="text" id="title" name="title" placeholder="title">
                             <input type="date" id="date" name="date">
                             <button id="submit">+</button>
