@@ -146,8 +146,8 @@ const controller = () => {
             const newProject = Object.create(projectTemplate);
             myProjects.push(newProject);
             // console.log('Proto: '+ Object.getPrototypeOf(newProject));
+            renderProjects(project.value);
             projectInput.value = '';
-            renderProjects();
             selectProject();        
         });
     };
@@ -213,15 +213,6 @@ const controller = () => {
         });
     };
 
-
-    const getProjectIndex = (projectName) => {
-          myProjects.forEach((project, index) => {
-            // if (project.name === projectName) {
-            //     renderTodoList(index);
-            // };
-        });
-
-    };
 
 
 
@@ -331,7 +322,7 @@ const controller = () => {
 
 
 
-    return { addProject, renderProjects, selectProject, getProjectIndex }
+    return { addProject, renderProjects, selectProject }
 };
 
 export default controller
