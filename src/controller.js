@@ -43,35 +43,96 @@ const controller = () => {
     ]}];//end of dummy tasks
 
 
-    const renderProjects = () => {
-        container.innerHTML = `<table id="container"></table>`;
-        myProjects.forEach((project) => {
-            const proj = `
-            <tr>
-            <td class="projectlist">${project.name}</td>
-            <td>
-            <form id="addTodoForm">
-            <input type="text" id="title" name="title" placeholder="title">
-            <input type="date" id="date" name="date">
-            <button id="submit">+</button>
-            </form>
-            </td>
-            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
-            </tr>
-            `;
-            project.todos.forEach((todo) => {
-                const t = `
-                    <tr class="to-do-row" id="${project.name}">
-                    <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
-                    <td>${todo.title}</td>
-                    <td>${todo.date}</td>
-                    <td class="edit"><i class="fas fa-edit"></i></td>
-                    </tr>
-                `;
-                container.insertAdjacentHTML('afterbegin', t);
+    const renderProjects = (selectedProject) => {
+        container.innerHTML = `<table id="container"></table>`;//refresh
+        if (selectedProject === undefined) {
+            myProjects.forEach((project) => {
+                const proj = `
+                            <tr>
+                            <td class="projectlist">${project.name}</td>
+                            <td>
+                            <form id="addTodoForm">
+                            <input type="text" id="title" name="title" placeholder="title">
+                            <input type="date" id="date" name="date">
+                            <button id="submit">+</button>
+                            </form>
+                            </td>
+                            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+                            </tr>
+                            `;
+                project.todos.forEach((todo) => {
+                    const t = `
+                        <tr class="to-do-row" id="${project.name}" style="display: none;">
+                        <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
+                        <td>${todo.title}</td>
+                        <td>${todo.date}</td>
+                        <td class="edit"><i class="fas fa-edit"></i></td>
+                        </tr>
+                        `;
+                    container.insertAdjacentHTML('afterbegin', t);
+                });
+            container.insertAdjacentHTML('afterbegin', proj);  
             });
-        container.insertAdjacentHTML('afterbegin', proj);  
-        });
+        } else {
+            myProjects.forEach((project) => {
+                project.todos.forEach((todo) => {
+                    if (project.name === selectedProject) {
+                        const t = `
+                                <tr class="to-do-row" id="${project.name}" style="display: block;">
+                                <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
+                                <td>${todo.title}</td>
+                                <td>${todo.date}</td>
+                                <td class="edit"><i class="fas fa-edit"></i></td>
+                                </tr>
+                                `;
+                    container.insertAdjacentHTML('afterbegin', t);
+                    } else {
+                        const t = `
+                                <tr class="to-do-row" id="${project.name}" style="display: none;">
+                                <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
+                                <td>${todo.title}</td>
+                                <td>${todo.date}</td>
+                                <td class="edit"><i class="fas fa-edit"></i></td>
+                                </tr>
+                                `;
+                    container.insertAdjacentHTML('afterbegin', t);
+
+                    };
+                });
+
+            if (project.name === selectedProject) {
+                const proj = `
+                            <tr>
+                            <td class="projectlist" id="selected">${project.name}</td>
+                            <td>
+                            <form id="addTodoForm">
+                            <input type="text" id="title" name="title" placeholder="title">
+                            <input type="date" id="date" name="date">
+                            <button id="submit">+</button>
+                            </form>
+                            </td>
+                            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+                            </tr>
+                            `;
+                container.insertAdjacentHTML('afterbegin', proj);  
+            } else {
+                const proj = `
+                            <tr>
+                            <td class="projectlist">${project.name}</td>
+                            <td>
+                            <form id="addTodoForm">
+                            <input type="text" id="title" name="title" placeholder="title">
+                            <input type="date" id="date" name="date">
+                            <button id="submit">+</button>
+                            </form>
+                            </td>
+                            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+                            </tr>
+                            `;
+                container.insertAdjacentHTML('afterbegin', proj);  
+            }
+            });
+        };
     };
 
 
@@ -131,8 +192,9 @@ const controller = () => {
             if (project.name === proj) {
                 myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
                     if (todo.title === todoName) {
+                        console.log('delete todo')
                         myProjects[projectIndex].todos.splice(todoIndex, 1);//at position index, remove 1 item
-                        renderProjects();
+                        renderProjects(myProjects[projectIndex].name);
                         changeProjectColor(myProjects[projectIndex].name);
                         selectProject();
                     };
