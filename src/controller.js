@@ -148,7 +148,7 @@ const controller = () => {
             renderProjects(project.value);
             projectInput.value = '';
             selectProject();
-            addTodo();        
+  
         });
     };
 
@@ -165,7 +165,6 @@ const controller = () => {
                 });
                 if (project.id === 'selected') {
                     project.parentNode.childNodes[3].childNodes[1].style.display = 'block';
-                    addTodo();
                 } else return;
                 const projectName = document.querySelector('#selected').textContent;
                 document.querySelectorAll('.to-do-row').forEach((row) => {
@@ -235,12 +234,11 @@ const controller = () => {
                 // reset default values
                 // titleField.value = '';
                 // dateField.value = '';
-                console.log(e);
+                console.log(e.target);
             });
         });
     };
 
-    addTodo();
 
 
 
@@ -325,7 +323,7 @@ const controller = () => {
     };
 
 
-    return { addProject, renderProjects, selectProject }
+    return { addProject, renderProjects, selectProject, addTodo }
 };
 
 export default controller

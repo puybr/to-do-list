@@ -10,3 +10,4 @@ const list = controller();
 list.addProject();
 list.renderProjects();
 list.selectProject();
+list.addTodo();
