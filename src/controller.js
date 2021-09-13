@@ -148,7 +148,7 @@ const controller = () => {
             renderProjects(project.value);
             projectInput.value = '';
             selectProject();
-  
+            addTodo();  
         });
     };
 
