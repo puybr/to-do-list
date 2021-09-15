@@ -4,8 +4,6 @@ import { format } from 'date-fns';
 const todoList = todoManager(); //init the todolist module
 
 const controller = () => {
-    const titleFields = document.querySelector('#title');
-    const dateFields = document.querySelector('#date');
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
     const container = document.querySelector('#container');
@@ -154,6 +152,7 @@ const controller = () => {
 
     const selectProject = () => {
         checkTodo();
+        addTodo();
         document.querySelectorAll('.projectlist').forEach((project) => {
             project.addEventListener('click', (e) => {
                 //this is what happens when you select a project :)
@@ -214,34 +213,31 @@ const controller = () => {
 
 
     const addTodo = () => {
-        // myProjects.forEach((p, index) => {
-        //     if (p.name === (document.getElementById("project-todos").innerText)) {
-        //             const todoTemplate = {
-        //                 title: title.value,
-        //                 description: 'Enter your description here ...', 
-        //                 date: date.value,
-        //                 priority: 'Low'
-        //             };
-        //             const newTodo = Object.create(todoTemplate);
-        //             myProjects[index].todos.push(newTodo);
-        //             renderTodoList(index);
-        //             }  // end of if statement                          
-        //         });
-
         document.querySelectorAll('.addtodo').forEach((button) => {
             button.addEventListener('click', (e) => {
                 e.preventDefault(); // prevent page reloading
-                // reset default values
-                // titleField.value = '';
-                // dateField.value = '';
-                console.log(e.target);
-            });
-        });
-    };
-
-
-
-
+                document.querySelectorAll('#title').forEach((titleInput) => {
+                    if (titleInput.value) {
+                        myProjects.forEach((p, index) => {
+                            if (p.name === (document.querySelector("#selected").textContent)) {
+                                    const todoTemplate = {
+                                        title: titleInput.value,
+                                        description: 'Enter your description here ...', 
+                                        date: format(new Date(), "yyyy'-'MM'-'dd"),
+                                        priority: 'Low'
+                                    };
+                                    const newTodo = Object.create(todoTemplate);
+                                    myProjects[index].todos.push(newTodo);
+                                    renderProjects(document.querySelector("#selected").textContent);
+                                    changeProjectColor(document.querySelector("#selected").textContent);
+                                    selectProject();
+                                    };  // end of if statement                          
+                                });
+                            };
+                        });
+                    });
+                });
+            };
 
     const editTodoList = () => {
         const editButton = document.querySelectorAll('.edit');
