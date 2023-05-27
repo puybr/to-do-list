@@ -265,14 +265,28 @@ const controller = () => {
             };
 
     const editTodoList = (selectedProject) => {
-        const proj = document.querySelector("#selected").textContent;
-        myProjects.forEach((project, projectIndex) => {
-            if (project.name === proj) {
-                myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
-                    console.log(todo.title)
-                });
-            };
-        });
+        const editButtons = document.querySelectorAll('.edit')
+                    editButtons.forEach((button) => {
+                        button.addEventListener('click', (e) => {
+                        let todoTitle = e.target.parentNode.parentNode.childNodes[3].textContent
+                        console.log(todoTitle)
+                        e.target.parentNode.parentNode.childNodes[3].innerHTML = `<textarea placeholder=${todoTitle}></textarea>`
+            
+                    
+                        
+                    
+                        });
+                    });
+        // const projselect = document.querySelector("#selected").textContent;
+        // myProjects.forEach((project, projectIndex) => {
+        //     if (project.name === projselect) {
+        //         myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
+                    
+
+        //             });
+        //         });
+        //     };
+        // });
        
         
 
