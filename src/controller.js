@@ -278,7 +278,18 @@ const controller = () => {
                         button.addEventListener('click', (e) => {
                         const todoTitle = e.target.parentNode.parentNode.childNodes[3].textContent
                         console.log(todoTitle)
-                        e.target.parentNode.parentNode.childNodes[3].innerHTML = `<textarea placeholder=${todoTitle}></textarea>`
+                        e.target.parentNode.parentNode.innerHTML = `
+                        <form id="editTodoForm">
+                        <input type="text" id="title" name="title" placeholder=${todoTitle}>
+                        <input type="date" id="date" name="date">
+                        <select id="priority" name="priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        <textarea></textarea>
+                        </form>
+                        `;
             
                     
                         
