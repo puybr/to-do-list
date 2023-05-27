@@ -127,7 +127,7 @@ const controller = () => {
                             <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
                             </tr>
                             `;
-                container.insertAdjacentHTML('afterbegin', proj);  
+                container.insertAdjacentHTML('afterbegin', proj);
             } else {
                 const proj = `
                             <tr>
@@ -185,13 +185,16 @@ const controller = () => {
                 });
                 if (project.id === 'selected') {
                     project.parentNode.childNodes[3].childNodes[1].style.display = 'block';
-                    editTodoList(document.querySelector("#selected").textContent);
+                
                 } else return;
                 const projectName = document.querySelector('#selected').textContent;
+                editTodoList();
+
                 document.querySelectorAll('.to-do-row').forEach((row) => {
                     if (row.id === projectName) {
                         row.style.display = 'block';
-                    } else row.style.display = 'none';      
+                    } else row.style.display = 'none';    
+
                 });
             });
              
@@ -210,6 +213,7 @@ const controller = () => {
 
     const deleteTodo = (todoName) => {
         const proj = document.querySelector("#selected").textContent;
+        editTodoList();
         myProjects.forEach((project, projectIndex) => {
             if (project.name === proj) {
                 myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
@@ -218,6 +222,8 @@ const controller = () => {
                         renderProjects(myProjects[projectIndex].name);
                         changeProjectColor(myProjects[projectIndex].name);
                         selectProject();
+        
+
                     };
                 });
             };
@@ -230,6 +236,7 @@ const controller = () => {
         document.querySelectorAll('.projectlist').forEach((project) => {
             if (projectName === project.innerText) {
                 project.id = 'selected';
+                editTodoList();
             } else project.id = 'unselected';
         });
     };
@@ -238,6 +245,7 @@ const controller = () => {
     const addTodo = () => {
         document.querySelectorAll('.addtodo').forEach((button) => {
             button.addEventListener('click', (e) => {
+                editTodoList();
                 e.preventDefault(); // prevent page reloading
                 document.querySelectorAll('#title').forEach((titleInput) => {
                     if (titleInput.value) {
@@ -268,7 +276,7 @@ const controller = () => {
         const editButtons = document.querySelectorAll('.edit')
                     editButtons.forEach((button) => {
                         button.addEventListener('click', (e) => {
-                        let todoTitle = e.target.parentNode.parentNode.childNodes[3].textContent
+                        const todoTitle = e.target.parentNode.parentNode.childNodes[3].textContent
                         console.log(todoTitle)
                         e.target.parentNode.parentNode.childNodes[3].innerHTML = `<textarea placeholder=${todoTitle}></textarea>`
             
@@ -297,7 +305,7 @@ const controller = () => {
   
 
 
-    return { addProject, renderProjects, selectProject, addTodo }
+    return { addProject, renderProjects, selectProject, addTodo, editTodoList}
 };
 
 export default controller
