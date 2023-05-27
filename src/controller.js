@@ -189,6 +189,7 @@ const controller = () => {
                 } else return;
                 const projectName = document.querySelector('#selected').textContent;
                 editTodoList();
+            
 
                 document.querySelectorAll('.to-do-row').forEach((row) => {
                     if (row.id === projectName) {
@@ -237,6 +238,8 @@ const controller = () => {
             if (projectName === project.innerText) {
                 project.id = 'selected';
                 editTodoList();
+                renderProjects(projectName);
+                selectProject();
             } else project.id = 'unselected';
         });
     };
@@ -284,7 +287,7 @@ const controller = () => {
                         console.log(todoDate)
                         e.currentTarget.parentNode.innerHTML = `
                         <form id="editTodoForm">
-                        <input type="text" id="title" name="title" placeholder=${todoTitle}>
+                        <textarea>${todoTitle}</textarea>
                         <input type="date" id="date" name="date"  value=${todoDate}>
                         <select id="priority" name="priority">
                             <option value="Low">Low</option>
