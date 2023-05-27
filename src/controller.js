@@ -276,18 +276,22 @@ const controller = () => {
         const editButtons = document.querySelectorAll('.edit')
                     editButtons.forEach((button) => {
                         button.addEventListener('click', (e) => {
-                        const todoTitle = e.target.parentNode.parentNode.childNodes[3].textContent
-                        console.log(todoTitle)
-                        e.target.parentNode.parentNode.innerHTML = `
+                        e.preventDefault(); // prevent page reloading
+                        // const todoTitle = e.target.parentNode.parentNode.childNodes[3].textContent
+                        const todoTitle = e.currentTarget.parentNode.childNodes[3].textContent
+                        const todoDate = e.currentTarget.parentNode.childNodes[7].textContent
+                        const todoDescription = e.currentTarget.parentNode.childNodes[9].textContent
+                        console.log(todoDate)
+                        e.currentTarget.parentNode.innerHTML = `
                         <form id="editTodoForm">
                         <input type="text" id="title" name="title" placeholder=${todoTitle}>
-                        <input type="date" id="date" name="date">
+                        <input type="date" id="date" name="date"  value=${todoDate}>
                         <select id="priority" name="priority">
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
                         </select>
-                        <textarea></textarea>
+                        <textarea>${todoDescription}</textarea>
                         </form>
                         `;
             
