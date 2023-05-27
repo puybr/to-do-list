@@ -51,6 +51,11 @@ const controller = () => {
                             <form id="addTodoForm" style="display: none;">
                             <input type="text" id="title" name="title" placeholder="title">
                             <input type="date" id="date" name="date">
+                            <select name="priority" id="priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            </select>
                             <button class="addtodo">+</button>
                             </form>
                             </td>
@@ -62,7 +67,9 @@ const controller = () => {
                         <tr class="to-do-row" id="${project.name}" style="display: none;">
                         <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
                         <td>${todo.title}</td>
+                        <td>${todo.priority}</td>
                         <td>${todo.date}</td>
+                        <td>${todo.description}</td>
                         <td class="edit"><i class="fas fa-edit"></i></td>
                         </tr>
                         `;
@@ -78,7 +85,9 @@ const controller = () => {
                                 <tr class="to-do-row" id="${project.name}" style="display: block;">
                                 <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
                                 <td>${todo.title}</td>
+                                <td>${todo.priority}</td>
                                 <td>${todo.date}</td>
+                                <td>${todo.description}</td>
                                 <td class="edit"><i class="fas fa-edit"></i></td>
                                 </tr>
                                 `;
@@ -87,8 +96,10 @@ const controller = () => {
                         const t = `
                                 <tr class="to-do-row" id="${project.name}" style="display: none;">
                                 <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
-                                <td>${todo.title}</td>
+                                <td>${todo.title}</td>        
+                                <td>${todo.priority}</td>
                                 <td>${todo.date}</td>
+                                <td>${todo.description}</td>
                                 <td class="edit"><i class="fas fa-edit"></i></td>
                                 </tr>
                                 `;
@@ -105,6 +116,11 @@ const controller = () => {
                             <form id="addTodoForm" style="display: block;">
                             <input type="text" id="title" name="title" placeholder="title">
                             <input type="date" id="date" name="date">
+                            <select id="priority" name="priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            </select>
                             <button class="addtodo">+</button>
                             </form>
                             </td>
@@ -120,6 +136,11 @@ const controller = () => {
                             <form id="addTodoForm" style="display: none;">
                             <input type="text" id="title" name="title" placeholder="title">
                             <input type="date" id="date" name="date">
+                            <select id="priority" name="priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            </select>
                             <button class="addtodo">+</button>
                             </form>
                             </td>
@@ -164,6 +185,7 @@ const controller = () => {
                 });
                 if (project.id === 'selected') {
                     project.parentNode.childNodes[3].childNodes[1].style.display = 'block';
+                    editTodoList(document.querySelector("#selected").textContent);
                 } else return;
                 const projectName = document.querySelector('#selected').textContent;
                 document.querySelectorAll('.to-do-row').forEach((row) => {
@@ -174,6 +196,7 @@ const controller = () => {
             });
              
         });
+        
     };
 
 
@@ -219,12 +242,14 @@ const controller = () => {
                 document.querySelectorAll('#title').forEach((titleInput) => {
                     if (titleInput.value) {
                         myProjects.forEach((p, index) => {
+                            const dateInput = document.querySelector('#date')
+                            const priorityInput = document.querySelector('#priority')
                             if (p.name === (document.querySelector("#selected").textContent)) {
                                     const todoTemplate = {
                                         title: titleInput.value,
-                                        description: 'Enter your description here ...', 
-                                        date: format(new Date(), "yyyy'-'MM'-'dd"),
-                                        priority: 'Low'
+                                        description: 'Edit your description here ...', 
+                                        date: dateInput.value,
+                                        priority: priorityInput.value
                                     };
                                     const newTodo = Object.create(todoTemplate);
                                     myProjects[index].todos.push(newTodo);
@@ -239,84 +264,23 @@ const controller = () => {
                 });
             };
 
-    const editTodoList = () => {
-        const editButton = document.querySelectorAll('.edit');
-        const list = document.querySelectorAll('.projectlist');
-        editButton.forEach((button) => {
-            button.addEventListener('click', (e) => {
-                list.forEach((item, itemindex) => {
-                    if (item.id === 'selected') { return itemindex };
-                    //the array to get the item in the main array                
-                    myProjects[itemindex].todos.forEach((todo, tindex) => {
-                        if (e.currentTarget.parentNode.childNodes[3].textContent === todo.title) {
-                            renderTodoList(itemindex);
-                            //the array to get all the html elements on the page
-                            Array.from(document.querySelectorAll('.to-do-row')).forEach((task) => {
-                                if (task.childNodes[3].innerText === myProjects[itemindex].todos[tindex].title) {
-                                    const editTask = `<tr class="edited-to-do">
-                                                <td id="delete-me"><input type="radio" id="delete" name="delete"></td>
-                                                <td class="edit-prop" id="title">${myProjects[itemindex].todos[tindex].title}</td>
-                                                <td class="edit-prop" id="description">${myProjects[itemindex].todos[tindex].description}</td>
-                                                <td class="edit-prop" id="date">${myProjects[itemindex].todos[tindex].date}</td>
-                                                <td>
-                                                <select>
-                                                <option value="Low">Low</option>
-                                                <option value="Medium">Medium</option>
-                                                <option value="High">High</option>
-                                                </select>
-                                                </td>
-                                                <td id="save-me"><i class="fas fa-save"></i></td>
-                                                </tr>`;
-                                    task.innerHTML = '';
-                                    task.innerHTML = editTask;
-                                    editProp(myProjects[itemindex].todos[tindex].title, myProjects[itemindex].todos[tindex].description, myProjects[itemindex].todos[tindex].date);
-    
-                                };
-                            });
-                        };
-                        
-                    });
+    const editTodoList = (selectedProject) => {
+        const proj = document.querySelector("#selected").textContent;
+        myProjects.forEach((project, projectIndex) => {
+            if (project.name === proj) {
+                myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
+                    console.log(todo.title)
                 });
-            });
-
+            };
         });
+       
+        
 
     };
 
-    const editProp = (title, description, date) => {
-        const prop = document.querySelectorAll('.edit-prop');
-        prop.forEach((p) => {
-            p.addEventListener('click', (e) => {
-                e.preventDefault(); // prevent page reloading
-                //refresher function
-                e.target.parentNode.childNodes.forEach((node) => {
-                    switch (node.id) {
-                        case 'title':
-                            node.innerHTML = `<td class="edit-prop">${title}</td>`;
-                            return title;
-                        case 'description':
-                            node.innerHTML = `<td class="edit-prop">${description}</td>`;
-                            return description;
-                        case 'date':
-                            node.innerHTML = `<td class="edit-prop">${date}</td>`;
-                            return date;
-                    };
 
-                });
-                if (e.target.id === 'title') {
-                    e.target.innerHTML = `<input type="text" name="title" value="${title}">`;               
-                };
-                if (e.target.id === 'description') {
-                    e.target.innerHTML = `<textarea>${description}</textarea>`;            
-                };
-                if (e.target.id === 'date') {
-                    e.target.innerHTML = `<input type="date" name="date" value="${date}">`;            
-                };
-                
-            });
-        });
 
-    };
+  
 
 
     return { addProject, renderProjects, selectProject, addTodo }
