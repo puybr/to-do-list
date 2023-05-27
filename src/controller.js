@@ -291,6 +291,9 @@ const controller = () => {
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
                         </select>
+                        <i class="fas fa-save" aria-hidden="true" id="icon"></i>
+                        <i class="fa fa-trash" aria-hidden="true" id="icon"></i>
+
                         <textarea>${todoDescription}</textarea>
                         </form>
                         `;
