@@ -27,7 +27,7 @@ const controller = () => {
         name: "work project",
         todos: [{
             title: "create a powerpoint presentation",
-            description: "for the finacial team",
+            description: "for the financial team",
             date: format(new Date(), "yyyy'-'MM'-'dd"),
             priority: "Low"
         },
@@ -189,6 +189,9 @@ const controller = () => {
                 } else return;
                 const projectName = document.querySelector('#selected').textContent;
                 editTodoList();
+                updateTodoList();
+    
+    
             
 
                 document.querySelectorAll('.to-do-row').forEach((row) => {
@@ -223,6 +226,7 @@ const controller = () => {
                         renderProjects(myProjects[projectIndex].name);
                         changeProjectColor(myProjects[projectIndex].name);
                         selectProject();
+                        editTodoList();
         
 
                     };
@@ -275,7 +279,10 @@ const controller = () => {
                 });
             };
 
-    const editTodoList = (selectedProject) => {
+
+
+
+    const editTodoList = () => {
         const editButtons = document.querySelectorAll('.edit')
                     editButtons.forEach((button) => {
                         button.addEventListener('click', (e) => {
@@ -284,49 +291,50 @@ const controller = () => {
                         const todoTitle = e.currentTarget.parentNode.childNodes[3].textContent
                         const todoDate = e.currentTarget.parentNode.childNodes[7].textContent
                         const todoDescription = e.currentTarget.parentNode.childNodes[9].textContent
-                        console.log(todoDate)
+
                         e.currentTarget.parentNode.innerHTML = `
+                        <tr>
                         <form id="editTodoForm">
-                        <textarea>${todoTitle}</textarea>
-                        <input type="date" id="date" name="date"  value=${todoDate}>
-                        <select id="priority" name="priority">
+                        <td><textarea>${todoTitle}</textarea></td>
+                        <td><select id="priority" name="priority">
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
-                        </select>
-                        <i class="fas fa-save" aria-hidden="true" id="icon"></i>
-                        <i class="fa fa-trash" aria-hidden="true" id="icon"></i>
-
-                        <textarea>${todoDescription}</textarea>
+                        </select></td>
+                        <td><input type="date" id="date" name="date"  value=${todoDate}></td>
+                        <td><textarea>${todoDescription}</textarea></td>
+                        <td id="savetodos"><i class="fas fa-save" id="icon"></i></td>
                         </form>
+                        </tr>
                         `;
-            
-                    
-                        
+                                           
                     
                         });
+                        
+                        
                     });
-        // const projselect = document.querySelector("#selected").textContent;
-        // myProjects.forEach((project, projectIndex) => {
-        //     if (project.name === projselect) {
-        //         myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
-                    
-
-        //             });
-        //         });
-        //     };
-        // });
-       
-        
+                           
 
     };
 
 
+    const updateTodoList = () => {
+        const todoicons = document.querySelector("#savetodos");
+        console.log(todoicons)
+        // todoicons.forEach((icon) => {
+        //     icon.addEventListener('click', (e) => {
+        //         console.log(e.currentTarget)
 
+                
+
+        //     });
+        // });
+    
+    };  
   
 
 
-    return { addProject, renderProjects, selectProject, addTodo, editTodoList}
+    return { addProject, renderProjects, selectProject, addTodo, editTodoList, updateTodoList }
 };
 
 export default controller

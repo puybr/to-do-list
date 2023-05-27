@@ -12,3 +12,4 @@ list.renderProjects();
 list.selectProject();
 list.addTodo();
 list.editTodoList();
+list.updateTodoList();
