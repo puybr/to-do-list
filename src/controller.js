@@ -81,6 +81,7 @@ const controller = () => {
             myProjects.forEach((project) => {
                 project.todos.forEach((todo) => {
                     if (project.name === selectedProject) {
+
                         const t = `
                                 <tr class="to-do-row" id="${project.name}" style="display: block;">
                                 <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
@@ -167,33 +168,22 @@ const controller = () => {
             renderProjects(project.value);
             projectInput.value = '';
             selectProject();
-            addTodo();  
+ 
         });
     };
 
     const selectProject = () => {
-        checkTodo();
-        addTodo();
         document.querySelectorAll('.projectlist').forEach((project) => {
             project.addEventListener('click', (e) => {
                 //this is what happens when you select a project :)
                 e.preventDefault(); // prevent page reloading
                 e.currentTarget.id = 'selected';
+                renderProjects(e.target.textContent);
                 changeProjectColor(e.target.textContent);
-                document.querySelectorAll('#addTodoForm').forEach((form) => {
-                    form.style.display = 'none';
-                });
-                if (project.id === 'selected') {
-                    project.parentNode.childNodes[3].childNodes[1].style.display = 'block';
-                
-                } else return;
-                const projectName = document.querySelector('#selected').textContent;
+                addProject();
+                checkTodo();
                 editTodoList();
-                updateTodoList();
-    
-    
-            
-
+                const projectName = document.querySelector('#selected').textContent;
                 document.querySelectorAll('.to-do-row').forEach((row) => {
                     if (row.id === projectName) {
                         row.style.display = 'block';
@@ -207,6 +197,7 @@ const controller = () => {
     };
 
 
+
     const checkTodo = () => {
         document.querySelectorAll('#delete-checkbox').forEach((del) => {
             del.addEventListener('click', (e) => {
@@ -217,7 +208,6 @@ const controller = () => {
 
     const deleteTodo = (todoName) => {
         const proj = document.querySelector("#selected").textContent;
-        editTodoList();
         myProjects.forEach((project, projectIndex) => {
             if (project.name === proj) {
                 myProjects[projectIndex].todos.forEach((todo, todoIndex) => {
@@ -226,7 +216,6 @@ const controller = () => {
                         renderProjects(myProjects[projectIndex].name);
                         changeProjectColor(myProjects[projectIndex].name);
                         selectProject();
-                        editTodoList();
         
 
                     };
@@ -241,18 +230,21 @@ const controller = () => {
         document.querySelectorAll('.projectlist').forEach((project) => {
             if (projectName === project.innerText) {
                 project.id = 'selected';
-                editTodoList();
                 renderProjects(projectName);
                 selectProject();
+                addTodo();
+                addProject();
+        
             } else project.id = 'unselected';
         });
     };
 
 
+
+
     const addTodo = () => {
         document.querySelectorAll('.addtodo').forEach((button) => {
             button.addEventListener('click', (e) => {
-                editTodoList();
                 e.preventDefault(); // prevent page reloading
                 document.querySelectorAll('#title').forEach((titleInput) => {
                     if (titleInput.value) {
@@ -267,10 +259,11 @@ const controller = () => {
                                         priority: priorityInput.value
                                     };
                                     const newTodo = Object.create(todoTemplate);
-                                    myProjects[index].todos.push(newTodo);
+                                    myProjects[index].todos.push(newTodo);                                
                                     renderProjects(document.querySelector("#selected").textContent);
                                     changeProjectColor(document.querySelector("#selected").textContent);
                                     selectProject();
+                                    editTodoList();
                                     };  // end of if statement                          
                                 });
                             };
@@ -280,34 +273,31 @@ const controller = () => {
             };
 
 
-
-
     const editTodoList = () => {
         const editButtons = document.querySelectorAll('.edit')
                     editButtons.forEach((button) => {
                         button.addEventListener('click', (e) => {
-                        e.preventDefault(); // prevent page reloading
-                        // const todoTitle = e.target.parentNode.parentNode.childNodes[3].textContent
+                        e.preventDefault(); // prevent page reloading       
                         const todoTitle = e.currentTarget.parentNode.childNodes[3].textContent
                         const todoDate = e.currentTarget.parentNode.childNodes[7].textContent
                         const todoDescription = e.currentTarget.parentNode.childNodes[9].textContent
-
                         e.currentTarget.parentNode.innerHTML = `
-                        <tr>
-                        <form id="editTodoForm">
-                        <td><textarea>${todoTitle}</textarea></td>
-                        <td><select id="priority" name="priority">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select></td>
-                        <td><input type="date" id="date" name="date"  value=${todoDate}></td>
-                        <td><textarea>${todoDescription}</textarea></td>
-                        <td id="savetodos"><i class="fas fa-save" id="icon"></i></td>
-                        </form>
-                        </tr>
-                        `;
-                                           
+                                                            <tr>
+                                                            <form id="editTodoForm">
+                                                            <td><textarea>${todoTitle}</textarea></td>
+                                                            <td><select id="priority" name="priority">
+                                                                <option value="Low">Low</option>
+                                                                <option value="Medium">Medium</option>
+                                                                <option value="High">High</option>
+                                                            </select></td>
+                                                            <td><input type="date" id="date" name="date"  value=${todoDate}></td>
+                                                            <td><textarea>${todoDescription}</textarea></td>
+                                                            <td class="savetodos"><i class="fas fa-save" id="icon"></i></td>
+                                                            </form>
+                                                            </tr>
+                                                            `;
+
+                
                     
                         });
                         
@@ -316,21 +306,21 @@ const controller = () => {
                            
 
     };
-
-
     const updateTodoList = () => {
-        const todoicons = document.querySelector("#savetodos");
-        console.log(todoicons)
-        // todoicons.forEach((icon) => {
-        //     icon.addEventListener('click', (e) => {
-        //         console.log(e.currentTarget)
+        const todoicons = document.querySelectorAll(".savetodos");
+        todoicons.forEach((icon) => {
+            icon.addEventListener('click', (e) => {
+                console.log(e.currentTarget.parentNode.parentNode)
 
                 
 
-        //     });
-        // });
+            });
+        });
     
     };  
+
+
+
   
 
 
