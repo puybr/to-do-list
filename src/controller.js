@@ -219,6 +219,8 @@ const controller = () => {
                         changeProjectColor(myProjects[projectIndex].name);
                         selectProject();
                         editTodoList();
+                        checkTodo();
+
         
 
                     };
@@ -238,6 +240,7 @@ const controller = () => {
                 addTodo();
                 addProject();
                 editTodoList();
+                checkTodo();
         
             } else project.id = 'unselected';
         });
@@ -292,14 +295,14 @@ const controller = () => {
                         e.currentTarget.parentNode.innerHTML = `
                                                             <tr>
                                                             <form id="editTodoForm">
-                                                            <td><textarea>${todoTitle}</textarea></td>
-                                                            <td><select id="priority" name="priority">
+                                                            <td><textarea id="updatedtodoTitle">${todoTitle}</textarea></td>
+                                                            <td><select id="updatedPriority" name="updatedPriority" id="updatedPriority">
                                                                 <option value="Low">Low</option>
                                                                 <option value="Medium">Medium</option>
                                                                 <option value="High">High</option>
                                                             </select></td>
-                                                            <td><input type="date" id="date" name="date"  value=${todoDate}></td>
-                                                            <td><textarea>${todoDescription}</textarea></td>
+                                                            <td><input type="date" id="updatedDate" value=${todoDate}></td>
+                                                            <td><textarea id="updatedDescription">${todoDescription}</textarea></td>
                                                             <td class="savetodos"><i class="fas fa-save" id="icon"></i></td>
                                                             </form>
                                                             </tr>
@@ -318,7 +321,39 @@ const controller = () => {
         const todoicons = document.querySelectorAll(".savetodos");
         todoicons.forEach((icon) => {
             icon.addEventListener('click', (e) => {
-                console.log(e.currentTarget.parentNode.parentNode)
+                const currentTodo = e.currentTarget.parentNode.childNodes[3].textContent
+                const currentProject = document.querySelector("#selected").textContent
+                const updatedtodoTitle = document.getElementById("updatedtodoTitle")
+                const updatedPriority = document.getElementById("updatedPriority")
+                const updatedDate = document.getElementById("updatedDate")
+                const updatedDescription = document.getElementById("updatedDescription")
+                myProjects.forEach((p, pindex) => {
+                    if (p.name == currentProject) {
+                        myProjects[pindex].todos.forEach((todo, tindex) =>{
+                            if (todo.title == currentTodo) {
+                                myProjects[pindex].todos.splice(tindex, 1);//at position index, remove 1 item
+                                const todoTemplate = {
+                                    title: updatedtodoTitle.value,
+                                    description: updatedDescription.value, 
+                                    date: updatedDate.value,
+                                    priority: updatedPriority.value
+                                };
+                                const newTodo = Object.create(todoTemplate);
+                                myProjects[pindex].todos.push(newTodo);                                 
+                                renderProjects(document.querySelector("#selected").textContent)
+                                selectProject()
+                                addTodo();
+                                editTodoList();
+                                addProject();
+                                checkTodo();
+                                
+
+                            }
+                        })
+
+
+                    }
+                })
 
                 
 
