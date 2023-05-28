@@ -115,14 +115,14 @@ const controller = () => {
                             <td class="projectlist" id="selected">${project.name}</td>
                             <td>
                             <form id="addTodoForm" style="display: block;">
-                            <input type="text" id="title" name="title" placeholder="title">
-                            <input type="date" id="date" name="date">
-                            <select id="priority" name="priority">
+                            <td><input type="text" id="title" name="title" placeholder="title"></td>
+                            <td><input type="date" id="date" name="date"></td>
+                            <td><select id="priority" name="priority">
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
-                            </select>
-                            <button class="addtodo">+</button>
+                            </select></td>
+                            <td><button class="addtodo">+</button></td>
                             </form>
                             </td>
                             <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
@@ -218,6 +218,7 @@ const controller = () => {
                         renderProjects(myProjects[projectIndex].name);
                         changeProjectColor(myProjects[projectIndex].name);
                         selectProject();
+                        editTodoList();
         
 
                     };
@@ -236,6 +237,7 @@ const controller = () => {
                 selectProject();
                 addTodo();
                 addProject();
+                editTodoList();
         
             } else project.id = 'unselected';
         });
@@ -256,7 +258,7 @@ const controller = () => {
                             if (p.name === (document.querySelector("#selected").textContent)) {
                                     const todoTemplate = {
                                         title: titleInput.value,
-                                        description: 'Edit your description here ...', 
+                                        description: '', 
                                         date: dateInput.value,
                                         priority: priorityInput.value
                                     };
@@ -265,6 +267,9 @@ const controller = () => {
                                     renderProjects(document.querySelector("#selected").textContent);
                                     changeProjectColor(document.querySelector("#selected").textContent);
                                     selectProject();
+                                    editTodoList();
+                                    checkTodo();
+                                    deleteTodo();
                                     editTodoList();
                                     };  // end of if statement                          
                                 });
@@ -279,7 +284,8 @@ const controller = () => {
         const editButtons = document.querySelectorAll('.edit')
                     editButtons.forEach((button) => {
                         button.addEventListener('click', (e) => {
-                        e.preventDefault(); // prevent page reloading       
+                        e.preventDefault(); // prevent page reloading 
+                        updateTodoList();      
                         const todoTitle = e.currentTarget.parentNode.childNodes[3].textContent
                         const todoDate = e.currentTarget.parentNode.childNodes[7].textContent
                         const todoDescription = e.currentTarget.parentNode.childNodes[9].textContent

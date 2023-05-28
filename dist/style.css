@@ -21,7 +21,6 @@ table {
 }
 
 tr {
-  width: 100%;
   margin: auto;
   text-align: left;
   display: block;
@@ -73,7 +72,6 @@ input,
 ::placeholder {
   color: lightgray;
 }
-
 
 
 .to-do-row {
