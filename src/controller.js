@@ -162,12 +162,14 @@ const controller = () => {
                 name: project.value,
                 todos: [] 
             };
-            const newProject = Object.create(projectTemplate);
-            myProjects.push(newProject);
-            // console.log('Proto: '+ Object.getPrototypeOf(newProject));
-            renderProjects(project.value);
-            projectInput.value = '';
-            selectProject();
+            if (project.value) {
+                const newProject = Object.create(projectTemplate);
+                myProjects.push(newProject);
+                // console.log('Proto: '+ Object.getPrototypeOf(newProject));
+                 renderProjects(project.value);
+                 projectInput.value = '';
+                 selectProject();
+                 addTodo(); } else return;
  
         });
     };
