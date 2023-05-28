@@ -6,7 +6,7 @@ const todoList = todoManager(); //init the todolist module
 const controller = () => {
     const projectButton = document.querySelector('#addproject');
     const projectInput = document.querySelector('#project');
-    const container = document.querySelector('#container');
+    const container = document.querySelector('#container');;
 
     let myProjects = [{
         name: "default project",
@@ -42,6 +42,7 @@ const controller = () => {
 
     const renderProjects = (selectedProject) => {
         container.innerHTML = `<table id="container"></table>`;//refresh
+        deleteProject();
         if (selectedProject === undefined) {
             myProjects.forEach((project) => {
                 const proj = `
@@ -169,9 +170,27 @@ const controller = () => {
                  renderProjects(project.value);
                  projectInput.value = '';
                  selectProject();
+                 deleteProject();
                  addTodo(); } else return;
  
         });
+    };
+
+
+    const deleteProject = () => {
+        const trashButton = document.querySelectorAll("#delete-me");
+        trashButton.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // prevent page reloading
+                const currentProjectName = e.currentTarget.parentNode.childNodes[1].innerText
+                const myIndex = myProjects.map((el) => el.name).indexOf(currentProjectName)
+                myProjects.splice(myIndex, 1)
+                renderProjects(currentProjectName)
+                selectProject();
+                addTodo();
+            })
+        })
+
     };
 
     const selectProject = () => {
@@ -203,7 +222,10 @@ const controller = () => {
     const checkTodo = () => {
         document.querySelectorAll('#delete-checkbox').forEach((del) => {
             del.addEventListener('click', (e) => {
-                if (del.checked) { deleteTodo(del.parentNode.parentNode.childNodes[3].textContent); }});
+                if (del.checked) { 
+                    deleteTodo(del.parentNode.parentNode.childNodes[3].textContent);
+                    
+                }});
             });
         
     };
@@ -220,6 +242,7 @@ const controller = () => {
                         selectProject();
                         editTodoList();
                         checkTodo();
+                        deleteProject();
 
         
 
@@ -241,6 +264,7 @@ const controller = () => {
                 addProject();
                 editTodoList();
                 checkTodo();
+                deleteTodo();
         
             } else project.id = 'unselected';
         });
@@ -281,6 +305,8 @@ const controller = () => {
                     });
                 });
             };
+
+
 
 
     const editTodoList = () => {
@@ -367,7 +393,7 @@ const controller = () => {
   
 
 
-    return { addProject, renderProjects, selectProject, addTodo, editTodoList, updateTodoList }
+    return { addProject, renderProjects, selectProject, addTodo, editTodoList, updateTodoList, deleteProject }
 };
 
 export default controller

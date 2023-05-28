@@ -13,3 +13,4 @@ list.selectProject();
 list.addTodo();
 list.editTodoList();
 list.updateTodoList();
+list.deleteProject();
