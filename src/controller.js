@@ -59,13 +59,13 @@ const controller = () => {
                             <button class="addtodo">+</button>
                             </form>
                             </td>
-                            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+                            <td id="delete-project"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
                             </tr>
                             `;
                 project.todos.forEach((todo) => {
                     const t = `
                         <tr class="to-do-row" id="${project.name}" style="display: none;">
-                        <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
+                        <td id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
                         <td>${todo.title}</td>
                         <td>${todo.priority}</td>
                         <td>${todo.date}</td>
@@ -84,7 +84,7 @@ const controller = () => {
 
                         const t = `
                                 <tr class="to-do-row" id="${project.name}" style="display: block;">
-                                <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
+                                <td id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
                                 <td>${todo.title}</td>
                                 <td>${todo.priority}</td>
                                 <td>${todo.date}</td>
@@ -96,7 +96,7 @@ const controller = () => {
                     } else {
                         const t = `
                                 <tr class="to-do-row" id="${project.name}" style="display: none;">
-                                <td id="delete-me"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
+                                <td id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
                                 <td>${todo.title}</td>        
                                 <td>${todo.priority}</td>
                                 <td>${todo.date}</td>
@@ -125,7 +125,7 @@ const controller = () => {
                             <td><button class="addtodo">+</button></td>
                             </form>
                             </td>
-                            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+                            <td id="delete-project"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
                             </tr>
                             `;
                 container.insertAdjacentHTML('afterbegin', proj);
@@ -145,7 +145,7 @@ const controller = () => {
                             <button class="addtodo">+</button>
                             </form>
                             </td>
-                            <td id="delete-me"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+                            <td id="delete-project"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
                             </tr>
                             `;
                 container.insertAdjacentHTML('afterbegin', proj);  
@@ -214,19 +214,6 @@ const controller = () => {
                     
                 }});
             });
-            const trashButton = document.querySelectorAll("#delete-me");
-        trashButton.forEach((button) => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault(); // prevent page reloading
-                const currentProjectName = e.currentTarget.parentNode.childNodes[1].innerText
-                const myIndex = myProjects.map((el) => el.name).indexOf(currentProjectName)
-                myProjects.splice(myIndex, 1)
-                renderProjects(currentProjectName)
-                selectProject();
-                
-            })
-        })
-
         
     };
 
@@ -265,6 +252,7 @@ const controller = () => {
                 checkTodo();
                 deleteTodo();
                 updateTodoList();
+                deleteProject();
         
             } else project.id = 'unselected';
         });
@@ -392,7 +380,7 @@ const controller = () => {
 
 
     const deleteProject = () => {
-        const trashButton = document.querySelectorAll("#delete-me");
+        const trashButton = document.querySelectorAll("#delete-project");
         trashButton.forEach((button) => {
             button.addEventListener('click', (e) => {
                 e.preventDefault(); // prevent page reloading
