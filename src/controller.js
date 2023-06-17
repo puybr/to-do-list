@@ -42,7 +42,6 @@ const controller = () => {
 
     const renderProjects = (selectedProject) => {
         container.innerHTML = `<table id="container"></table>`;//refresh
-        deleteProject();
         if (selectedProject === undefined) {
             myProjects.forEach((project) => {
                 const proj = `
@@ -153,6 +152,8 @@ const controller = () => {
             }
             });
         };
+
+
     };
 
 
@@ -170,28 +171,11 @@ const controller = () => {
                  renderProjects(project.value);
                  projectInput.value = '';
                  selectProject();
-                 deleteProject();
                  addTodo(); } else return;
  
         });
     };
 
-
-    const deleteProject = () => {
-        const trashButton = document.querySelectorAll("#delete-me");
-        trashButton.forEach((button) => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault(); // prevent page reloading
-                const currentProjectName = e.currentTarget.parentNode.childNodes[1].innerText
-                const myIndex = myProjects.map((el) => el.name).indexOf(currentProjectName)
-                myProjects.splice(myIndex, 1)
-                renderProjects(currentProjectName)
-                selectProject();
-                addTodo();
-            })
-        })
-
-    };
 
     const selectProject = () => {
         document.querySelectorAll('.projectlist').forEach((project) => {
@@ -204,10 +188,13 @@ const controller = () => {
                 addProject();
                 checkTodo();
                 editTodoList();
+                updateTodoList();
                 const projectName = document.querySelector('#selected').textContent;
                 document.querySelectorAll('.to-do-row').forEach((row) => {
                     if (row.id === projectName) {
                         row.style.display = 'block';
+
+
                     } else row.style.display = 'none';    
 
                 });
@@ -227,6 +214,19 @@ const controller = () => {
                     
                 }});
             });
+            const trashButton = document.querySelectorAll("#delete-me");
+        trashButton.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // prevent page reloading
+                const currentProjectName = e.currentTarget.parentNode.childNodes[1].innerText
+                const myIndex = myProjects.map((el) => el.name).indexOf(currentProjectName)
+                myProjects.splice(myIndex, 1)
+                renderProjects(currentProjectName)
+                selectProject();
+                
+            })
+        })
+
         
     };
 
@@ -242,7 +242,6 @@ const controller = () => {
                         selectProject();
                         editTodoList();
                         checkTodo();
-                        deleteProject();
 
         
 
@@ -265,9 +264,11 @@ const controller = () => {
                 editTodoList();
                 checkTodo();
                 deleteTodo();
+                updateTodoList();
         
             } else project.id = 'unselected';
         });
+        
     };
 
 
@@ -297,7 +298,6 @@ const controller = () => {
                                     editTodoList();
                                     checkTodo();
                                     deleteTodo();
-                                    editTodoList();
                                     };  // end of if statement                          
                                 });
                             };
@@ -372,6 +372,7 @@ const controller = () => {
                                 editTodoList();
                                 addProject();
                                 checkTodo();
+                                editTodoList();
                                 
 
                             }
@@ -385,10 +386,26 @@ const controller = () => {
 
             });
         });
+        
     
     };  
 
 
+    const deleteProject = () => {
+        const trashButton = document.querySelectorAll("#delete-me");
+        trashButton.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // prevent page reloading
+                const currentProjectName = e.currentTarget.parentNode.childNodes[1].innerText
+                const myIndex = myProjects.map((el) => el.name).indexOf(currentProjectName)
+                myProjects.splice(myIndex, 1)
+                renderProjects(currentProjectName)
+                selectProject();
+                
+            })
+        })
+
+    };
 
   
 
