@@ -1,6 +1,6 @@
 # ✔️ To-Do List - [Odin Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/todo-list)
 
-[Link to project ...](ghost-goblin.github.io/to-do-list/)
+[Link to project ...](https://ghost-goblin.github.io/to-do-list/)
 
 My Data Structure is an array of objects `Projects`.
 
