@@ -1,3 +1,5 @@
+"use strict";
+
 import todoManager from './to-dos';
 import { format } from 'date-fns';
 
@@ -149,13 +151,10 @@ const controller = () => {
                             </tr>
                             `;
                 container.insertAdjacentHTML('afterbegin', proj);  
-            }
+            };
             });
         };
-
-
     };
-
 
     const addProject = () => {
         projectButton.addEventListener('click', (e) => {
@@ -172,7 +171,6 @@ const controller = () => {
                  projectInput.value = '';
                  selectProject();
                  addTodo(); } else return;
- 
         });
     };
 
@@ -193,18 +191,12 @@ const controller = () => {
                 document.querySelectorAll('.to-do-row').forEach((row) => {
                     if (row.id === projectName) {
                         row.style.display = 'block';
-
-
                     } else row.style.display = 'none';    
-
                 });
             });
              
-        });
-        
+        });       
     };
-
-
 
     const checkTodo = () => {
         document.querySelectorAll('#delete-checkbox').forEach((del) => {
@@ -213,8 +205,7 @@ const controller = () => {
                     deleteTodo(del.parentNode.parentNode.childNodes[3].textContent);
                     
                 }});
-            });
-        
+            });        
     };
 
     const deleteTodo = (todoName) => {
@@ -229,17 +220,12 @@ const controller = () => {
                         selectProject();
                         editTodoList();
                         checkTodo();
-
-        
-
                     };
                 });
             };
-        });
+         });
        };
     
-
-
     const changeProjectColor = (projectName) => { // change the colour of the project when selected
         document.querySelectorAll('.projectlist').forEach((project) => {
             if (projectName === project.innerText) {
@@ -255,12 +241,8 @@ const controller = () => {
                 deleteProject();
         
             } else project.id = 'unselected';
-        });
-        
+        });    
     };
-
-
-
 
     const addTodo = () => {
         document.querySelectorAll('.addtodo').forEach((button) => {
@@ -294,9 +276,6 @@ const controller = () => {
                 });
             };
 
-
-
-
     const editTodoList = () => {
         const editButtons = document.querySelectorAll('.edit')
                     editButtons.forEach((button) => {
@@ -321,15 +300,9 @@ const controller = () => {
                                                             </form>
                                                             </tr>
                                                             `;
-
-                
                     
-                        });
-                        
-                        
+                          });                        
                     });
-                           
-
     };
     const updateTodoList = () => {
         const todoicons = document.querySelectorAll(".savetodos");
@@ -361,21 +334,12 @@ const controller = () => {
                                 addProject();
                                 checkTodo();
                                 editTodoList();
-                                
-
-                            }
-                        })
-
-
-                    }
-                })
-
-                
-
+                            };
+                        });
+                    };
+                });                
             });
-        });
-        
-    
+        }); 
     };  
 
 
@@ -388,15 +352,10 @@ const controller = () => {
                 const myIndex = myProjects.map((el) => el.name).indexOf(currentProjectName)
                 myProjects.splice(myIndex, 1)
                 renderProjects(currentProjectName)
-                selectProject();
-                
-            })
-        })
-
+                selectProject();    
+            });
+        });
     };
-
-  
-
 
     return { addProject, renderProjects, selectProject, addTodo, editTodoList, updateTodoList, deleteProject }
 };
