@@ -1,3 +1,5 @@
+"use strict";
+
 import controller from './controller';
 import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
