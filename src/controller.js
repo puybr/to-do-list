@@ -29,12 +29,14 @@ const controller = () => {
         const todos = todoManager();
         const defaultproject = new Project("default project", [
             {
+                project: "default project",
                 title: "code",
                 description: "try creating a web interface and a dynamic todo list", 
                 date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "High"
             },
             {
+                project: "default project",
                 title: "cook dinner",
                 description: "a warming vegan supper with porcini mushrooms, leeks, carrots, and butternut squash.", 
                 date: format(new Date(), "yyyy'-'MM'-'dd"),
@@ -43,12 +45,14 @@ const controller = () => {
         ])
         const workproject = new Project("work project", [
             {
+                project: "work project",
                 title: "create a powerpoint presentation",
                 description: "for the financial team",
                 date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "Low"
             },
             {
+                project: "work project",
                 title: "admin tasks",
                 description: "office cleanup", 
                 date: format(new Date(), "yyyy'-'MM'-'dd"),
