@@ -8,11 +8,4 @@ import '@fortawesome/fontawesome-free/js/brands'
 
 // Set up the main controller
 const list = controller();
-
-list.addProject();
-list.renderProjects();
-list.selectProject();
-list.addTodo();
-list.editTodoList();
-list.updateTodoList();
-list.deleteProject();
+list.control();
