@@ -1,5 +1,16 @@
 "use strict";
 
+class Todo {
+    constructor(project, title, description, date, priority) {
+        this.project = project;
+        this.title = title;
+        this.description = description;
+        this.date = date
+        this.priority = priority
+    };
+};
+
+
 const todoManager = () => {
     const renderTodo = (project) => {
         if (project.select == true) {
