@@ -7,11 +7,12 @@ const container = document.querySelector('#container');
 const projectManager = () => {
     const renderProject = (project) => {
         const proj = `
-            <div>
-            <div><h1>${project.name} <i class="fa fa-trash" aria-hidden="true" id="icon"></i></h1></div>
+            <div class="projects">
+            <div class="logo"><h1>${project.name}</h1></div>
+            <div><h1 id="addproject" type="submit"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></h1></div>
             </div>
             <section class="wrapper">
-                <input type="text" id="title" name="title" placeholder="title">
+                <input type="text" id="title" name="title" placeholder="title" class="logo">
                 <input type="date" id="date" name="date">
                 <select name="priority" id="priority">
                     <option value="Low">Low</option>

@@ -17,7 +17,7 @@ const controller = () => {
     const projects = projectManager();
     const todos = todoManager();
     const render = () => {
-        container.innerHTML = `<table id="container"></table>`;//refresh
+        // container.innerHTML = `<table id="container"></table>`;//refresh
         const defaultproject = new Project("default project", [
             {
                 project: "default project",
