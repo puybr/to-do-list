@@ -7,14 +7,14 @@ const todoManager = () => {
                 console.log(todo);
                 let todolist = document.getElementById(`todolist-${todo.project}`);
                 const t = `
-                    <tr class="to-do-row" id="${todo.project}">
-                    <td id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
-                    <td>${todo.title}</td>
-                    <td>${todo.priority}</td>
-                    <td>${todo.date}</td>
-                    <td>${todo.description}</td>
-                    <td class="edit"><i class="fas fa-edit"></i></td>
-                    </tr>
+                    <div class="to-do-row" id="${todo.project}">
+                    <span id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></span>
+                    <span>${todo.title}</span>
+                    <span>${todo.priority}</span>
+                    <span>${todo.date}</span>
+                    <span>${todo.description}</span>
+                    <span class="edit"><i class="fas fa-edit"></i></span>
+                    </div>
                     `;
                 todolist.insertAdjacentHTML('afterbegin', t);
                 }); 
