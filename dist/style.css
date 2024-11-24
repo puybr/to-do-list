@@ -31,8 +31,10 @@ td {
   padding: 1rem;
   margin: auto;
   text-align: left;
-  border-bottom: 1px solid #ddd;
-  
+}
+
+hr {
+  border: 1px solid #ddd; 
 }
 
 #delete-todo, #delete-project {
