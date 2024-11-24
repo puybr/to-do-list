@@ -8,22 +8,22 @@ const projectManager = () => {
     const renderProject = (project) => {
         const proj = `
             <section>
-            <div>
-                <span class="projectlist">${project.name}</span>
-                <span id="delete-project"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></span>
-            </div>
-            <span>
+            <tr>
+            <td class="projectlist">${project.name}</td>
+            <td id="delete-project"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+            </tr>
+            <tr>
                 <form id="addTodoForm">
-                <input type="text" id="title" name="title" placeholder="title">
-                <input type="date" id="date" name="date">
-                <select name="priority" id="priority">
+                <td><input type="text" id="title" name="title" placeholder="title"></td>
+                <td><input type="date" id="date" name="date"></td>
+                <td><select name="priority" id="priority">
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
-                </select>
-                <span><button class="addtodo">+</button></span>
+                </select></td>
+                <td><button class="addtodo">+</button></td>
                 </form>
-            </span>
+            </tr>
             </section>
             <div id="todolist-${project.name}"></div>
             `;
