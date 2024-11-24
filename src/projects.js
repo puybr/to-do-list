@@ -37,7 +37,8 @@ const addProject = () => {
         e.preventDefault(); // prevent page reloading
         const projectTemplate = {
             name: project.value,
-            todos: [] 
+            todos: [],
+            select: true
         };
         if (project.value) {
             const newProject = Object.create(projectTemplate);

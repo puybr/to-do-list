@@ -6,19 +6,18 @@ import { format } from 'date-fns';
 
 let myProjects = [];
 
-class Project {
-    constructor(name, todos, select) {
-        this.name = name;
-        this.todos = todos;
-        this.select = select;
-    };
-};
-
 const controller = () => {
-    const control = () => {
+    class Project {
+        constructor(name, todos, select) {
+            this.name = name;
+            this.todos = todos;
+            this.select = select;
+        };
+    };
+    const projects = projectManager();
+    const todos = todoManager();
+    const render = () => {
         container.innerHTML = `<table id="container"></table>`;//refresh
-        const projects = projectManager();
-        const todos = todoManager();
         const defaultproject = new Project("default project", [
             {
                 project: "default project",
@@ -58,7 +57,7 @@ const controller = () => {
         todos.renderTodo(defaultproject);
         todos.renderTodo(workproject);
     }
-    return { control }
+    return { render }
 };
 
 export default controller

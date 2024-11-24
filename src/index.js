@@ -8,4 +8,4 @@ import '@fortawesome/fontawesome-free/js/brands'
 
 // Set up the main controller
 const list = controller();
-list.control();
+list.render();
