@@ -4,6 +4,8 @@ html {
   font-family: 'Roboto';
   color: darkslategray;
   font-size: large;
+  width: 100%;
+  text-align: left;
 }
 
 ul {
@@ -12,9 +14,6 @@ ul {
   margin: 0;
 }
 
-table {
-  width: 100%;
-}
 
 .projectlist {
   font-size: 2rem;
@@ -27,14 +26,25 @@ tr {
 }
 
 td {
-  width: 100%;
   padding: 1rem;
   margin: auto;
-  text-align: left;
 }
 
 hr {
   border: 1px solid #ddd; 
+}
+
+header {
+  margin: auto;
+  display: inline-block;
+  width: 100%;
+  .logo {
+    flex: 1;
+  }
+}
+
+.wrapper {
+  display: flex;
 }
 
 #delete-todo, #delete-project {
@@ -49,7 +59,7 @@ input[type=text], input[type=date], select, textarea {
   resize: vertical;
 }
 
-#icon {
+#icon, #selected {
   color: orangered;
 }
 
@@ -91,10 +101,6 @@ button:hover {
 
 .edit-prop:hover {
   cursor: pointer;
-  color: orangered;
-}
-
-#selected {
   color: orangered;
 }
 
