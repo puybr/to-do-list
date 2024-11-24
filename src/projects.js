@@ -2,11 +2,29 @@
 
 const projectButton = document.querySelector('#addproject');
 const projectInput = document.querySelector('#project');
+const container = document.querySelector('#container');
 
 const projectManager = () => {
     const renderProject = (project) => {
-        console.log(project);
-        
+        const proj = `
+            <tr>
+            <td class="projectlist">${project.name}</td>
+            <td>
+            <form id="addTodoForm" style="display: none;">
+            <input type="text" id="title" name="title" placeholder="title">
+            <input type="date" id="date" name="date">
+            <select name="priority" id="priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            </select>
+            <button class="addtodo">+</button>
+            </form>
+            </td>
+            <td id="delete-project"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
+            </tr>
+            `;
+        container.insertAdjacentHTML('afterbegin', proj);
     };
 return { renderProject }
 };

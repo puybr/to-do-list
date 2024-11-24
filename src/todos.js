@@ -1,20 +1,11 @@
 "use strict";
 
-import projects from './projects';
-
-const todoManager = (title, description, date, priority) => {
-    const deleteTodo = () => {
-        document.querySelectorAll('#delete-checkbox').forEach((del) => {
-            del.addEventListener('click', (e) => {
-                if (del.checked) {
-                    console.log(myProjects);                
-                    // getTodoIndex(todo.children[1].textContent);
-                };
-            });
-        });      
+const todoManager = () => {
+    const renderTodo = (defaultproject) => {
+        console.log(defaultproject.todos)    
     };
 
-    return { deleteTodo }
+    return { renderTodo }
 };
 
 const checkTodo = () => {
@@ -144,4 +135,4 @@ const updateTodoList = () => {
     }); 
 }; 
 
-export default todos
+export default todoManager

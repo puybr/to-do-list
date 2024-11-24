@@ -1,6 +1,7 @@
 "use strict";
 
 import projectManager from './projects';
+import todoManager from './todos';
 import { format } from 'date-fns';
 const container = document.querySelector('#container');
 
@@ -25,6 +26,7 @@ const controller = () => {
     const control = () => {
         container.innerHTML = `<table id="container"></table>`;//refresh
         const projects = projectManager();
+        const todos = todoManager();
         const defaultproject = new Project("default project", [
             {
                 title: "code",
@@ -55,7 +57,7 @@ const controller = () => {
         ])
         projects.renderProject(defaultproject);
         projects.renderProject(workproject);
-        container.insertAdjacentHTML('afterbegin', projects);
+        todos.renderTodo(defaultproject);
     }
     return { control }
 };
