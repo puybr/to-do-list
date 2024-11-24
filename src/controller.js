@@ -29,7 +29,7 @@ const controller = () => {
             {
                 project: "default project",
                 title: "cook dinner",
-                description: "a warming vegan supper with porcini mushrooms, leeks, carrots, and butternut squash.", 
+                description: "a warming vegan supper with porcini mushrooms, leeks, carrots, and butternut squash", 
                 date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "Medium"
             }

@@ -16,14 +16,13 @@ const todoManager = () => {
                 console.log(todo);
                 let todolist = document.getElementById(`todolist-${todo.project}`);
                 const t = `
+                    <h1 class="edit"><i class="fas fa-edit"></i></h1>
                     <section class="wrapper">
                     <div class="to-do-row" id="${todo.project}">
-                    <div id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></div>
-                    <div>${todo.title}</div>
-                    <div>${todo.priority}</div>
-                    <div>${todo.date}</div>
-                    <div>${todo.description}</div>
-                    <div class="edit"><i class="fas fa-edit"></i></div>
+                    <div id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"> ${todo.title}</div>
+                    <h6>${todo.priority}</h6>
+                    <h5>${todo.date}</h5>
+                    <p>${todo.description}</p>
                     </div>
                     </section>
                     `;

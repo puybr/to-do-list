@@ -13,7 +13,7 @@ const projectManager = () => {
             </div>
             <section class="wrapper">
                 <input type="text" id="title" name="title" placeholder="title" class="logo">
-                <input type="date" id="date" name="date">
+                <input type="date" id="date" name="date" placeholder="date">
                 <select name="priority" id="priority">
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
