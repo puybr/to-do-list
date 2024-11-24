@@ -16,14 +16,16 @@ const todoManager = () => {
                 console.log(todo);
                 let todolist = document.getElementById(`todolist-${todo.project}`);
                 const t = `
+                    <section class="wrapper">
                     <div class="to-do-row" id="${todo.project}">
-                    <span id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></span>
-                    <span>${todo.title}</span>
-                    <span>${todo.priority}</span>
-                    <span>${todo.date}</span>
-                    <span>${todo.description}</span>
-                    <span class="edit"><i class="fas fa-edit"></i></span>
+                    <div id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></div>
+                    <div>${todo.title}</div>
+                    <div>${todo.priority}</div>
+                    <div>${todo.date}</div>
+                    <div>${todo.description}</div>
+                    <div class="edit"><i class="fas fa-edit"></i></div>
                     </div>
+                    </section>
                     `;
                 todolist.insertAdjacentHTML('afterbegin', t);
                 }); 

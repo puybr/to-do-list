@@ -14,11 +14,6 @@ ul {
   margin: 0;
 }
 
-
-.projectlist {
-  font-size: 2rem;
-}
-
 tr {
   margin: auto;
   text-align: left;
@@ -34,17 +29,21 @@ hr {
   border: 1px solid #ddd; 
 }
 
-header {
+header, section {
   margin: auto;
-  display: inline-block;
-  width: 100%;
+  display: block;
   .logo {
     flex: 1;
   }
 }
 
+h1 {
+  font-size: 2rem;
+}
+
 .wrapper {
   display: flex;
+  width: 100%;
 }
 
 #delete-todo, #delete-project {
@@ -80,9 +79,6 @@ input,
   color: lightgray;
 }
 
-.to-do-row {
-  display: block;
-}
 
 .projectlist:hover, #selected:hover, #unselected:hover {
   cursor: pointer;
