@@ -26,7 +26,6 @@ tr {
   display: block;
 }
 
-
 td {
   width: 100%;
   padding: 1rem;
@@ -41,7 +40,6 @@ td {
   font-size: 1.5rem;
 }
 
-
 input[type=text], input[type=date], select, textarea {
   padding: 12px;
   border: 1px solid #ccc;
@@ -49,12 +47,9 @@ input[type=text], input[type=date], select, textarea {
   resize: vertical;
 }
 
-
 #icon {
   color: orangered;
 }
-
-
 
 button {
   position: relative;
@@ -73,11 +68,9 @@ input,
   color: lightgray;
 }
 
-
 .to-do-row {
   display: block;
 }
-
 
 .projectlist:hover, #selected:hover, #unselected:hover {
   cursor: pointer;
@@ -99,12 +92,8 @@ button:hover {
   color: orangered;
 }
 
-
 #selected {
   color: orangered;
-  
-
-
 }
 
 #unselected {
@@ -114,5 +103,3 @@ button:hover {
 #formContainer {
   display: block;
 }
-
-
