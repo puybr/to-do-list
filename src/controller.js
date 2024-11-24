@@ -61,10 +61,13 @@ const controller = () => {
                 date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "Low"
             }
-        ], false)
+        ], true)
         projects.renderProject(defaultproject);
+        myProjects.push(defaultproject);
         projects.renderProject(workproject);
+        myProjects.push(workproject);
         todos.renderTodo(defaultproject);
+        todos.renderTodo(workproject);
     }
     return { control }
 };

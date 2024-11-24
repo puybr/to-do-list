@@ -2,21 +2,23 @@
 
 const todoManager = () => {
     const renderTodo = (project) => {
-        project.todos.forEach((todo) => {
-            console.log(todo);
-            let todolist = document.getElementById(`todolist-${todo.project}`);
-            const t = `
-                <tr class="to-do-row" id="${todo.project}">
-                <td id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
-                <td>${todo.title}</td>
-                <td>${todo.priority}</td>
-                <td>${todo.date}</td>
-                <td>${todo.description}</td>
-                <td class="edit"><i class="fas fa-edit"></i></td>
-                </tr>
-                `;
-            todolist.insertAdjacentHTML('afterbegin', t);
-        }); 
+        if (project.select == true) {
+            project.todos.forEach((todo) => {
+                console.log(todo);
+                let todolist = document.getElementById(`todolist-${todo.project}`);
+                const t = `
+                    <tr class="to-do-row" id="${todo.project}">
+                    <td id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
+                    <td>${todo.title}</td>
+                    <td>${todo.priority}</td>
+                    <td>${todo.date}</td>
+                    <td>${todo.description}</td>
+                    <td class="edit"><i class="fas fa-edit"></i></td>
+                    </tr>
+                    `;
+                todolist.insertAdjacentHTML('afterbegin', t);
+                }); 
+        };
     };
 
     return { renderTodo }
