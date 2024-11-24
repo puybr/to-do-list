@@ -5,10 +5,13 @@ import todoManager from './todos';
 import { format } from 'date-fns';
 const container = document.querySelector('#container');
 
+let myProjects = [];
+
 class Project {
-    constructor(name, todos) {
+    constructor(name, todos, select) {
         this.name = name;
         this.todos = todos;
+        this.select = select;
     };
 };
 
@@ -42,7 +45,7 @@ const controller = () => {
                 date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "Medium"
             }
-        ])
+        ], true)
         const workproject = new Project("work project", [
             {
                 project: "work project",
@@ -58,7 +61,7 @@ const controller = () => {
                 date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "Low"
             }
-        ])
+        ], false)
         projects.renderProject(defaultproject);
         projects.renderProject(workproject);
         todos.renderTodo(defaultproject);

@@ -1,6 +1,5 @@
 "use strict";
 
-
 const todoManager = () => {
     const renderTodo = (project) => {
         project.todos.forEach((todo) => {

@@ -10,7 +10,7 @@ const projectManager = () => {
             <tr>
             <td class="projectlist">${project.name}</td>
             <td>
-            <form id="addTodoForm" style="display: none;">
+            <form id="addTodoForm">
             <input type="text" id="title" name="title" placeholder="title">
             <input type="date" id="date" name="date">
             <select name="priority" id="priority">
