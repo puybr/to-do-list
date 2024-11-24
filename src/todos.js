@@ -1,13 +1,13 @@
 "use strict";
 
-const container = document.querySelector('#container');
 
 const todoManager = () => {
     const renderTodo = (project) => {
         project.todos.forEach((todo) => {
             console.log(todo);
+            let todolist = document.getElementById(`todolist-${todo.project}`);
             const t = `
-                <tr class="to-do-row" id="${todo.project}" style="display: none;">
+                <tr class="to-do-row" id="${todo.project}">
                 <td id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"></td>
                 <td>${todo.title}</td>
                 <td>${todo.priority}</td>
@@ -16,7 +16,7 @@ const todoManager = () => {
                 <td class="edit"><i class="fas fa-edit"></i></td>
                 </tr>
                 `;
-            container.insertAdjacentHTML('afterbegin', t);
+            todolist.insertAdjacentHTML('afterbegin', t);
         }); 
     };
 

@@ -23,6 +23,7 @@ const projectManager = () => {
             </td>
             <td id="delete-project"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></td>
             </tr>
+            <div id="todolist-${project.name}"></div>
             `;
         container.insertAdjacentHTML('afterbegin', proj);
     };
