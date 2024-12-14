@@ -6,48 +6,46 @@ const container = document.querySelector('#container');
 
 const projectManager = () => {
     const renderProject = (project) => {
-        const proj = `
-             
+        const proj = `       
             <div class="projects" class="max-w-sm w-full lg:max-w-full lg:flex">
             <div>
                 <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
                 </div>
-                <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <div class="mb-8">
-                    <p class="text-sm text-gray-600 flex items-center">
-                        <i class="fa fa-trash fill-current text-gray-500 w-3 h-3 mr-2" aria-hidden="true"></i>
+                    <p class="text-sm flex items-center">
+                        <i class="fa fa-trash fill-current w-3 h-3 mr-2" aria-hidden="true"></i>
                         ${project.name}
                     </p>
                     </div>
-
                     <form class="w-full max-w-lg">
                     <div class="flex flex-wrap -mx-3 mb-2">
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                        <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="grid-city">
                             Todo
                         </label>
-                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="add a todo">
+                        <input class="appearance-none block w-full bg-gray-200 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:border-gray-500" id="grid-city" type="text" placeholder="add a todo">
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                        <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="grid-state">
                             Priority
                         </label>
                         <div class="relative">
-                            <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                            <select class="block appearance-none w-full bg-gray-200 border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-gray-500" id="grid-state">
                             <option>Low</option>
                             <option>Medium</option>
                             <option>High</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+                        <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="grid-zip">
                             Description
                         </label>
-                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="add a description">
+                        <input class="appearance-none block w-full bg-gray-200 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:border-gray-500" id="grid-zip" type="text" placeholder="add a description">
                         </div>
                     </div>
                     </form>
@@ -55,7 +53,6 @@ const projectManager = () => {
                 </div>
                 </div>
                 </section>
-
             `;
         container.insertAdjacentHTML('afterbegin', proj);
     };

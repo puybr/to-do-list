@@ -15,15 +15,15 @@ const todoManager = () => {
             project.todos.forEach((todo) => {
                 console.log(todo);
                 let todolist = document.getElementById(`todolist-${todo.project}`);
-                const t = `
-                    <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                const t = `                
+                    <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <i class="fas fa-edit"></i>
                     <div class="text-sm">
-                        <p class="text-gray-600">${todo.date}</p>
+                        <p>${todo.date}</p>
                     </div>
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">${todo.title}</div>
-                        <p class="text-gray-700 text-base">
+                        <p class="text-base">
                         ${todo.description}
                         </p>
                     </div>
