@@ -20,7 +20,6 @@ const projectManager = () => {
                         </svg>
                         ${project.name}
                     </p>
-                    <div class="text-gray-900 font-bold text-xl mb-2">${project.name}</div>
                     </div>
                     <div><h1 id="addproject" type="submit"><i class="fa fa-trash" aria-hidden="true" id="icon"></i></h1></div>
                     <input type="text" id="title" name="title" placeholder="title" class="logo">
