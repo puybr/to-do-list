@@ -28,4 +28,4 @@ module.exports = {
 
 - - -
 
-🧣 Bundled with _[webpack!](https://webpack.js.org/)_
+🧣 Bundled with _[webpack!](https://webpack.js.org/)_ | Styled with _[tailwindcss](https://tailwindcss.com/)_

@@ -1,4 +1,5 @@
 "use strict";
+import './style.css';
 
 import controller from './controller';
 import '@fortawesome/fontawesome-free/js/fontawesome'

@@ -17,7 +17,7 @@ const todoManager = () => {
                 let todolist = document.getElementById(`todolist-${todo.project}`);
                 const t = `
                     <h1 class="edit"><i class="fas fa-edit"></i></h1>
-                    <section class="wrapper">
+                    <section>
                     <div class="to-do-row" id="${todo.project}">
                     <div id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"> ${todo.title}</div>
                     <h6>${todo.priority}</h6>
