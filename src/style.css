@@ -2,15 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-html {
-  font-family: 'Roboto';
-  color: darkslategray;
-  font-size: large;
-  width: 100%;
-  text-align: left;
-}
-
-#icon {
-  color: orangered;
-}
