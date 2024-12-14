@@ -18,8 +18,8 @@ const todoManager = () => {
                 const t = `
                     <h1 class="edit"><i class="fas fa-edit"></i></h1>
                     <section>
-                    <div class="to-do-row" id="${todo.project}">
-                    <div id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"> ${todo.title}</div>
+                    <div class="flex flex-row" id="${todo.project}">
+                    <div class="basis-1/4" id="delete-todo"><input type="checkbox" id="delete-checkbox" name="delete-checkbox"> ${todo.title}</div>
                     <h6>${todo.priority}</h6>
                     <h5>${todo.date}</h5>
                     <p>${todo.description}</p>

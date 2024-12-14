@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html {
   font-family: 'Roboto';
@@ -11,93 +11,6 @@ html {
   text-align: left;
 }
 
-hr {
-  border: 1px solid #ddd; 
-}
-
-header, section {
-  margin: auto;
-  display: block;
-}
-
-.logo {
-  flex: 1;
-}
-
-.wrapper {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-}
-
-h1 {
-  font-size: 2rem;
-}
-
-.projects {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-}
-
-#delete-todo, #delete-project {
-  width: 10px;
-  font-size: 1.5rem;
-}
-
-input[type=text], input[type=date], select, textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-#selected {
+#icon {
   color: orangered;
-}
-
-button {
-  position: relative;
-  border: none;
-  color: orangered;
-  text-align: center;
-  font-size: 2rem;
-  width: 3rem;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-input,
-::placeholder {
-  color: lightgray;
-}
-
-
-.projectlist:hover, #selected:hover, #unselected:hover {
-  cursor: pointer;
-  color: lightgray;
-}
-
-.edit:hover, #save-me:hover, #save:hover {
-  cursor: pointer;
-  color: orangered;
-
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-.edit-prop:hover {
-  cursor: pointer;
-  color: orangered;
-}
-
-#unselected {
-  color: darkslategray;
-}
-
-#formContainer {
-  display: block;
 }
