@@ -25,7 +25,6 @@ module.exports = {
 ## 🚀 CI/CD
 * [CICD workflow](/.github/workflows/cicd.yml) with GitHub Actions
 
-
 - - -
 
 🧣 Bundled with _[webpack!](https://webpack.js.org/)_ | Styled with _[tailwindcss](https://tailwindcss.com/)_
