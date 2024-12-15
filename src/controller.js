@@ -52,10 +52,10 @@ const controller = () => {
         ], false)
         projects.renderProject(defaultproject);
         myProjects.push(defaultproject);
-        projects.renderProject(workproject);
+        // projects.renderProject(workproject);
         myProjects.push(workproject);
         todos.renderTodo(defaultproject);
-        todos.renderTodo(workproject);
+        // todos.renderTodo(workproject);
     }
     return { render }
 };

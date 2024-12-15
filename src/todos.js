@@ -15,8 +15,8 @@ const todoManager = () => {
             project.todos.forEach((todo) => {
                 console.log(todo);
                 let todolist = document.getElementById(`todolist-${todo.project}`);
-                const t = `                
-                    <div>
+                const t = `
+                    <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <i class="fas fa-edit"></i>
                     <div class="text-sm">
                         <p>${todo.date}</p>
