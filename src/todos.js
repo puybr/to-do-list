@@ -17,7 +17,7 @@ const todoManager = () => {
                 let todolist = document.getElementById(`todolist-${todo.project}`);
                 const t = `
                     <nav class="p-1">
-                    <div class="bg-gray-100 p-4 flex flex-col justify-between leading-normal">
+                    <div class="bg-gray-100 p-2 flex flex-col justify-between leading-normal">
                     <div class="flex items-center justify-between flex-wrap p-3">
                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${todo.priority}</span>
                         <div class="flex items-center space-x-6 rtl:space-x-reverse">
@@ -34,7 +34,7 @@ const todoManager = () => {
                     <div class="p-4">
                     <div class="flex items-center mb-4">
                         <input id="default-checkbox" type="checkbox" value="" class="focus:accent-green-500 w-4 h-4 bg-transparent border-none rounded">
-                        <label for="default-checkbox" class="ms-2 text-sm font-medium">${todo.title}</label>
+                        <label for="default-checkbox" class="ms-2 font-medium">${todo.title}</label>
                     </div>
                     <p class="text-sm text-base text-wrap">${todo.description}</p>
                     </div>
