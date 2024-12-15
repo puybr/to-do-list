@@ -16,9 +16,9 @@ const todoManager = () => {
                 console.log(todo);
                 let todolist = document.getElementById(`todolist-${todo.project}`);
                 const t = `
+                    <nav class="p-1">
                     <div class="bg-gray-100 p-4 flex flex-col justify-between leading-normal">
-                    <nav>
-                    <div class="flex items-center justify-between flex-wrap p-4">
+                    <div class="flex items-center justify-between flex-wrap p-3">
                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${todo.priority}</span>
                         <div class="flex items-center space-x-6 rtl:space-x-reverse">
                             <div class="flex items-center">
