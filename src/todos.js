@@ -16,12 +16,15 @@ const todoManager = () => {
                 console.log(todo);
                 let todolist = document.getElementById(`todolist-${todo.project}`);
                 const t = `
-                    <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                    <div class="bg-gray-100 p-4 flex flex-col justify-between leading-normal">
                     <i class="fas fa-edit"></i>
                     <div class="text-sm">
                         <p>${todo.date}</p>
                     </div>
-                    <div class="px-6 py-4 font-bold text-xl mb-2">${todo.title}</div>
+                    <div class="flex items-center mb-4">
+                        <input id="default-checkbox" type="checkbox" value="" class="accent-green-500 w-4 h-4 bg-gray-100 border-gray-300 rounded">
+                        <label for="default-checkbox" class="ms-2 text-sm font-medium">${todo.title}</label>
+                    </div>
                     <p class="text-sm text-base text-wrap">${todo.description}</p>
                     <div class="px-6 pt-4 pb-2">
                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${todo.priority}</span>
