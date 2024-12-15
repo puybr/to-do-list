@@ -6,23 +6,12 @@ const container = document.querySelector('#container');
 
 const projectManager = () => {
     const renderProject = (project) => {
-        const proj = `       
-            <div class="projects">
-            <div>
+        const proj = `
                 <div>
-                </div>
-                <div>
-                    <div class="mb-8">
-                    <p class="flex items-center">
-                        <i class="fa fa-trash fill-current w-3 h-3 mr-2" aria-hidden="true"></i>
-                        ${project.name}
-                    </p>
-                    </div>
+                <i class="fa fa-trash fill-current w-3 h-3 mr-2" aria-hidden="true"></i>${project.name}
                 <div id="todolist-${project.name}"></div>
                 </div>
-                </div>
-                </section>
-            `;
+                `;
         container.insertAdjacentHTML('afterbegin', proj);
     };
 return { renderProject }
