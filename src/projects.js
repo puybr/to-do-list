@@ -7,7 +7,7 @@ const container = document.querySelector('#container');
 const projectManager = () => {
     const renderProject = (project) => {
         const proj = `
-                <div>
+                <div class="p-4">
                 <i class="fa fa-trash fill-current w-3 h-3 mr-2" aria-hidden="true"></i>${project.name}
                 <div id="todolist-${project.name}"></div>
                 </div>

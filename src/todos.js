@@ -17,20 +17,28 @@ const todoManager = () => {
                 let todolist = document.getElementById(`todolist-${todo.project}`);
                 const t = `
                     <div class="bg-gray-100 p-4 flex flex-col justify-between leading-normal">
-                    <i class="fas fa-edit"></i>
-                    <div class="text-sm">
-                        <p>${todo.date}</p>
+                    <nav>
+                    <div class="flex items-center justify-between flex-wrap p-4">
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${todo.priority}</span>
+                        <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                            <div class="flex items-center">
+                                <div class="text-sm p-2">
+                                    <p>${todo.date}</p>
+                                </div>
+                                <div class="text-sm">
+                                    <p><i class="fas fa-edit"></i></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="p-4">
                     <div class="flex items-center mb-4">
-                        <input id="default-checkbox" type="checkbox" value="" class="accent-green-500 w-4 h-4 bg-gray-100 border-gray-300 rounded">
+                        <input id="default-checkbox" type="checkbox" value="" class="focus:accent-green-500 w-4 h-4 bg-transparent border-none rounded">
                         <label for="default-checkbox" class="ms-2 text-sm font-medium">${todo.title}</label>
                     </div>
                     <p class="text-sm text-base text-wrap">${todo.description}</p>
-                    <div class="px-6 pt-4 pb-2">
-                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${todo.priority}</span>
                     </div>
-                    </div>
-                    `;
+                </nav>`;
                 todolist.insertAdjacentHTML('afterbegin', t);
                 }); 
         };
