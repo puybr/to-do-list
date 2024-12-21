@@ -1,5 +1,6 @@
 "use strict";
 
+import navManager from './navbar';
 import projectManager from './projects';
 import todoManager from './todos';
 import { format } from 'date-fns';
@@ -16,6 +17,8 @@ const controller = () => {
     };
     const projects = projectManager();
     const todos = todoManager();
+    const nav = navManager();
+    nav.render();
     const render = () => {
         // container.innerHTML = `<table id="container"></table>`;//refresh
         const defaultproject = new Project("default project", [
