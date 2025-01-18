@@ -52,7 +52,7 @@ const controller = () => {
         myProjects.push(defaultproject);
         myProjects.push(workproject);
         projects.renderProjects(myProjects);
-        dom.listen();
+        dom.listen(myProjects);
     }
     return { render }
 };
