@@ -1,6 +1,7 @@
 "use strict";
 
 import projectManager from './projects';
+import todoManager from './todos';
 import domManager from './dom';
 import { format } from 'date-fns';
 
@@ -14,6 +15,7 @@ const controller = () => {
         };
     };
     const projects = projectManager();
+    const todos = todoManager();
     const dom = domManager();
     const render = () => {
         const defaultproject = new Project("default project", [
@@ -51,6 +53,10 @@ const controller = () => {
         myProjects.push(defaultproject);
         myProjects.push(workproject);
         projects.renderProjects(myProjects);
+        let selectedProject = myProjects.filter((project) => {
+            return project.select == true;
+        });
+        todos.renderTodo(selectedProject[0]);
         dom.selectProject(myProjects);
     }
     return { render }

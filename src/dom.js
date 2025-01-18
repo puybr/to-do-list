@@ -4,16 +4,29 @@
 import projectManager from './projects';
 import todoManager from './todos';
 
+const container = document.querySelector('#container');
+
 const domManager = () => {
     const projects = projectManager();
     const todos = todoManager();
     const selectProject = (myProjects) => {
-        console.log(myProjects);
         document.querySelector('.projects').addEventListener('change', (e) => {
-            console.log(e.target.value);
+            e.preventDefault(); // prevent page reloading
+            myProjects.forEach((project) => {
+                if (project.name == e.target.value) {
+                    project.select = true;
+                } else
+                project.select = false;
+            });
+            console.log(myProjects);
+            document.querySelector('#container').innerHTML = ``;
+            projects.renderProjects(myProjects);
+            let selectedProject = myProjects.filter((project) => {
+                return project.select == true;
+            });
+            todos.renderTodo(selectedProject[0]);
         });
     };
-
     return { selectProject }
 };
 
