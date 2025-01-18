@@ -50,13 +50,17 @@ const controller = () => {
         ], false)
         myProjects.push(defaultproject);
         myProjects.push(workproject);
+        render();
+    };
+    const render = () => {
         projects.renderProjects(myProjects);
         let selectedProject = myProjects.filter((project) => {
             return project.select == true;
         });
         todos.renderTodo(selectedProject[0]);
-    }
-    const render = () => {
+        select();
+    };
+    const select = () => {
         document.querySelector('.projects').addEventListener('change', (e) => {
             e.preventDefault(); // prevent page reloading
             myProjects.forEach((project) => {
@@ -66,14 +70,10 @@ const controller = () => {
                 project.select = false;
             });
             document.querySelector('#container').innerHTML = `<div id="container"></div>`;
-            projects.renderProjects(myProjects);
-            let selectedProject = myProjects.filter((project) => {
-                return project.select == true;
-            });
-            todos.renderTodo(selectedProject[0]);
+            render();
         });
     };
-    return { init, render }
+    return { init }
 };
 
 export default controller
