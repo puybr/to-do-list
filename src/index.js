@@ -14,6 +14,7 @@ nav.render();
 
 // Set up the main controller
 const list = controller();
+list.init();
 list.render();
 
 // Check and apply the user's stored preference or the system preference on page load

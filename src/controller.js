@@ -2,7 +2,6 @@
 
 import projectManager from './projects';
 import todoManager from './todos';
-import domManager from './dom';
 import { format } from 'date-fns';
 
 const controller = () => {
@@ -16,8 +15,7 @@ const controller = () => {
     };
     const projects = projectManager();
     const todos = todoManager();
-    const dom = domManager();
-    const render = () => {
+    const init = () => {
         const defaultproject = new Project("default project", [
             {
                 project: "default project",
@@ -57,9 +55,25 @@ const controller = () => {
             return project.select == true;
         });
         todos.renderTodo(selectedProject[0]);
-        dom.selectProject(myProjects);
     }
-    return { render }
+    const render = () => {
+        document.querySelector('.projects').addEventListener('change', (e) => {
+            e.preventDefault(); // prevent page reloading
+            myProjects.forEach((project) => {
+                if (project.name == e.target.value) {
+                    project.select = true;
+                } else
+                project.select = false;
+            });
+            document.querySelector('#container').innerHTML = `<div id="container"></div>`;
+            projects.renderProjects(myProjects);
+            let selectedProject = myProjects.filter((project) => {
+                return project.select == true;
+            });
+            todos.renderTodo(selectedProject[0]);
+        });
+    };
+    return { init, render }
 };
 
 export default controller
