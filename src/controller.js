@@ -4,9 +4,8 @@ import projectManager from './projects';
 import domManager from './dom';
 import { format } from 'date-fns';
 
-let myProjects = [];
-
 const controller = () => {
+    let myProjects = [];
     class Project {
         constructor(name, todos, select) {
             this.name = name;

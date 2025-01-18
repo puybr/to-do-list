@@ -1,11 +1,6 @@
 "use strict";
 
-import { tr } from "date-fns/locale";
 import todoManager from './todos';
-
-const projectButton = document.querySelector('#addproject');
-const projectInput = document.querySelector('#project');
-const container = document.querySelector('#container');
 
 const projectManager = () => {
     const todos = todoManager();
