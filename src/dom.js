@@ -9,9 +9,8 @@ const domManager = () => {
     const todos = todoManager();
     const selectProject = (myProjects) => {
         console.log(myProjects);
-        document.querySelector('#addproject').addEventListener('click', (e) => {
-            e.preventDefault(); // prevent page reloading
-            console.log(e.currentTarget.parentNode);
+        document.querySelector('.projects').addEventListener('change', (e) => {
+            console.log(e.target.value);
         });
     };
 

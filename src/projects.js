@@ -13,10 +13,11 @@ const projectManager = () => {
         });
         const form = `
             <form class="max-w-sm mx-auto">
-            <select id="projects" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
+            <label>
+            <select name="projects" class="projects bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5">
             ${options}
             </select>
-            <button id="addproject" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">select</button>
+            </label>
             </form>
             `;
         container.insertAdjacentHTML('afterbegin', form);
