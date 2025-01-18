@@ -1,5 +1,7 @@
 "use strict";
 
+const container = document.querySelector('#container');
+
 const todoManager = () => {
     class Todo {
         constructor(project, title, description, date, priority) {
@@ -13,8 +15,6 @@ const todoManager = () => {
     const renderTodo = (project) => {
         if (project.select == true) {
             project.todos.forEach((todo) => {
-                console.log(todo);
-                let todolist = document.getElementById(`todolist-${todo.project}`);
                 const t = `
                     <nav class="p-1">
                     <div class="bg-gray-100 p-2 flex flex-col justify-between leading-normal">
@@ -39,7 +39,7 @@ const todoManager = () => {
                     <p class="text-sm text-base text-wrap">${todo.description}</p>
                     </div>
                 </nav>`;
-                todolist.insertAdjacentHTML('afterbegin', t);
+                container.insertAdjacentHTML('beforeend', t);
                 }); 
         };
     };

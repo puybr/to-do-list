@@ -24,7 +24,7 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
 }
   
 // User actions to explicitly choose themes
-function toggleTheme(isDark) {
-  localStorage.theme = isDark ? 'dark' : 'light'; // Save preference
-  document.body.classList.toggle('dark', isDark);
-}
+// function toggleTheme(isDark) {
+//   localStorage.theme = isDark ? 'dark' : 'light'; // Save preference
+//   document.body.classList.toggle('dark', isDark);
+// }

@@ -17,7 +17,6 @@ const controller = () => {
     const projects = projectManager();
     const todos = todoManager();
     const render = () => {
-        // container.innerHTML = `<table id="container"></table>`;//refresh
         const defaultproject = new Project("default project", [
             {
                 project: "default project",
@@ -50,12 +49,10 @@ const controller = () => {
                 priority: "Low"
             }
         ], false)
-        projects.renderProject(defaultproject);
         myProjects.push(defaultproject);
-        // projects.renderProject(workproject);
         myProjects.push(workproject);
+        projects.renderProjects(myProjects);
         todos.renderTodo(defaultproject);
-        // todos.renderTodo(workproject);
     }
     return { render }
 };
