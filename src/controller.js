@@ -69,7 +69,7 @@ const controller = () => {
                 } else
                 project.select = false;
             });
-            document.querySelector('#container').innerHTML = `<div id="container"></div>`;
+            document.querySelector('#container').innerHTML = ``;
             render();
         });
     };
