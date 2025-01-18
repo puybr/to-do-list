@@ -1,11 +1,13 @@
 "use strict";
 
 import projectManager from './projects';
+import todoManager from './todos';
 
 const container = document.querySelector('#container');
 
 const domManager = () => {
     const projects = projectManager();
+    const todos = todoManager();
     const listen = (myProjects) => {
         console.log(myProjects);
     };
