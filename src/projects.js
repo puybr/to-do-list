@@ -1,12 +1,14 @@
 "use strict";
 
 import { tr } from "date-fns/locale";
+import todoManager from './todos';
 
 const projectButton = document.querySelector('#addproject');
 const projectInput = document.querySelector('#project');
 const container = document.querySelector('#container');
 
 const projectManager = () => {
+    const todos = todoManager();
     const renderProjects = (myProjects) => {
         let options = myProjects.map((option) => {
             if (option.select == true) {
@@ -23,6 +25,11 @@ const projectManager = () => {
             </form>
             `;
         container.insertAdjacentHTML('afterbegin', form);
+        let selectedProject = myProjects.filter((project) => {
+            return project.select == true;
+        });
+        console.log(selectedProject[0]);
+        todos.renderTodo(selectedProject[0]);
     };
 return { renderProjects }
 };
