@@ -1,7 +1,5 @@
 "use strict";
 
-const container = document.querySelector('#container');
-
 const todoManager = () => {
     class Todo {
         constructor(project, title, description, date, priority) {

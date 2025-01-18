@@ -1,21 +1,21 @@
 "use strict";
 
-import { tr } from "date-fns/locale";
+// import { tr } from "date-fns/locale";
 import projectManager from './projects';
 import todoManager from './todos';
-
-const container = document.querySelector('#container');
-const projectButton = document.querySelector('#addproject');
-const projectInput = document.querySelector('#project');
 
 const domManager = () => {
     const projects = projectManager();
     const todos = todoManager();
-    const listen = (myProjects) => {
+    const selectProject = (myProjects) => {
         console.log(myProjects);
+        document.querySelector('#addproject').addEventListener('click', (e) => {
+            e.preventDefault(); // prevent page reloading
+            console.log(e.currentTarget.parentNode);
+        });
     };
 
-    return { listen }
+    return { selectProject }
 };
 
 const selectProject = () => {

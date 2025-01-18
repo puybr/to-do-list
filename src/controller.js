@@ -51,7 +51,7 @@ const controller = () => {
         myProjects.push(defaultproject);
         myProjects.push(workproject);
         projects.renderProjects(myProjects);
-        dom.listen(myProjects);
+        dom.selectProject(myProjects);
     }
     return { render }
 };
