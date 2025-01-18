@@ -1,4 +1,4 @@
-# ✔️ To-Do List - [Odin Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/todo-list)
+# ✅ To-Do List - [Odin Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/todo-list)
 
 [Link to project ...](https://puybr.github.io/to-do-list/)
 
