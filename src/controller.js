@@ -1,6 +1,7 @@
 "use strict";
 
 import projectManager from './projects';
+import domManager from './dom';
 import { format } from 'date-fns';
 
 let myProjects = [];
@@ -14,6 +15,7 @@ const controller = () => {
         };
     };
     const projects = projectManager();
+    const dom = domManager();
     const render = () => {
         const defaultproject = new Project("default project", [
             {
@@ -50,6 +52,7 @@ const controller = () => {
         myProjects.push(defaultproject);
         myProjects.push(workproject);
         projects.renderProjects(myProjects);
+        dom.listen();
     }
     return { render }
 };

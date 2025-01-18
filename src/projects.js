@@ -28,7 +28,6 @@ const projectManager = () => {
         let selectedProject = myProjects.filter((project) => {
             return project.select == true;
         });
-        console.log(selectedProject[0]);
         todos.renderTodo(selectedProject[0]);
     };
 return { renderProjects }
