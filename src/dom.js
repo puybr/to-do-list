@@ -4,32 +4,13 @@ import projectManager from './projects';
 
 const container = document.querySelector('#container');
 
-const domManager = (myProjects) => {
+const domManager = () => {
     const projects = projectManager();
     const listen = (myProjects) => {
         console.log(myProjects);
     };
 
     return { listen }
-};
-
-const addProject = () => {
-    projectButton.addEventListener('click', (e) => {
-        e.preventDefault(); // prevent page reloading
-        const projectTemplate = {
-            name: project.value,
-            todos: [],
-            select: true
-        };
-        if (project.value) {
-            const newProject = Object.create(projectTemplate);
-            myProjects.push(newProject);
-            // console.log('Proto: '+ Object.getPrototypeOf(newProject));
-             renderProjects(project.value);
-             projectInput.value = '';
-             selectProject();
-             addTodo(); } else return;
-    });
 };
 
 const selectProject = () => {
@@ -54,6 +35,26 @@ const selectProject = () => {
          
     });       
 };
+
+const addProject = () => {
+    projectButton.addEventListener('click', (e) => {
+        e.preventDefault(); // prevent page reloading
+        const projectTemplate = {
+            name: project.value,
+            todos: [],
+            select: true
+        };
+        if (project.value) {
+            const newProject = Object.create(projectTemplate);
+            myProjects.push(newProject);
+            // console.log('Proto: '+ Object.getPrototypeOf(newProject));
+             renderProjects(project.value);
+             projectInput.value = '';
+             selectProject();
+             addTodo(); } else return;
+    });
+};
+
 
 const changeProjectColor = (projectName) => { // change the colour of the project when selected
     document.querySelectorAll('.projectlist').forEach((project) => {
