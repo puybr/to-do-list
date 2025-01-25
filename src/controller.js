@@ -51,6 +51,7 @@ const controller = () => {
         myProjects.push(defaultproject);
         myProjects.push(workproject);
         projects.displayProjectForm();
+        todos.displayTodoForm();
         render();
     };
     const render = () => {
@@ -61,7 +62,9 @@ const controller = () => {
         });
         todos.renderTodo(selectedProject[0]);
         select();
+        cancel();
         addProject();
+        addTodo();
     };
     const select = () => {
         document.querySelector('.projects').addEventListener('change', (e) => {
@@ -76,20 +79,32 @@ const controller = () => {
             render();
         });
     };
-    const addProject = () => {
-        document.querySelector('#addProjectButton').addEventListener('click', (e) => {
-            document.querySelector('#projectForm').style.display = "block";
-            document.querySelector('#navbar').style.display = "block";
-            document.querySelector('#container').style.display = "none";
-        });
+    const cancel = () => {
         document.querySelectorAll('.cancel').forEach(element => {
             element.addEventListener('click', (e) => {
                 document.querySelector('#projectForm').style.display = "none";
+                document.querySelector('#todoForm').style.display = "none";
                 document.querySelector('#navbar').style.display = "block";
                 document.querySelector('#container').style.display = "block";
             });
         });
     };
+    const addProject = () => {
+        document.querySelector('#addProjectButton').addEventListener('click', (e) => {
+            document.querySelector('#projectForm').style.display = "block";
+            document.querySelector('#todoForm').style.display = "none";
+            document.querySelector('#navbar').style.display = "block";
+            document.querySelector('#container').style.display = "none";
+        });
+    };
+    const addTodo = () => {
+        document.querySelector('#addTodoButton').addEventListener('click', (e) => {
+            document.querySelector('#projectForm').style.display = "none";
+            document.querySelector('#todoForm').style.display = "block";
+            document.querySelector('#navbar').style.display = "block";
+            document.querySelector('#container').style.display = "none";
+        });
+    }
     return { init }
 };
 
