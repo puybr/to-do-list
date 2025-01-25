@@ -57,10 +57,11 @@ const controller = () => {
         render();
     };
     const render = () => {
+        document.querySelector('#todoForm').innerHTML = ``;
+        document.querySelector('#container').innerHTML = ``;
         let selectedProject = myProjects.filter((project) => { return project.select == true });
         projects.renderProjects(myProjects);
         todos.renderTodo(selectedProject[0]);
-        document.querySelector('#todoForm').innerHTML = ``;
         todos.displayTodoForm(selectedProject[0]);
         selectProject();
         addProject();
@@ -80,7 +81,6 @@ const controller = () => {
             element.addEventListener('change', (e) => {
                 e.preventDefault(); // prevent page reloading
                 sortProjects(e.target.value);
-                document.querySelector('#container').innerHTML = ``;
                 render();
             });
         });
