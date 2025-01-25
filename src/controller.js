@@ -105,7 +105,6 @@ const controller = () => {
             if (!document.getElementById('newProject').value) {
                 return;
             } else
-            console.log(document.getElementById('newProject').value);
             myProjects.push(new Project(document.querySelector('#newProject').value, [], true));
             document.querySelector('#container').innerHTML = ``;
             document.querySelector('#projectForm').style.display = "none";
