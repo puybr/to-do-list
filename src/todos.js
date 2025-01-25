@@ -55,7 +55,6 @@ const todoManager = () => {
         };
     };
     const displayTodoForm = (project) => {
-        console.log(project.name)
         const form = `
             <form class="w-full max-w-sm">
                 <div>${project.name}</div>
