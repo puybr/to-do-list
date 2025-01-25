@@ -51,8 +51,7 @@ const controller = () => {
         myProjects.push(defaultproject);
         myProjects.push(workproject);
         projects.displayProjectForm();
-        let selectedProject = myProjects.filter((project) => { return project.select == true });
-        todos.displayTodoForm(selectedProject[0]);
+        todos.displayTodoForm(myProjects[0]);
         document.querySelector('#projectForm').style.display = "none";
         document.querySelector('#todoForm').style.display = "none";
         render();
