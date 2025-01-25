@@ -63,12 +63,12 @@ const controller = () => {
             return project.select == true;
         });
         todos.renderTodo(selectedProject[0]);
-        select();
-        cancel();
+        selectProject();
         addProject();
         addTodo();
+        cancel();
     };
-    const select = () => {
+    const selectProject = () => {
         document.querySelector('.projects').addEventListener('change', (e) => {
             e.preventDefault(); // prevent page reloading
             myProjects.forEach((project) => {
