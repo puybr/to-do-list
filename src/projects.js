@@ -19,9 +19,9 @@ const projectManager = () => {
                 ${options}
                 </select>
                 </label>
+                <button id="addProjectButton" class="flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
                 </form>
                 <div class="flex items-center">
-                    <button id="addProjectButton" class="flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
                     <i class="fa-solid fa-trash text-gray-300"></i>
                 </div>
             </div>

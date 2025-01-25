@@ -54,9 +54,11 @@ const todoManager = () => {
             container.insertAdjacentHTML('beforeend', addTodoButton);
         };
     };
-    const displayTodoForm = () => {
+    const displayTodoForm = (project) => {
+        console.log(project.name)
         const form = `
             <form class="w-full max-w-sm">
+                <div>${project.name}</div>
                 <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="new todo" aria-label="todo">
                 <input type="date" placeholder="select date">
                 <textarea></textarea>

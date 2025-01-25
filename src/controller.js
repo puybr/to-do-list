@@ -51,17 +51,18 @@ const controller = () => {
         myProjects.push(defaultproject);
         myProjects.push(workproject);
         projects.displayProjectForm();
-        todos.displayTodoForm();
+        let selectedProject = myProjects.filter((project) => { return project.select == true });
+        todos.displayTodoForm(selectedProject[0]);
         document.querySelector('#projectForm').style.display = "none";
         document.querySelector('#todoForm').style.display = "none";
         render();
     };
     const render = () => {
-        let selectedProject = myProjects.filter((project) => {
-            return project.select == true;
-        });
+        let selectedProject = myProjects.filter((project) => { return project.select == true });
         projects.renderProjects(myProjects);
         todos.renderTodo(selectedProject[0]);
+        document.querySelector('#todoForm').innerHTML = ``;
+        todos.displayTodoForm(selectedProject[0]);
         selectProject();
         addProject();
         addTodo();
