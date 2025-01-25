@@ -52,6 +52,8 @@ const controller = () => {
         myProjects.push(workproject);
         projects.displayProjectForm();
         todos.displayTodoForm();
+        document.querySelector('#projectForm').style.display = "none";
+        document.querySelector('#todoForm').style.display = "none";
         render();
     };
     const render = () => {
@@ -92,14 +94,12 @@ const controller = () => {
     const addProject = () => {
         document.querySelector('#addProjectButton').addEventListener('click', (e) => {
             document.querySelector('#projectForm').style.display = "block";
-            document.querySelector('#todoForm').style.display = "none";
             document.querySelector('#navbar').style.display = "block";
             document.querySelector('#container').style.display = "none";
         });
     };
     const addTodo = () => {
         document.querySelector('#addTodoButton').addEventListener('click', (e) => {
-            document.querySelector('#projectForm').style.display = "none";
             document.querySelector('#todoForm').style.display = "block";
             document.querySelector('#navbar').style.display = "block";
             document.querySelector('#container').style.display = "none";
