@@ -62,12 +62,12 @@ const controller = () => {
             return project.select == true;
         });
         todos.renderTodo(selectedProject[0]);
+        selectProject();
         addProject();
         addTodo();
         cancel();
-        select();
     };
-    const select = () => {
+    const selectProject = () => {
         document.querySelectorAll('.projects').forEach(element => {
             element.addEventListener('change', (e) => {
                 e.preventDefault(); // prevent page reloading
@@ -77,8 +77,6 @@ const controller = () => {
                     } else
                     project.select = false;
                 });
-                console.log(e.target.value);
-                console.log(myProjects);
                 document.querySelector('#container').innerHTML = ``;
                 render();
             });
