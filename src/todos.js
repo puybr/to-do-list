@@ -13,11 +13,14 @@ const todoManager = () => {
         };
     };
     const renderTodo = (project) => {
+        const addTodoButton = `<div class="flex justify-center">
+                                    <button class="flex-shrink-0 border-green-500 text-sm border-2 text-green-500 py-1 px-2 rounded w-96" type="button">+</button>
+                                </div>`;
         if (project.select == true) {
             project.todos.forEach((todo) => {
                 const t = `
                     <nav class="todos p-1">
-                    <div class="bg-gray-100 p-2 flex flex-col justify-between leading-normal">
+                    <div class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
                     <div class="flex items-center justify-between flex-wrap p-3">
                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${todo.priority}</span>
                         <div class="flex items-center space-x-6 rtl:space-x-reverse">
@@ -38,9 +41,10 @@ const todoManager = () => {
                     </div>
                     <p class="text-sm text-base text-wrap">${todo.description}</p>
                     </div>
-                </nav>`;
+                    </nav>`;
                 container.insertAdjacentHTML('beforeend', t);
-                }); 
+                });
+            container.insertAdjacentHTML('beforeend',addTodoButton);
         };
     };
 
