@@ -15,9 +15,15 @@ const todoManager = () => {
     };
     const renderTodo = (todo) => {
         const addTodoButton = `<div class="flex justify-center">
-                                    <button id="addTodoButton" class="flex-shrink-0 border-green-500 text-sm border-2 text-green-500 py-1 px-2 rounded w-96" type="button">+</button>
+                                <button id="addTodoButton" class="flex-shrink-0 border-green-500 text-sm border-2 text-green-500 py-1 px-2 rounded w-96" type="button">+</button>
                                 </div>`;
-        if (todo.select == true) {
+        if (todo.todos.length == 0) {
+            const empty = `<div>
+                            ¯\_(ツ)_/¯ You have no todos yet!
+                          </div>`;
+            container.insertAdjacentHTML('beforeend', empty);
+            container.insertAdjacentHTML('beforeend', addTodoButton);
+        } else {
             todo.todos.forEach((todo) => {
                 const t = `
                     <nav class="todos p-1">
@@ -45,7 +51,7 @@ const todoManager = () => {
                     </nav>`;
                 container.insertAdjacentHTML('beforeend', t);
                 });
-            container.insertAdjacentHTML('beforeend',addTodoButton);
+            container.insertAdjacentHTML('beforeend', addTodoButton);
         };
     };
     const displayTodoForm = () => {

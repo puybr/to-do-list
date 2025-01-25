@@ -57,26 +57,29 @@ const controller = () => {
         render();
     };
     const render = () => {
-        projects.renderProjects(myProjects);
         let selectedProject = myProjects.filter((project) => {
             return project.select == true;
         });
+        projects.renderProjects(myProjects);
         todos.renderTodo(selectedProject[0]);
         selectProject();
         addProject();
         addTodo();
         cancel();
     };
+    const sortProjects = (name) => {
+        myProjects.forEach((project) => {
+            if (project.name == name) {
+                project.select = true;
+            } else
+            project.select = false;
+        });
+    };
     const selectProject = () => {
         document.querySelectorAll('.projects').forEach(element => {
             element.addEventListener('change', (e) => {
                 e.preventDefault(); // prevent page reloading
-                myProjects.forEach((project) => {
-                    if (project.name == e.target.value) {
-                        project.select = true;
-                    } else
-                    project.select = false;
-                });
+                sortProjects(e.target.value);
                 document.querySelector('#container').innerHTML = ``;
                 render();
             });
@@ -97,6 +100,21 @@ const controller = () => {
             document.querySelector('#projectForm').style.display = "block";
             document.querySelector('#navbar').style.display = "block";
             document.querySelector('#container').style.display = "none";
+        });
+        document.querySelector('#submitProject').addEventListener('click', () => {
+            if (!document.getElementById('newProject').value) {
+                return;
+            } else
+            console.log(document.getElementById('newProject').value);
+            myProjects.push(new Project(document.querySelector('#newProject').value, [], true));
+            document.querySelector('#container').innerHTML = ``;
+            document.querySelector('#projectForm').style.display = "none";
+            document.querySelector('#todoForm').style.display = "none";
+            document.querySelector('#navbar').style.display = "block";
+            document.querySelector('#container').style.display = "block";
+            sortProjects(document.getElementById('newProject').value);
+            document.getElementById('newProject').value = '';
+            render();
         });
     };
     const addTodo = () => {
