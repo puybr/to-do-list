@@ -1,6 +1,7 @@
 "use strict";
 
 const container = document.querySelector('#container');
+const projectForm = document.querySelector('#projectForm');
 
 const projectManager = () => {
     const renderProjects = (myProjects) => {
@@ -10,7 +11,7 @@ const projectManager = () => {
             } else
             return `<option value="${option.name}">${option.name}</option>`;
         });
-        const form = `
+        const nav = `
             <div class="flex items-center justify-between flex-wrap p-3">
                 <form id="project">
                 <label>
@@ -20,14 +21,25 @@ const projectManager = () => {
                 </label>
                 </form>
                 <div class="flex items-center">
-                    <button class="flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
+                    <button id="addProjectButton" class="flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
                     <i class="fa-solid fa-trash text-gray-300"></i>
                 </div>
             </div>
             `;
-        container.insertAdjacentHTML('afterbegin', form);
+        container.insertAdjacentHTML('afterbegin', nav);
     };
-return { renderProjects }
+    const displayProjectForm = () => {
+        const form = `
+            <form class="w-full max-w-sm">
+            <div class="flex items-center border-green-500">
+                <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="new project" aria-label="project">
+                <button class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
+                <button class="cancel flex-shrink-0 border-transparent border-4 text-green-500 hover:text-green-800 text-sm py-1 px-2 rounded" type="button">Cancel</button>
+            </div>
+            </form>`;
+        projectForm.insertAdjacentHTML('afterbegin', form);
+    };
+return { renderProjects, displayProjectForm }
 };
 
 export default projectManager

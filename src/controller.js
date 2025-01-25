@@ -50,15 +50,18 @@ const controller = () => {
         ], false)
         myProjects.push(defaultproject);
         myProjects.push(workproject);
+        projects.displayProjectForm();
         render();
     };
     const render = () => {
+        document.querySelector('#projectForm').style.display = "none";
         projects.renderProjects(myProjects);
         let selectedProject = myProjects.filter((project) => {
             return project.select == true;
         });
         todos.renderTodo(selectedProject[0]);
         select();
+        addProject();
     };
     const select = () => {
         document.querySelector('.projects').addEventListener('change', (e) => {
@@ -71,6 +74,20 @@ const controller = () => {
             });
             document.querySelector('#container').innerHTML = ``;
             render();
+        });
+    };
+    const addProject = () => {
+        document.querySelector('#addProjectButton').addEventListener('click', (e) => {
+            document.querySelector('#projectForm').style.display = "block";
+            document.querySelector('#navbar').style.display = "block";
+            document.querySelector('#container').style.display = "none";
+        });
+        document.querySelectorAll('.cancel').forEach(element => {
+            element.addEventListener('click', (e) => {
+                document.querySelector('#projectForm').style.display = "none";
+                document.querySelector('#navbar').style.display = "block";
+                document.querySelector('#container').style.display = "block";
+            });
         });
     };
     return { init }
