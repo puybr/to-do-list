@@ -164,8 +164,9 @@ const controller = () => {
     const editTodo = () => {
         document.querySelectorAll('.edit-todo').forEach(element => {
             element.addEventListener('click', (e) => {
-                console.log(document.querySelector(`#${e.target.value}`));
-                document.querySelector(`#${e.target.value}`).outerHTML = `<div>Edit!</div>`;
+                e.preventDefault(); // prevent page reloading
+                console.log(`${e.target.value}`);
+                // document.querySelector(`#${e.target.title}`).outerHTML = `<div>Edit!</div>`;
             });
         });
     };

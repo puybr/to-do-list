@@ -27,8 +27,8 @@ const todoManager = () => {
                                 <div class="text-sm p-2">
                                     <p>${todo.date}</p>
                                 </div>
-                                <div class="edit-todo text-sm">
-                                    <button value="${todo.title}" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fas fa-edit"></i></button>
+                                <div class="text-sm">
+                                    <button value="${todo.title}" class="edit-todo flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fas fa-edit"></i></button>
                                 </div>
                             </div>
                         </div>
