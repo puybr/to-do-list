@@ -18,8 +18,8 @@ const todoManager = () => {
         } else {
             todo.todos.forEach((todo) => {
                 const t = `
-                    <nav class="todos p-1">
-                    <div id="${todo.title}" class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
+                    <nav id="${todo.title}" class="todos p-1">
+                    <div class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
                     <div class="flex items-center justify-between flex-wrap p-3">
                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${todo.priority}</span>
                         <div class="flex items-center space-x-6 rtl:space-x-reverse">
