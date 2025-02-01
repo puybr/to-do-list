@@ -162,12 +162,19 @@ const controller = () => {
         });
     };
     const editTodo = () => {
+        let click = 0;
         document.querySelectorAll('.edit-todo').forEach(element => {
-            element.addEventListener('click', (e) => {
+            element.addEventListener('click', function edit(e) {
                 e.preventDefault(); // prevent page reloading
-                const selectedProject = myProjects.filter((project) => { return project.select == true });
-                const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
-                todos.displayEditTodoForm(selectedTodo);
+                click++;
+                console.log(click);
+                if (click == 1) {
+                    const selectedProject = myProjects.filter((project) => { return project.select == true });
+                    const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                    todos.displayEditTodoForm(selectedTodo);
+                } else {
+                    element.removeEventListener('click', edit);
+                };           
             });
         });
     };
