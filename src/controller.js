@@ -65,7 +65,7 @@ const controller = () => {
         if (myProjects.length == 0) {
             projects.renderProjects(myProjects);
         } else {
-            let selectedProject = myProjects.filter((project) => { return project.select == true });
+            const selectedProject = myProjects.filter((project) => { return project.select == true });
             projects.renderProjects(myProjects);
             todos.renderTodo(selectedProject[0]);
             todos.displayTodoForm(selectedProject[0]);
@@ -138,7 +138,7 @@ const controller = () => {
                                         document.querySelector('#newTodoDescription').value,
                                         document.querySelector('#newTodoDate').value,
                                         document.querySelector('#newTodoPriority').value);
-                let selectedProject = myProjects.filter((project) => { return project.select == true });
+                const selectedProject = myProjects.filter((project) => { return project.select == true });
                 selectedProject[0].todos.push(newTodo);
                 document.querySelector('#projectForm').style.display = "none";
                 document.querySelector('#todoForm').style.display = "none";
@@ -151,11 +151,12 @@ const controller = () => {
     const checkTodo = () => {
         document.querySelectorAll('.todo-checkbox').forEach(element => {
             element.addEventListener('click', (e) => {
-                let selectedProject = myProjects.filter((project) => { return project.select == true });
-                let indexProject = myProjects.indexOf(selectedProject[0]);
-                let selectedTodo = selectedProject[0].todos.filter((todo) => { return e.target.value === todo.title });
-                let indexTodo= myProjects[indexProject].todos.indexOf(selectedTodo[0]);
-                console.log(indexProject, indexTodo);
+                const selectedProject = myProjects.filter((project) => { return project.select == true });
+                const indexProject = myProjects.indexOf(selectedProject[0]);
+                const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.target.value === todo.title });
+                const indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo[0]);
+                myProjects[indexProject].todos.splice(indexTodo, 1);
+                render();
             });
         });
     };
