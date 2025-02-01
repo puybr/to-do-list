@@ -20,7 +20,7 @@ const todoManager = () => {
                                </div>`;
         if (todo.todos.length == 0) {
             const empty = `<div class="flex justify-center">
-                            ¯\_(ツ)_/¯ you have no todos yet!
+                            <p>¯\\_(ツ)_/¯ you have no todos yet!</p>
                           </div>`;
             container.insertAdjacentHTML('beforeend', empty);
             container.insertAdjacentHTML('beforeend', addTodoButton);
