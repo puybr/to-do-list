@@ -167,15 +167,25 @@ const controller = () => {
             element.addEventListener('click', function edit(e) {
                 e.preventDefault(); // prevent page reloading
                 click++;
-                console.log(click);
                 if (click == 1) {
                     const selectedProject = myProjects.filter((project) => { return project.select == true });
                     const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
                     todos.displayEditTodoForm(selectedTodo);
                 } else {
                     element.removeEventListener('click', edit);
-                };           
+                };
+                saveTodo();   
             });
+        });
+    };
+    const saveTodo = () => {
+        document.getElementById('editTodoButton').addEventListener('click', (e) => {
+            e.preventDefault(); // prevent page reloading
+            console.log(e);
+        });
+        document.getElementById('cancelTodoButton').addEventListener('click', (e) => {
+            e.preventDefault(); // prevent page reloading
+            render();
         });
     };
     return { init }
