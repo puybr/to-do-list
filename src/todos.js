@@ -5,15 +5,6 @@ const todoForm = document.querySelector('#todoForm');
 import { format } from 'date-fns';
 
 const todoManager = () => {
-    class Todo {
-        constructor(todo, title, description, date, priority) {
-            this.todo = todo;
-            this.title = title;
-            this.description = description;
-            this.date = date
-            this.priority = priority
-        };
-    };
     const renderTodo = (todo) => {
         const addTodoButton = `<div class="flex justify-center p-2">
                                 <button id="addTodoButton" class="flex-shrink-0 border-green-500 text-sm border-2 text-green-500 py-1 px-2 rounded w-96" type="button">+</button>
@@ -70,7 +61,7 @@ const todoManager = () => {
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                             Date
                         </label>
-                        <input id="newTodoDate" onfocus="(this.type='date')" class="focus:ring-green-500 focus:border-green-500 accent-green-500 caret-green-500 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="${format(new Date(), "dd'\/'MM'\/'yyyy")}">
+                        <input id="newTodoDate" onfocus="(this.type='date')" class="focus:ring-green-500 focus:border-green-500 focus:accent-green-500 selection:text-green-500 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="${format(new Date(), "dd'\/'MM'\/'yyyy")}">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -78,13 +69,13 @@ const todoManager = () => {
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                     Description
                             </label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="add a short description">
+                            <input id="newTodoDescription" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="add a short description">
                         </div>
                         <div class="w-full px-3 pb-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="priority">
                                 Priority
                             </label>
-                            <select name="priority" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <select id="newTodoPriority" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <option value="Low">Low</option>
                                 <option value="Medium">Medium</option>
                                 <option value="High">High</option>
