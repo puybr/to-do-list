@@ -72,6 +72,7 @@ const controller = () => {
             selectProject();
             addProject();
             addTodo();
+            checkTodo();
             cancel();
         };
     };
@@ -145,6 +146,16 @@ const controller = () => {
                 document.querySelector('#container').style.display = "block";
                 render();
             };
+        });
+    };
+    const checkTodo = () => {
+        document.querySelectorAll('.todo-checkbox').forEach(element => {
+            element.addEventListener('click', (e) => {
+                let selectedProject = myProjects.filter((project) => { return project.select == true });
+                let indexProject = myProjects.indexOf(selectedProject[0]);
+                let selectedTodo = selectedProject[0].todos.filter((todo) => { return e.target.value === todo.title });
+                console.log(myProjects[indexProject].todos.indexOf(selectedTodo[0]));
+            });
         });
     };
     return { init }

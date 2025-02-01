@@ -35,8 +35,8 @@ const todoManager = () => {
                     </div>
                     <div class="p-4">
                     <div class="flex items-center mb-4">
-                        <input id="default-checkbox" type="checkbox" value="" class="focus:accent-green-500 w-4 h-4 bg-transparent border-none rounded">
-                        <label for="default-checkbox" class="ms-2 font-medium">${todo.title}</label>
+                        <input id="todo-checkbox" type="checkbox" value="${todo.title}" class="todo-checkbox focus:accent-green-500 w-4 h-4 bg-transparent border-none rounded">
+                        <label for="todo-checkbox" class="ms-2 font-medium">${todo.title}</label>
                     </div>
                     <p class="text-sm text-base text-wrap">${todo.description}</p>
                     </div>
