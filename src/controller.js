@@ -218,7 +218,7 @@ const controller = () => {
                         selectedProject = myProjects[0];
                         indexProject = 0;
                     };
-                    if (!myProjects[indexProject].todos.length > 1) {
+                    if (myProjects[indexProject].todos.length > 1) {
                         selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
                     } else {
                         selectedTodo = myProjects[indexProject].todos[0];
