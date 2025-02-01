@@ -134,12 +134,15 @@ const controller = () => {
     const deleteProject = () => {
         document.querySelector('#deleteProjectButton').addEventListener('click', () => {
             let selectedProject;
+            let indexProject;
             if (myProjects.length > 1) {
                 selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                indexProject = myProjects.indexOf(selectedProject);
             } else {
                 selectedProject = myProjects[0];
+                indexProject = 0;
             };
-            myProjects.splice(selectedProject, 1);
+            myProjects.splice(indexProject, 1);
             render();
         });
     };
