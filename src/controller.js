@@ -154,7 +154,8 @@ const controller = () => {
                 let selectedProject = myProjects.filter((project) => { return project.select == true });
                 let indexProject = myProjects.indexOf(selectedProject[0]);
                 let selectedTodo = selectedProject[0].todos.filter((todo) => { return e.target.value === todo.title });
-                console.log(myProjects[indexProject].todos.indexOf(selectedTodo[0]));
+                let indexTodo= myProjects[indexProject].todos.indexOf(selectedTodo[0]);
+                console.log(indexProject, indexTodo);
             });
         });
     };
