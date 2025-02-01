@@ -73,6 +73,7 @@ const controller = () => {
             addProject();
             addTodo();
             checkTodo();
+            editTodo();
             cancel();
         };
     };
@@ -157,6 +158,14 @@ const controller = () => {
                 const indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo[0]);
                 myProjects[indexProject].todos.splice(indexTodo, 1);
                 render();
+            });
+        });
+    };
+    const editTodo = () => {
+        document.querySelectorAll('.edit-todo').forEach(element => {
+            element.addEventListener('click', (e) => {
+                console.log(e.target.title);
+                // document.getElementById('#')
             });
         });
     };
