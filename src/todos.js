@@ -2,6 +2,7 @@
 
 const container = document.querySelector('#container');
 const todoForm = document.querySelector('#todoForm');
+import { format } from 'date-fns';
 
 const todoManager = () => {
     class Todo {
@@ -14,9 +15,9 @@ const todoManager = () => {
         };
     };
     const renderTodo = (todo) => {
-        const addTodoButton = `<div class="flex justify-center">
+        const addTodoButton = `<div class="flex justify-center p-2">
                                 <button id="addTodoButton" class="flex-shrink-0 border-green-500 text-sm border-2 text-green-500 py-1 px-2 rounded w-96" type="button">+</button>
-                                </div>`;
+                               </div>`;
         if (todo.todos.length == 0) {
             const empty = `<div>
                             ¯\_(ツ)_/¯ You have no todos yet!
@@ -56,22 +57,26 @@ const todoManager = () => {
     };
     const displayTodoForm = (project) => {
         const form = `
-            <form class="w-full max-w-sm">
-                <div>${project.name}</div>
-                <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="new todo" aria-label="todo">
-                <input type="date" placeholder="select date">
-                <textarea></textarea>
-                <label>
-                <select name="projects" class="projects bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5">
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
-                </select>
-                </label>
-                <button class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
-                <button class="cancel flex-shrink-0 border-transparent border-4 text-green-500 hover:text-green-800 text-sm py-1 px-2 rounded" type="button">cancel</button>
-            </form>`;
-        todoForm .insertAdjacentHTML('afterbegin', form);
+            <div class="flex justify-center">
+                <form class="w-full max-w-sm">
+                    <div>${project.name}</div>
+                    <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5" type="text" placeholder="new todo" aria-label="todo">
+                    <input type="date" placeholder="select date">
+                    <label>
+                        <select name="projects" class="projects bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </label>
+                    <textarea class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5">add a description ...</textarea>
+                    <div>
+                        <button class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
+                        <button class="cancel flex-shrink-0 border-transparent border-4 text-green-500 hover:text-green-800 text-sm py-1 px-2 rounded" type="button">cancel</button>
+                    </div>
+                </form>
+            </div>`;
+        todoForm.insertAdjacentHTML('afterbegin', form);
     };
 
     return { renderTodo, displayTodoForm }
