@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 
 const todoManager = () => {
     const renderTodo = (todo) => {
+        console.log(todo)
         const addTodoButton = `<div class="flex justify-center p-2">
                                 <button id="addTodoButton" class="flex-shrink-0 border-green-500 text-sm border-2 text-green-500 py-1 px-2 rounded w-96" type="button">+</button>
                                </div>`;

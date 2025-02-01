@@ -60,17 +60,23 @@ const controller = () => {
         render();
     };
     const render = () => {
+        let selectedProject;
         document.querySelector('#todoForm').innerHTML = ``;
         document.querySelector('#container').innerHTML = ``;
         if (myProjects.length == 0) {
             projects.renderProjects(myProjects);
         } else {
-            const selectedProject = myProjects.filter((project) => { return project.select == true });
+            if (myProjects.length > 1) {
+                selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+            } else {
+                selectedProject = myProjects[0];
+            };
             projects.renderProjects(myProjects);
-            todos.renderTodo(selectedProject[0]);
-            todos.displayTodoForm(selectedProject[0]);
+            todos.renderTodo(selectedProject);
+            todos.displayTodoForm(selectedProject);
             selectProject();
             addProject();
+            deleteProject();
             addTodo();
             checkTodo();
             editTodo();
@@ -125,6 +131,14 @@ const controller = () => {
             };
         });
     };
+    const deleteProject = () => {
+        document.querySelector('#deleteProjectButton').addEventListener('click', () => {
+            const selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+            myProjects.splice(selectedProject, 1);
+            console.log(myProjects);
+            render();
+        });
+    };
     const addTodo = () => {
         document.querySelector('#addTodoButton').addEventListener('click', () => {
             document.querySelector('#todoForm').style.display = "block";
@@ -152,10 +166,15 @@ const controller = () => {
     const checkTodo = () => {
         document.querySelectorAll('.todo-checkbox').forEach(element => {
             element.addEventListener('click', (e) => {
-                const selectedProject = myProjects.filter((project) => { return project.select == true });
-                const indexProject = myProjects.indexOf(selectedProject[0]);
-                const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.target.value === todo.title });
-                const indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo[0]);
+                let selectedProject;
+                if (myProjects.length > 1) {
+                    selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                } else {
+                    selectedProject = myProjects[0];
+                };
+                const indexProject = myProjects.indexOf(selectedProject);
+                const selectedTodo = selectedProject.todos.filter((todo) => { return e.target.value === todo.title })[0];
+                const indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
                 myProjects[indexProject].todos.splice(indexTodo, 1);
                 render();
             });

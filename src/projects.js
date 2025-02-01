@@ -34,7 +34,7 @@ const projectManager = () => {
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <h1><i class="fa-solid fa-trash text-gray-300"></i></h1>
+                        <button id="deleteProjectButton" class="flex-shrink-0 bg-red-500 border-red-500 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 `;
