@@ -50,10 +50,9 @@ const controller = () => {
         ], false)
         myProjects.push(defaultproject);
         myProjects.push(workproject);
-        projects.displayProjectForm();
-        todos.displayTodoForm(myProjects[0]);
         document.querySelector('#projectForm').style.display = "none";
         document.querySelector('#todoForm').style.display = "none";
+        projects.displayProjectForm();
         render();
     };
     const render = () => {
