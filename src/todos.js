@@ -20,7 +20,7 @@ const todoManager = () => {
                                </div>`;
         if (todo.todos.length == 0) {
             const empty = `<div class="flex justify-center">
-                            ¯\_(ツ)_/¯ You have no todos yet!
+                            ¯\_(ツ)_/¯ you have no todos yet!
                           </div>`;
             container.insertAdjacentHTML('beforeend', empty);
             container.insertAdjacentHTML('beforeend', addTodoButton);
@@ -63,7 +63,7 @@ const todoManager = () => {
                     <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5" type="text" placeholder="new todo" aria-label="todo">
                     <input type="date" placeholder="select date">
                     <label>
-                        <select name="projects" class="projects bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5">
+                        <select name="priority" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5">
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
