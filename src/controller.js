@@ -164,8 +164,7 @@ const controller = () => {
     const editTodo = () => {
         document.querySelectorAll('.edit-todo').forEach(element => {
             element.addEventListener('click', (e) => {
-                console.log(e.target.title);
-                // document.getElementById('#')
+                console.log(e.target.value);
             });
         });
     };

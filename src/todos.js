@@ -19,7 +19,7 @@ const todoManager = () => {
             todo.todos.forEach((todo) => {
                 const t = `
                     <nav class="todos p-1">
-                    <div id="${todo.title}" class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
+                    <div class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
                     <div class="flex items-center justify-between flex-wrap p-3">
                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${todo.priority}</span>
                         <div class="flex items-center space-x-6 rtl:space-x-reverse">
@@ -28,7 +28,7 @@ const todoManager = () => {
                                     <p>${todo.date}</p>
                                 </div>
                                 <div class="edit-todo text-sm">
-                                    <p><i title="${todo.title}" class="fas fa-edit">${todo.title}</i></p>
+                                    <button value="${todo.title}" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fas fa-edit"></i></button>
                                 </div>
                             </div>
                         </div>
