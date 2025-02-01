@@ -48,8 +48,8 @@ const controller = () => {
                 priority: "Low"
             }
         ], false)
-        // myProjects.push(defaultproject);
-        // myProjects.push(workproject);
+        myProjects.push(defaultproject);
+        myProjects.push(workproject);
         document.querySelector('#projectForm').style.display = "none";
         document.querySelector('#todoForm').style.display = "none";
         projects.displayProjectForm();
