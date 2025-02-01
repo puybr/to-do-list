@@ -166,8 +166,7 @@ const controller = () => {
             element.addEventListener('click', (e) => {
                 e.preventDefault(); // prevent page reloading
                 console.log(`${e.currentTarget.value}`);
-                console.log(document.getElementById(`${e.currentTarget.value}`))
-                document.getElementById(`${e.currentTarget.value}`).outerHTML =`<h1>edit!</h1>`
+                // document.getElementById(`${e.currentTarget.value}`).outerHTML =`<h1>edit!</h1>`
             });
         });
     };
