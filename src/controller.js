@@ -146,13 +146,10 @@ const controller = () => {
     const deleteProject = () => {
         document.querySelector('#deleteProjectButton').addEventListener('click', () => {
             let selectedProject;
-            let indexProject;
             if (myProjects.length > 1) {
                 selectedProject = myProjects.filter((project) => { return project.select == true })[0];
-                indexProject = myProjects.indexOf(selectedProject);
             } else {
                 selectedProject = myProjects[0];
-                indexProject = 0;
             };
             myProjects.splice(selectedProject, 1);
             render();
@@ -232,10 +229,8 @@ const controller = () => {
                     };
                     if (!myProjects[indexProject].todos.length > 1) {
                         selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
-                        indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
                     } else {
                         selectedTodo = myProjects[indexProject].todos[0];
-                        indexTodo = 0;
                     };
                     todos.displayEditTodoForm(selectedTodo);
                 } else {
