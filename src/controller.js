@@ -14,9 +14,8 @@ const controller = () => {
         };
     };
     class Todo {
-        constructor(todo, title, description, date, priority) {
+        constructor(todo, description, date, priority) {
             this.todo = todo;
-            this.title = title;
             this.description = description;
             this.date = date
             this.priority = priority
@@ -130,12 +129,15 @@ const controller = () => {
             document.querySelector('#container').style.display = "none";
         });
         document.querySelector('#submitTodo').addEventListener('click', (e) => {
-            console.log(document.querySelector('#newTodo').value);
-            console.log(document.querySelector('#newTodoDate').value);
-            console.log(document.querySelector('#newTodoPriority').value);
-            console.log(document.querySelector('#newTodoDescription').value);
+            const newTodo = new Todo(document.querySelector('#newTodo').value,
+                     document.querySelector('#newTodoDescription').value,
+                     document.querySelector('#newTodoDate').value,
+                     document.querySelector('#newTodoPriority').value);
+            console.log(newTodo);
+            let selectedProject = myProjects.filter((project) => { return project.select == true });
+            console.log(selectedProject[0].todos);
         });
-    }
+    };
     return { init }
 };
 
