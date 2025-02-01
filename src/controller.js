@@ -61,6 +61,9 @@ const controller = () => {
     };
     const render = () => {
         let selectedProject;
+        let selectedTodo;
+        let indexProject;
+        let indexTodo;
         document.querySelector('#todoForm').innerHTML = ``;
         document.querySelector('#container').innerHTML = ``;
         if (myProjects.length == 0) {
@@ -68,8 +71,17 @@ const controller = () => {
         } else {
             if (myProjects.length > 1) {
                 selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                indexProject = myProjects.indexOf(selectedProject);
             } else {
                 selectedProject = myProjects[0];
+                indexProject = 0;
+            };
+            if (!myProjects[indexProject].todos.length > 1) {
+                selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
+            } else {
+                selectedTodo = myProjects[indexProject].todos[0];
+                indexTodo = 0;
             };
             projects.renderProjects(myProjects);
             todos.renderTodo(selectedProject);
@@ -133,9 +145,16 @@ const controller = () => {
     };
     const deleteProject = () => {
         document.querySelector('#deleteProjectButton').addEventListener('click', () => {
-            const selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+            let selectedProject;
+            let indexProject;
+            if (myProjects.length > 1) {
+                selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                indexProject = myProjects.indexOf(selectedProject);
+            } else {
+                selectedProject = myProjects[0];
+                indexProject = 0;
+            };
             myProjects.splice(selectedProject, 1);
-            console.log(myProjects);
             render();
         });
     };
@@ -153,8 +172,25 @@ const controller = () => {
                                         document.querySelector('#newTodoDescription').value,
                                         document.querySelector('#newTodoDate').value,
                                         document.querySelector('#newTodoPriority').value);
-                const selectedProject = myProjects.filter((project) => { return project.select == true });
-                selectedProject[0].todos.push(newTodo);
+                let selectedProject;
+                let selectedTodo;
+                let indexProject;
+                let indexTodo;
+                if (myProjects.length > 1) {
+                    selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                    indexProject = myProjects.indexOf(selectedProject);
+                } else {
+                    selectedProject = myProjects[0];
+                    indexProject = 0;
+                };
+                if (!myProjects[indexProject].todos.length > 1) {
+                    selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                    indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
+                } else {
+                    selectedTodo = myProjects[indexProject].todos[0];
+                    indexTodo = 0;
+                };
+                selectedProject.todos.push(newTodo);
                 document.querySelector('#projectForm').style.display = "none";
                 document.querySelector('#todoForm').style.display = "none";
                 document.querySelector('#navbar').style.display = "block";
@@ -167,14 +203,23 @@ const controller = () => {
         document.querySelectorAll('.todo-checkbox').forEach(element => {
             element.addEventListener('click', (e) => {
                 let selectedProject;
+                let selectedTodo;
+                let indexProject;
+                let indexTodo;
                 if (myProjects.length > 1) {
                     selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                    indexProject = myProjects.indexOf(selectedProject);
                 } else {
                     selectedProject = myProjects[0];
+                    indexProject = 0;
                 };
-                const indexProject = myProjects.indexOf(selectedProject);
-                const selectedTodo = selectedProject.todos.filter((todo) => { return e.target.value === todo.title })[0];
-                const indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
+                if (!myProjects[indexProject].todos.length > 1) {
+                    selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                    indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
+                } else {
+                    selectedTodo = myProjects[indexProject].todos[0];
+                    indexTodo = 0;
+                };
                 myProjects[indexProject].todos.splice(indexTodo, 1);
                 render();
             });
@@ -187,8 +232,24 @@ const controller = () => {
                 e.preventDefault(); // prevent page reloading
                 click++;
                 if (click == 1) {
-                    const selectedProject = myProjects.filter((project) => { return project.select == true });
-                    const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                    let selectedProject;
+                    let selectedTodo;
+                    let indexProject;
+                    let indexTodo;
+                    if (myProjects.length > 1) {
+                        selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                        indexProject = myProjects.indexOf(selectedProject);
+                    } else {
+                        selectedProject = myProjects[0];
+                        indexProject = 0;
+                    };
+                    if (!myProjects[indexProject].todos.length > 1) {
+                        selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                        indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
+                    } else {
+                        selectedTodo = myProjects[indexProject].todos[0];
+                        indexTodo = 0;
+                    };
                     todos.displayEditTodoForm(selectedTodo);
                 } else {
                     element.removeEventListener('click', edit);
@@ -200,17 +261,29 @@ const controller = () => {
     const saveTodo = () => {
         document.getElementById('editTodoButton').addEventListener('click', (e) => {
             e.preventDefault(); // prevent page reloading
-            if (document.getElementById('editTodoTitle').value) {
-                const selectedProject = myProjects.filter((project) => { return project.select == true });
-                const indexProject = myProjects.indexOf(selectedProject[0]);
-                const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.currentTarget.value === todo.title });
-                const indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo[0]);
-                myProjects[indexProject].todos[indexTodo].title = document.getElementById('editTodoTitle').value;
-                myProjects[indexProject].todos[indexTodo].date = document.getElementById('editTodoDate').value;
-                myProjects[indexProject].todos[indexTodo].description = document.getElementById('editTodoDescription').value;
-                myProjects[indexProject].todos[indexTodo].priority = document.getElementById('editTodoPriority').value;
-                render();
-            } else return;
+            let selectedProject;
+            let selectedTodo;
+            let indexProject;
+            let indexTodo;
+            if (myProjects.length > 1) {
+                selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                indexProject = myProjects.indexOf(selectedProject);
+            } else {
+                selectedProject = myProjects[0];
+                indexProject = 0;
+            };
+            if (!myProjects[indexProject].todos.length > 1) {
+                selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
+            } else {
+                selectedTodo = myProjects[indexProject].todos[0];
+                indexTodo = 0;
+            };
+            myProjects[indexProject].todos[indexTodo].title = document.getElementById('editTodoTitle').value;
+            myProjects[indexProject].todos[indexTodo].date = document.getElementById('editTodoDate').value;
+            myProjects[indexProject].todos[indexTodo].description = document.getElementById('editTodoDescription').value;
+            myProjects[indexProject].todos[indexTodo].priority = document.getElementById('editTodoPriority').value;
+            render();
         });
         document.getElementById('cancelTodoButton').addEventListener('click', (e) => {
             e.preventDefault(); // prevent page reloading
