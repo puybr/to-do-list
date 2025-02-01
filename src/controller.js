@@ -111,15 +111,16 @@ const controller = () => {
         document.querySelector('#submitProject').addEventListener('click', () => {
             if (!document.getElementById('newProject').value) {
                 return;
-            } else
-            myProjects.push(new Project(document.querySelector('#newProject').value, [], true));
-            document.querySelector('#projectForm').style.display = "none";
-            document.querySelector('#todoForm').style.display = "none";
-            document.querySelector('#navbar').style.display = "block";
-            document.querySelector('#container').style.display = "block";
-            sortProjects(document.getElementById('newProject').value);
-            document.getElementById('newProject').value = '';
-            render();
+            } else {
+                myProjects.push(new Project(document.querySelector('#newProject').value, [], true));
+                document.querySelector('#projectForm').style.display = "none";
+                document.querySelector('#todoForm').style.display = "none";
+                document.querySelector('#navbar').style.display = "block";
+                document.querySelector('#container').style.display = "block";
+                sortProjects(document.getElementById('newProject').value);
+                document.getElementById('newProject').value = '';
+                render();
+            };
         });
     };
     const addTodo = () => {
@@ -128,19 +129,23 @@ const controller = () => {
             document.querySelector('#navbar').style.display = "block";
             document.querySelector('#container').style.display = "none";
         });
-        document.querySelector('#submitTodo').addEventListener('click', (e) => {
-            const newTodo = new Todo(document.querySelector('#newTodoTitle').value,
-                                     document.querySelector('#newTodoDescription').value,
-                                     document.querySelector('#newTodoDate').value,
-                                     document.querySelector('#newTodoPriority').value);
-            let selectedProject = myProjects.filter((project) => { return project.select == true });
-            selectedProject[0].todos.push(newTodo);
-            document.querySelector('#projectForm').style.display = "none";
-            document.querySelector('#todoForm').style.display = "none";
-            document.querySelector('#navbar').style.display = "block";
-            document.querySelector('#container').style.display = "block";
-            console.log(selectedProject[0].todos);
-            render();
+        document.querySelector('#submitTodo').addEventListener('click', () => {
+            if (!document.getElementById('newTodoTitle').value || !document.getElementById('newTodoDate').value) {
+                return;
+            } else {
+                const newTodo = new Todo(document.querySelector('#newTodoTitle').value,
+                                        document.querySelector('#newTodoDescription').value,
+                                        document.querySelector('#newTodoDate').value,
+                                        document.querySelector('#newTodoPriority').value);
+                let selectedProject = myProjects.filter((project) => { return project.select == true });
+                selectedProject[0].todos.push(newTodo);
+                document.querySelector('#projectForm').style.display = "none";
+                document.querySelector('#todoForm').style.display = "none";
+                document.querySelector('#navbar').style.display = "block";
+                document.querySelector('#container').style.display = "block";
+                console.log(selectedProject[0].todos);
+                render();
+            };
         });
     };
     return { init }
