@@ -181,7 +181,7 @@ const controller = () => {
     const saveTodo = () => {
         document.getElementById('editTodoButton').addEventListener('click', (e) => {
             e.preventDefault(); // prevent page reloading
-            if (document.getElementById('editTodoDate').value) {
+            if (document.getElementById('editTodoTitle').value) {
                 const selectedProject = myProjects.filter((project) => { return project.select == true });
                 const indexProject = myProjects.indexOf(selectedProject[0]);
                 const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.currentTarget.value === todo.title });
