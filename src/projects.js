@@ -15,8 +15,7 @@ const projectManager = () => {
             let options = myProjects.map((option) => {
                 if (option.select == true) {
                     return `<option selected value="${option.name}">${option.name}</option>`;
-                } else
-                return `<option value="${option.name}">${option.name}</option>`;
+                } else return `<option value="${option.name}">${option.name}</option>`;
             });
             const nav = `
                 <div class="flex items-center justify-between flex-wrap p-3">

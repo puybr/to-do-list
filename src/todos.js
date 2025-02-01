@@ -95,15 +95,19 @@ const todoManager = () => {
         todoForm.insertAdjacentHTML('afterbegin', form);
     };
     const displayEditTodoForm = (todo) => {
+        const priorities = ['High', 'Medium', 'Low']
+        let options = priorities.map((priority) => {
+            if (priority == todo.priority) {
+                return `<option selected value="${priority}">${priority}</option>`;
+            } else return `<option value="${priority}">${priority}</option>`;
+        });
         document.getElementById(`${todo.title}`).outerHTML =`<nav>
                                                             <div class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
-                                                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="${todo.title}">
+                                                            <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500">${todo.title}</textarea>
                                                             <input onfocus="(this.type='date')" class="focus:ring-green-500 focus:border-green-500 focus:accent-green-500 selection:text-green-500 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="${todo.date}">
-                                                            <input class="focus:ring-green-500 focus:border-green-500 focus:accent-green-500 selection:text-green-500 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="${todo.description}">
+                                                            <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500">${todo.description}</textarea>
                                                             <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                                                <option value="Low">Low</option>
-                                                                <option value="Medium">Medium</option>
-                                                                <option value="High">High</option>
+                                                                ${options}
                                                             </select>
                                                             </div>
                                                             <div>
