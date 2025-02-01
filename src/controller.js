@@ -173,22 +173,10 @@ const controller = () => {
                                         document.querySelector('#newTodoDate').value,
                                         document.querySelector('#newTodoPriority').value);
                 let selectedProject;
-                let selectedTodo;
-                let indexProject;
-                let indexTodo;
                 if (myProjects.length > 1) {
                     selectedProject = myProjects.filter((project) => { return project.select == true })[0];
-                    indexProject = myProjects.indexOf(selectedProject);
                 } else {
                     selectedProject = myProjects[0];
-                    indexProject = 0;
-                };
-                if (!myProjects[indexProject].todos.length > 1) {
-                    selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
-                    indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
-                } else {
-                    selectedTodo = myProjects[indexProject].todos[0];
-                    indexTodo = 0;
                 };
                 selectedProject.todos.push(newTodo);
                 document.querySelector('#projectForm').style.display = "none";
