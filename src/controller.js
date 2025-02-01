@@ -28,13 +28,13 @@ const controller = () => {
             {
                 title: "code",
                 description: "try creating a web interface and a dynamic todo list", 
-                date: format(new Date(), "dd'\/'MM'\/'yyyy"),
+                date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "High"
             },
             {
                 title: "cook dinner",
                 description: "a warming vegan supper with porcini mushrooms, leeks, carrots, and butternut squash", 
-                date: format(new Date(), "dd'\/'MM'\/'yyyy"),
+                date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "Medium"
             }
         ], true)
@@ -42,13 +42,13 @@ const controller = () => {
             {
                 title: "create a powerpoint presentation",
                 description: "for the financial team",
-                date: format(new Date(), "dd'\/'MM'\/'yyyy"),
+                date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "Low"
             },
             {
                 title: "admin tasks",
                 description: "office cleanup", 
-                date: format(new Date(), "dd'\/'MM'\/'yyyy"),
+                date: format(new Date(), "yyyy'-'MM'-'dd"),
                 priority: "Low"
             }
         ], false)
@@ -143,7 +143,6 @@ const controller = () => {
                 document.querySelector('#todoForm').style.display = "none";
                 document.querySelector('#navbar').style.display = "block";
                 document.querySelector('#container').style.display = "block";
-                console.log(selectedProject[0].todos);
                 render();
             };
         });
