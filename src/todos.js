@@ -74,23 +74,23 @@ const todoManager = () => {
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
+                        <div class="w-full px-3 pb-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                     Description
                             </label>
                             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="add a short description">
                         </div>
-                        <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="priority">
-                        Priority
+                        <div class="w-full px-3 pb-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="priority">
+                                Priority
+                            </label>
                             <select name="priority" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <option value="Low">Low</option>
                                 <option value="Medium">Medium</option>
                                 <option value="High">High</option>
                             </select>
-                        </label>
                         </div>
-                        <div class="flex justify-center">
+                        <div class="flex items-center justify-between flex-wrap p-3">
                             <div>
                                 <button id="submitTodo" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
                             </div>
