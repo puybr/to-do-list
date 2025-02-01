@@ -48,7 +48,7 @@ const todoManager = () => {
     };
     const displayTodoForm = (project) => {
         const form = `
-            <div class="flex items-center justify-center h-96">
+            <div class="flex items-center justify-center h-screen">
                 <form class="w-full max-w-lg">
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -86,7 +86,7 @@ const todoManager = () => {
                                 <button id="submitTodo" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
                             </div>
                             <div>
-                                <button class="cancel flex-shrink-0 border-transparent border-4 text-green-500 hover:text-green-800 text-sm py-1 px-2 rounded" type="button">cancel</button>
+                                <button class="cancel flex-shrink-0 border-transparent border-4 text-green-500 hover:text-green-800 text-sm py-1 px-2 rounded" type="button"><i class="fa-solid fa-xmark"></i></button>
                             </div>
                         </div>
                     </div>
@@ -110,11 +110,13 @@ const todoManager = () => {
                                                                 ${options}
                                                             </select>
                                                             </div>
-                                                            <div>
-                                                                <button value="${todo.title}" id="editTodoButton" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">save</button>
-                                                            </div>
-                                                            <div>
-                                                                <button id="cancelTodoButton" class="flex-shrink-0 border-transparent border-4 text-green-500 hover:text-green-800 text-sm py-1 px-2 rounded" type="button">cancel</button>
+                                                            <div class="flex items-center justify-between flex-wrap p-3">
+                                                                <div>
+                                                                    <button value="${todo.title}" id="editTodoButton" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fa-solid fa-floppy-disk"></i></button>
+                                                                </div>
+                                                                <div>
+                                                                    <button id="cancelTodoButton" class="flex-shrink-0 border-transparent border-4 text-green-500 hover:text-green-800 text-sm py-1 px-2 rounded" type="button"><i class="fa-solid fa-xmark"></i></button>
+                                                                </div>
                                                             </div>
                                                         </nav>`;
     };
