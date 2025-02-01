@@ -48,8 +48,8 @@ const controller = () => {
                 priority: "Low"
             }
         ], false)
-        myProjects.push(defaultproject);
-        myProjects.push(workproject);
+        // myProjects.push(defaultproject);
+        // myProjects.push(workproject);
         document.querySelector('#projectForm').style.display = "none";
         document.querySelector('#todoForm').style.display = "none";
         projects.displayProjectForm();
@@ -58,14 +58,18 @@ const controller = () => {
     const render = () => {
         document.querySelector('#todoForm').innerHTML = ``;
         document.querySelector('#container').innerHTML = ``;
-        let selectedProject = myProjects.filter((project) => { return project.select == true });
-        projects.renderProjects(myProjects);
-        todos.renderTodo(selectedProject[0]);
-        todos.displayTodoForm(selectedProject[0]);
-        selectProject();
-        addProject();
-        addTodo();
-        cancel();
+        if (myProjects.length == 0) {
+            projects.renderProjects(myProjects);
+        } else {
+            let selectedProject = myProjects.filter((project) => { return project.select == true });
+            projects.renderProjects(myProjects);
+            todos.renderTodo(selectedProject[0]);
+            todos.displayTodoForm(selectedProject[0]);
+            selectProject();
+            addProject();
+            addTodo();
+            cancel();
+        };
     };
     const sortProjects = (name) => {
         myProjects.forEach((project) => {
