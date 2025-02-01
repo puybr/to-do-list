@@ -181,7 +181,17 @@ const controller = () => {
     const saveTodo = () => {
         document.getElementById('editTodoButton').addEventListener('click', (e) => {
             e.preventDefault(); // prevent page reloading
-            console.log(e);
+            if (document.getElementById('editTodoDate').value) {
+                const selectedProject = myProjects.filter((project) => { return project.select == true });
+                const indexProject = myProjects.indexOf(selectedProject[0]);
+                const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.currentTarget.value === todo.title });
+                const indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo[0]);
+                myProjects[indexProject].todos[indexTodo].title = document.getElementById('editTodoTitle').value;
+                myProjects[indexProject].todos[indexTodo].date = document.getElementById('editTodoDate').value;
+                myProjects[indexProject].todos[indexTodo].description = document.getElementById('editTodoDescription').value;
+                myProjects[indexProject].todos[indexTodo].priority = document.getElementById('editTodoPriority').value;
+                render();
+            } else return;
         });
         document.getElementById('cancelTodoButton').addEventListener('click', (e) => {
             e.preventDefault(); // prevent page reloading
