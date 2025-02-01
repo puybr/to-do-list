@@ -102,6 +102,9 @@ const todoManager = () => {
             } else return `<option value="${priority}">${priority}</option>`;
         });
         document.getElementById(`${todo.title}`).outerHTML =`<nav>
+                                                            <div class="flex items-center justify-end flex-wrap p-3">
+                                                                <button id="cancelTodoButton" class="flex-shrink-0 border-transparent border-4 text-green-500 hover:text-green-800 text-sm py-1 px-2 rounded" type="button"><i class="fa-solid fa-xmark"></i></button>
+                                                            </div>
                                                             <div class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
                                                             <textarea id="editTodoTitle" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500">${todo.title}</textarea>
                                                             <input id="editTodoDate" onfocus="(this.type='date')" class="focus:ring-green-500 focus:border-green-500 focus:accent-green-500 selection:text-green-500 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="${todo.date}">
@@ -110,13 +113,9 @@ const todoManager = () => {
                                                                 ${options}
                                                             </select>
                                                             </div>
-                                                            <div class="flex items-center justify-between flex-wrap p-3">
-                                                                <div>
-                                                                    <button value="${todo.title}" id="editTodoButton" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fa-solid fa-floppy-disk"></i></button>
-                                                                </div>
-                                                                <div>
-                                                                    <button id="cancelTodoButton" class="flex-shrink-0 border-transparent border-4 text-green-500 hover:text-green-800 text-sm py-1 px-2 rounded" type="button"><i class="fa-solid fa-xmark"></i></button>
-                                                                </div>
+                                                            <div class="flex justify-center">
+                                                                <button value="${todo.title}" id="editTodoButton" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fa-solid fa-floppy-disk"></i></button>
+                                                            </div>
                                                             </div>
                                                         </nav>`;
     };
