@@ -164,7 +164,8 @@ const controller = () => {
     const editTodo = () => {
         document.querySelectorAll('.edit-todo').forEach(element => {
             element.addEventListener('click', (e) => {
-                console.log(e.target.value);
+                console.log(document.querySelector(`#${e.target.value}`));
+                document.querySelector(`#${e.target.value}`).outerHTML = `<div>Edit!</div>`;
             });
         });
     };
