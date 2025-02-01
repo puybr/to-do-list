@@ -165,8 +165,9 @@ const controller = () => {
         document.querySelectorAll('.edit-todo').forEach(element => {
             element.addEventListener('click', (e) => {
                 e.preventDefault(); // prevent page reloading
-                console.log(`${e.currentTarget.value}`);
-                // document.getElementById(`${e.currentTarget.value}`).outerHTML =`<h1>${e.currentTarget.value}</h1>`
+                const selectedProject = myProjects.filter((project) => { return project.select == true });
+                const selectedTodo = selectedProject[0].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                todos.displayEditTodoForm(selectedTodo);
             });
         });
     };

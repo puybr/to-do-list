@@ -94,8 +94,22 @@ const todoManager = () => {
             </div>`;
         todoForm.insertAdjacentHTML('afterbegin', form);
     };
-
-    return { renderTodo, displayTodoForm }
+    const displayEditTodoForm = (todo) => {
+        document.getElementById(`${todo.title}`).outerHTML =`<nav>
+                                                            <div class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
+                                                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="${todo.title}">
+                                                            <input onfocus="(this.type='date')" class="focus:ring-green-500 focus:border-green-500 focus:accent-green-500 selection:text-green-500 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="${todo.date}">
+                                                            <input class="focus:ring-green-500 focus:border-green-500 focus:accent-green-500 selection:text-green-500 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" placeholder="${todo.description}">
+                                                            <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                                                <option value="Low">Low</option>
+                                                                <option value="Medium">Medium</option>
+                                                                <option value="High">High</option>
+                                                            </select>
+                                                            </div>
+                                                            <button class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">save</button>
+                                                        </nav>`;
+    };
+    return { renderTodo, displayTodoForm, displayEditTodoForm }
 };
 
 export default todoManager
