@@ -2,7 +2,7 @@
 
 [Link to project ...](https://puybr.github.io/to-do-list/)
 
-My Data Structure is an array of objects `Projects`.
+My Data Structure is an array of objects `MyProjects`.
 
 Links that I'm finding useful:
 - [How to Get the Index of an Array that Contains Objects in JavaScript](https://www.w3docs.com/snippets/javascript/how-to-get-the-index-of-an-array-that-contains-objects-in-javascript.html)
