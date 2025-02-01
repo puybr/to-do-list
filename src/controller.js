@@ -235,7 +235,6 @@ const controller = () => {
                     let selectedProject;
                     let selectedTodo;
                     let indexProject;
-                    let indexTodo;
                     if (myProjects.length > 1) {
                         selectedProject = myProjects.filter((project) => { return project.select == true })[0];
                         indexProject = myProjects.indexOf(selectedProject);
