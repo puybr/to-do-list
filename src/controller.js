@@ -124,12 +124,10 @@ const controller = () => {
         });
     };
     const addProject = () => {
-        document.querySelectorAll('.addProjectButton').forEach(element => {
-            element.addEventListener('click', () => {
-                document.querySelector('#projectForm').style.display = "block";
-                document.querySelector('#navbar').style.display = "block";
-                document.querySelector('#container').style.display = "none";
-            });
+        document.querySelector('#addProjectButton').addEventListener('click', () => {
+            document.querySelector('#projectForm').style.display = "block";
+            document.querySelector('#navbar').style.display = "block";
+            document.querySelector('#container').style.display = "none";
         });
         document.querySelector('#submitProject').addEventListener('click', () => {
             if (!document.getElementById('newProject').value) {
