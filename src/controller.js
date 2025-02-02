@@ -75,8 +75,8 @@ const controller = () => {
             todos.renderTodo(selectedProject);
             todos.displayTodoForm(selectedProject);
             selectProject();
-            addProject();
             deleteProject();
+            addProject();
             addTodo();
             checkTodo();
             editTodo();
@@ -111,10 +111,12 @@ const controller = () => {
         });
     };
     const addProject = () => {
-        document.querySelector('#addProjectButton').addEventListener('click', () => {
-            document.querySelector('#projectForm').style.display = "block";
-            document.querySelector('#navbar').style.display = "block";
-            document.querySelector('#container').style.display = "none";
+        document.querySelectorAll('.addProjectButton').forEach(element => {
+            element.addEventListener('click', () => {
+                document.querySelector('#projectForm').style.display = "block";
+                document.querySelector('#navbar').style.display = "block";
+                document.querySelector('#container').style.display = "none";
+            });
         });
         document.querySelector('#submitProject').addEventListener('click', () => {
             if (!document.getElementById('newProject').value) {
@@ -144,7 +146,6 @@ const controller = () => {
                 indexProject = 0;
                 myProjects.select = true;
             };
-            console.log(myProjects)
             myProjects.splice(indexProject, 1);
             render();
         });

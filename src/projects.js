@@ -5,10 +5,13 @@ const projectForm = document.querySelector('#projectForm');
 
 const projectManager = () => {
     const renderProjects = (myProjects) => {
+        console.log(myProjects, myProjects.length);
         if (myProjects.length == 0) {
             const empty = `<div class="flex justify-center">
                             <p>¯\\_(ツ)_/¯ you have no projects yet!</p>
-                            <button class="flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button class="addProjectButton flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">New Project</button>
+                            </div>
                           </div>`;
             container.insertAdjacentHTML('beforeend', empty);
         } else {
@@ -30,7 +33,7 @@ const projectManager = () => {
                             </form>
                         </div>
                         <div>
-                            <button id="addProjectButton" class="flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
+                            <button class="addProjectButton flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
                         </div>
                     </div>
                     <div class="flex items-center">
