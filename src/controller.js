@@ -143,6 +143,7 @@ const controller = () => {
                 indexProject = 0;
             };
             myProjects.splice(indexProject, 1);
+            myProjects[0].select = true;
             render();
         });
     };
