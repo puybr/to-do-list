@@ -103,10 +103,23 @@ const controller = () => {
     const cancel = () => {
         document.querySelectorAll('.cancel').forEach(element => {
             element.addEventListener('click', () => {
-                document.querySelector('#projectForm').style.display = "none";
-                document.querySelector('#todoForm').style.display = "none";
-                document.querySelector('#navbar').style.display = "block";
-                document.querySelector('#container').style.display = "block";
+                let selectedProject;
+                let indexProject;
+                if (myProjects.length > 1) {
+                    selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                    indexProject = myProjects.indexOf(selectedProject);
+                    myProjects[0].select = true;
+                } else {
+                    selectedProject = myProjects[0];
+                    indexProject = 0;
+                    myProjects.select = true;
+                };
+                if (selectedProject) {
+                    document.querySelector('#projectForm').style.display = "none";
+                    document.querySelector('#todoForm').style.display = "none";
+                    document.querySelector('#navbar').style.display = "block";
+                    document.querySelector('#container').style.display = "block";
+                } else return;
             });
         });
     };
