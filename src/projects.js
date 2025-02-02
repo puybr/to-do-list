@@ -5,15 +5,10 @@ const projectForm = document.querySelector('#projectForm');
 
 const projectManager = () => {
     const renderProjects = (myProjects) => {
-        console.log(myProjects, myProjects.length);
         if (myProjects.length == 0) {
-            const empty = `<div class="flex justify-center">
-                            <p>¯\\_(ツ)_/¯ you have no projects yet!</p>
-                            <div class="grid grid-cols-2 gap-2">
-                                <button class="addProjectButton flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">New Project</button>
-                            </div>
-                          </div>`;
-            container.insertAdjacentHTML('beforeend', empty);
+            document.querySelector('#projectForm').style.display = "block";
+            document.querySelector('#navbar').style.display = "block";
+            document.querySelector('#container').style.display = "none";
         } else {
             let options = myProjects.map((option) => {
                 if (option.select == true) {
