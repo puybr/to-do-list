@@ -125,7 +125,7 @@ const controller = () => {
     };
     const addProject = () => {
         document.querySelectorAll('.addProjectButton').forEach(element => {
-            document.querySelector('#addProjectButton').addEventListener('click', () => {
+            element.addEventListener('click', () => {
                 document.querySelector('#projectForm').style.display = "block";
                 document.querySelector('#navbar').style.display = "block";
                 document.querySelector('#container').style.display = "none";
