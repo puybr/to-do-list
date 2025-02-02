@@ -138,12 +138,14 @@ const controller = () => {
             if (myProjects.length > 1) {
                 selectedProject = myProjects.filter((project) => { return project.select == true })[0];
                 indexProject = myProjects.indexOf(selectedProject);
+                myProjects[0].select = true;
             } else {
                 selectedProject = myProjects[0];
                 indexProject = 0;
+                myProjects.select = true;
             };
+            console.log(myProjects)
             myProjects.splice(indexProject, 1);
-            myProjects[0].select = true;
             render();
         });
     };
