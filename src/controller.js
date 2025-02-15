@@ -35,7 +35,6 @@ const controller = () => {
         if (localStorage.getItem('myProjects')) {
             myProjects = JSON.parse(localStorage.getItem('myProjects'));
         } else myProjects = proj;
-        saveLocal();
         render();
     };
     const render = () => {
@@ -55,6 +54,7 @@ const controller = () => {
             projects.renderProjects(myProjects);
             todos.renderTodo(selectedProject);
             todos.displayTodoForm(selectedProject);
+            saveLocal();
             selectProject();
             deleteProject();
             addProject();
@@ -126,7 +126,6 @@ const controller = () => {
                 document.querySelector('#container').style.display = "block";
                 sortProjects(document.getElementById('newProject').value, Number(myProjects.length)-1);
                 document.getElementById('newProject').value = '';
-                saveLocal();
                 render();
             };
         });
@@ -145,7 +144,6 @@ const controller = () => {
                 myProjects.select = true;
             };
             myProjects.splice(indexProject, 1);
-            saveLocal();
             render();
         });
     };
@@ -174,7 +172,6 @@ const controller = () => {
                 document.querySelector('#todoForm').style.display = "none";
                 document.querySelector('#navbar').style.display = "block";
                 document.querySelector('#container').style.display = "block";
-                saveLocal();
                 render();
             };
         });
@@ -201,7 +198,6 @@ const controller = () => {
                     indexTodo = 0;
                 };
                 myProjects[indexProject].todos.splice(indexTodo, 1);
-                saveLocal();
                 render();
             });
         });
@@ -225,7 +221,6 @@ const controller = () => {
                 } else {
                     selectedTodo = myProjects[indexProject].todos[0];
                 };
-                saveLocal();
                 render();
                 todos.displayEditTodoForm(selectedTodo);  
                 saveTodo();   
@@ -257,7 +252,6 @@ const controller = () => {
             myProjects[indexProject].todos[indexTodo].date = document.getElementById('editTodoDate').value;
             myProjects[indexProject].todos[indexTodo].description = document.getElementById('editTodoDescription').value;
             myProjects[indexProject].todos[indexTodo].priority = document.getElementById('editTodoPriority').value;
-            saveLocal();
             render();
         });
         document.getElementById('cancelTodoButton').addEventListener('click', (e) => {
