@@ -203,7 +203,7 @@ const controller = () => {
                     indexProject = 0;
                 };
                 if (myProjects[indexProject].todos.length > 1) {
-                    selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                    selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.name === todo.title && e.currentTarget.value == myProjects[indexProject].todos.indexOf(todo) })[0];
                     indexTodo = myProjects[indexProject].todos.indexOf(selectedTodo);
                 } else {
                     selectedTodo = myProjects[indexProject].todos[0];
@@ -229,7 +229,7 @@ const controller = () => {
                     indexProject = 0;
                 };
                 if (myProjects[indexProject].todos.length > 1) {
-                    selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                    selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.name === todo.title && e.currentTarget.value == myProjects[indexProject].todos.indexOf(todo) })[0];
                 } else {
                     selectedTodo = myProjects[indexProject].todos[0];
                 };

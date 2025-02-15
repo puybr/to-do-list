@@ -17,7 +17,6 @@ const todoManager = () => {
             container.insertAdjacentHTML('beforeend', addTodoButton);
         } else {
             todo.todos.forEach((item) => {
-                console.log(todo.todos.indexOf(item));
                 const t = `
                     <nav id="${item.title}" class="todos p-1">
                     <div class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
@@ -29,14 +28,14 @@ const todoManager = () => {
                                     <p>${item.date}</p>
                                 </div>
                                 <div class="text-sm">
-                                    <button value="${item.title}" class="edit-todo flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fas fa-edit"></i></button>
+                                    <button value="${todo.todos.indexOf(item)}" name="${item.title}" class="edit-todo flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fas fa-edit"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="p-4">
                     <div class="flex items-center mb-4">
-                        <input id="todo-checkbox" type="checkbox" value="${item.title}" class="todo-checkbox focus:accent-green-500 w-4 h-4 bg-transparent border-none rounded">
+                        <input id="todo-checkbox" type="checkbox" value="${todo.todos.indexOf(item)}" name="${item.title}" class="todo-checkbox focus:accent-green-500 w-4 h-4 bg-transparent border-none rounded">
                         <label for="todo-checkbox" class="ms-2 font-medium">${item.title}</label>
                     </div>
                     <p class="text-sm text-base text-wrap">${item.description}</p>
