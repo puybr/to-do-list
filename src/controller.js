@@ -241,9 +241,7 @@ const controller = () => {
                         selectedTodo = myProjects[indexProject].todos[0];
                     };
                     todos.displayEditTodoForm(selectedTodo);
-                } else {
-                    element.removeEventListener('click', edit);
-                };
+                } else return;
                 saveTodo();   
             });
         });
