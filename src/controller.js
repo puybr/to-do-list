@@ -113,6 +113,7 @@ const controller = () => {
     const reset = () => {
         document.querySelector('#reset').addEventListener('click', () => {
             clearLocal();
+            render();
         });
     };
     const cancel = () => {
