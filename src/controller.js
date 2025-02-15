@@ -2,10 +2,8 @@
 
 import projectManager from './projects';
 import todoManager from './todos';
-import { format } from 'date-fns';
 
 const controller = () => {
-    let myProjects = [];
     class Project {
         constructor(name, todos, select) {
             this.name = name;
@@ -21,6 +19,7 @@ const controller = () => {
             this.priority = priority
         };
     };
+    let myProjects = [];
     const projects = projectManager();
     const todos = todoManager();
     const saveLocal = () => { localStorage.setItem('myProjects', JSON.stringify(myProjects)) };
@@ -28,44 +27,14 @@ const controller = () => {
         localStorage.clear();
         myProjects = [];
     };
-    const init = () => {
-        const defaultproject = new Project("default project", [
-            {
-                title: "code",
-                description: "try creating a web interface and a dynamic todo list", 
-                date: format(new Date(), "yyyy'-'MM'-'dd"),
-                priority: "High"
-            },
-            {
-                title: "cook dinner",
-                description: "a warming vegan supper with porcini mushrooms, leeks, carrots, and butternut squash", 
-                date: format(new Date(), "yyyy'-'MM'-'dd"),
-                priority: "Medium"
-            }
-        ], true)
-        const workproject = new Project("work project", [
-            {
-                title: "create a powerpoint presentation",
-                description: "for the financial team",
-                date: format(new Date(), "yyyy'-'MM'-'dd"),
-                priority: "Low"
-            },
-            {
-                title: "admin tasks",
-                description: "office cleanup", 
-                date: format(new Date(), "yyyy'-'MM'-'dd"),
-                priority: "Low"
-            }
-        ], false)
-        myProjects.push(defaultproject);
-        myProjects.push(workproject);
+    const init = (proj) => {
         document.querySelector('#projectForm').style.display = "none";
         document.querySelector('#todoForm').style.display = "none";
         projects.displayProjectForm();
         // Check local storage
         if (localStorage.getItem('myProjects')) {
             myProjects = JSON.parse(localStorage.getItem('myProjects'));
-        } else myProjects = myProjects;
+        } else myProjects = proj;
         saveLocal();
         render();
     };
