@@ -219,29 +219,26 @@ const controller = () => {
         });
     };
     const editTodo = () => {
-        let click = 0;
         document.querySelectorAll('.edit-todo').forEach(element => {
             element.addEventListener('click', function edit(e) {
                 e.preventDefault(); // prevent page reloading
-                click++;
-                if (click == 1) {
-                    let selectedProject;
-                    let selectedTodo;
-                    let indexProject;
-                    if (myProjects.length > 1) {
-                        selectedProject = myProjects.filter((project) => { return project.select == true })[0];
-                        indexProject = myProjects.indexOf(selectedProject);
-                    } else {
-                        selectedProject = myProjects[0];
-                        indexProject = 0;
-                    };
-                    if (myProjects[indexProject].todos.length > 1) {
-                        selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
-                    } else {
-                        selectedTodo = myProjects[indexProject].todos[0];
-                    };
-                    todos.displayEditTodoForm(selectedTodo);
-                } else return;
+                let selectedProject;
+                let selectedTodo;
+                let indexProject;
+                if (myProjects.length > 1) {
+                    selectedProject = myProjects.filter((project) => { return project.select == true })[0];
+                    indexProject = myProjects.indexOf(selectedProject);
+                } else {
+                    selectedProject = myProjects[0];
+                    indexProject = 0;
+                };
+                if (myProjects[indexProject].todos.length > 1) {
+                    selectedTodo = myProjects[indexProject].todos.filter((todo) => { return e.currentTarget.value === todo.title })[0];
+                } else {
+                    selectedTodo = myProjects[indexProject].todos[0];
+                };
+                render();
+                todos.displayEditTodoForm(selectedTodo);  
                 saveTodo();   
             });
         });
