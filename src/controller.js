@@ -104,14 +104,11 @@ const controller = () => {
         document.querySelectorAll('.cancel').forEach(element => {
             element.addEventListener('click', () => {
                 let selectedProject;
-                let indexProject;
                 if (myProjects.length > 1) {
                     selectedProject = myProjects.filter((project) => { return project.select == true })[0];
-                    indexProject = myProjects.indexOf(selectedProject);
                     myProjects[0].select = true;
                 } else {
                     selectedProject = myProjects[0];
-                    indexProject = 0;
                     myProjects.select = true;
                 };
                 if (selectedProject) {
