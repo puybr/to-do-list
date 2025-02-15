@@ -87,8 +87,7 @@ const controller = () => {
         myProjects.forEach((project) => {
             if (project.name == name && myProjects.indexOf(project) == index) {
                 project.select = true;
-            } else
-            project.select = false;
+            } else project.select = false;
         });
     };
     const selectProject = () => {
@@ -137,7 +136,7 @@ const controller = () => {
                 document.querySelector('#todoForm').style.display = "none";
                 document.querySelector('#navbar').style.display = "block";
                 document.querySelector('#container').style.display = "block";
-                sortProjects(document.getElementById('newProject').value, Number(myProjects.length) + 1);
+                sortProjects(document.getElementById('newProject').value, Number(myProjects.length)-1);
                 document.getElementById('newProject').value = '';
                 render();
             };
