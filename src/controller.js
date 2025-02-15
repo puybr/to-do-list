@@ -74,7 +74,9 @@ const controller = () => {
         document.querySelector('#todoForm').innerHTML = ``;
         document.querySelector('#container').innerHTML = ``;
         if (myProjects.length == 0) {
-            projects.renderProjects(myProjects);
+            document.querySelector('#projectForm').style.display = "block";
+            document.querySelector('#navbar').style.display = "block";
+            document.querySelector('#container').style.display = "none";
         } else {
             if (myProjects.length > 1) {
                 selectedProject = myProjects.filter((project) => { return project.select == true })[0];

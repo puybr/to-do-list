@@ -5,40 +5,34 @@ const projectForm = document.querySelector('#projectForm');
 
 const projectManager = () => {
     const renderProjects = (myProjects) => {
-        if (myProjects.length == 0) {
-            document.querySelector('#projectForm').style.display = "block";
-            document.querySelector('#navbar').style.display = "block";
-            document.querySelector('#container').style.display = "none";
-        } else {
-            let options = myProjects.map((option) => {
-                if (option.select == true) {
-                    return `<option selected value="${myProjects.indexOf(option)}">${option.name}</option>`;
-                } else 
-                return `<option value="${myProjects.indexOf(option)}">${option.name}</option>`;
-            });
-            const nav = `
-                <div class="flex items-center justify-between flex-wrap p-3">
-                    <div class="grid grid-cols-2 gap-2">
-                        <div>
-                            <form id="project">
-                            <label>
-                            <select name="projects" class="projects bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 focus:outline-none block p-2.5 appearance-none">
-                            ${options}
-                            </select>
-                            </label>
-                            </form>
-                        </div>
-                        <div>
-                            <button class="addProjectButton flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
-                        </div>
+        let options = myProjects.map((option) => {
+            if (option.select == true) {
+                return `<option selected value="${myProjects.indexOf(option)}">${option.name}</option>`;
+            } else 
+            return `<option value="${myProjects.indexOf(option)}">${option.name}</option>`;
+        });
+        const nav = `
+            <div class="flex items-center justify-between flex-wrap p-3">
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <form id="project">
+                        <label>
+                        <select name="projects" class="projects bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 focus:outline-none block p-2.5 appearance-none">
+                        ${options}
+                        </select>
+                        </label>
+                        </form>
                     </div>
-                    <div class="flex items-center">
-                        <button id="deleteProjectButton" class="flex-shrink-0 bg-red-500 border-red-500 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fa-solid fa-trash"></i></button>
+                    <div>
+                        <button class="addProjectButton flex-shrink-0 bg-green-500 border-green-500 text-sm border-4 text-white py-1 px-2 rounded" type="button">+</button>
                     </div>
                 </div>
-                `;
-            container.insertAdjacentHTML('afterbegin', nav);
-        };
+                <div class="flex items-center">
+                    <button id="deleteProjectButton" class="flex-shrink-0 bg-red-500 border-red-500 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+            `;
+        container.insertAdjacentHTML('afterbegin', nav);
     };
     const displayProjectForm = () => {
         const form = `
