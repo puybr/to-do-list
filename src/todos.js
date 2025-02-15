@@ -16,29 +16,30 @@ const todoManager = () => {
             container.insertAdjacentHTML('beforeend', empty);
             container.insertAdjacentHTML('beforeend', addTodoButton);
         } else {
-            todo.todos.forEach((todo) => {
+            todo.todos.forEach((item) => {
+                console.log(todo.todos.indexOf(item));
                 const t = `
-                    <nav id="${todo.title}" class="todos p-1">
+                    <nav id="${item.title}" class="todos p-1">
                     <div class="todos bg-gray-100 p-2 flex flex-col justify-between leading-normal">
                     <div class="flex items-center justify-between flex-wrap p-3">
-                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${todo.priority}</span>
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${item.priority}</span>
                         <div class="flex items-center space-x-6 rtl:space-x-reverse">
                             <div class="flex items-center">
                                 <div class="text-sm p-2">
-                                    <p>${todo.date}</p>
+                                    <p>${item.date}</p>
                                 </div>
                                 <div class="text-sm">
-                                    <button value="${todo.title}" class="edit-todo flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fas fa-edit"></i></button>
+                                    <button value="${item.title}" class="edit-todo flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fas fa-edit"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="p-4">
                     <div class="flex items-center mb-4">
-                        <input id="todo-checkbox" type="checkbox" value="${todo.title}" class="todo-checkbox focus:accent-green-500 w-4 h-4 bg-transparent border-none rounded">
-                        <label for="todo-checkbox" class="ms-2 font-medium">${todo.title}</label>
+                        <input id="todo-checkbox" type="checkbox" value="${item.title}" class="todo-checkbox focus:accent-green-500 w-4 h-4 bg-transparent border-none rounded">
+                        <label for="todo-checkbox" class="ms-2 font-medium">${item.title}</label>
                     </div>
-                    <p class="text-sm text-base text-wrap">${todo.description}</p>
+                    <p class="text-sm text-base text-wrap">${item.description}</p>
                     </div>
                     </nav>`;
                 container.insertAdjacentHTML('beforeend', t);

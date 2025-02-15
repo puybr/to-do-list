@@ -83,9 +83,9 @@ const controller = () => {
             cancel();
         };
     };
-    const sortProjects = (name) => {
+    const sortProjects = (name, index) => {
         myProjects.forEach((project) => {
-            if (project.name == name) {
+            if (project.name == name && myProjects.indexOf(project) == index) {
                 project.select = true;
             } else
             project.select = false;
@@ -95,7 +95,7 @@ const controller = () => {
         document.querySelectorAll('.projects').forEach(element => {
             element.addEventListener('change', (e) => {
                 e.preventDefault(); // prevent page reloading
-                sortProjects(e.target.value);
+                sortProjects(e.target.options[e.target.selectedIndex].text, e.target.value);
                 render();
             });
         });
@@ -137,7 +137,7 @@ const controller = () => {
                 document.querySelector('#todoForm').style.display = "none";
                 document.querySelector('#navbar').style.display = "block";
                 document.querySelector('#container').style.display = "block";
-                sortProjects(document.getElementById('newProject').value);
+                sortProjects(document.getElementById('newProject').value, Number(myProjects.length) + 1);
                 document.getElementById('newProject').value = '';
                 render();
             };
