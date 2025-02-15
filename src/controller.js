@@ -27,14 +27,14 @@ const controller = () => {
         localStorage.clear();
         myProjects = [];
     };
-    const init = (proj) => {
+    const init = (dummyData) => {
         document.querySelector('#projectForm').style.display = "none";
         document.querySelector('#todoForm').style.display = "none";
         projects.displayProjectForm();
         // Check local storage
         if (localStorage.getItem('myProjects')) {
             myProjects = JSON.parse(localStorage.getItem('myProjects'));
-        } else myProjects = proj;
+        } else myProjects = dummyData;
         render();
     };
     const render = () => {
