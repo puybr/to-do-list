@@ -76,7 +76,7 @@ const controller = () => {
         document.querySelectorAll('.projects').forEach(element => {
             element.addEventListener('change', (e) => {
                 e.preventDefault(); // prevent page reloading
-                sortProjects(e.target.options[e.target.selectedIndex].text, e.target.value);
+                sortProjects(e.target.options[e.target.selectedIndex].text, Number(e.target.value));
                 render();
             });
         });
