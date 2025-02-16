@@ -28,8 +28,8 @@ const controller = () => {
         myProjects = [];
     };
     const init = (dummyData) => {
-        document.querySelector('#projectForm').style.display = "none";
-        document.querySelector('#todoForm').style.display = "none";
+        document.querySelector('#projectForm').style.display = 'none';
+        document.querySelector('#todoForm').style.display = 'none';
         projects.displayProjectForm();
         // Check local storage
         if (localStorage.getItem('myProjects')) {
@@ -42,9 +42,9 @@ const controller = () => {
         document.querySelector('#todoForm').innerHTML = ``;
         document.querySelector('#container').innerHTML = ``;
         if (myProjects.length == 0) {
-            document.querySelector('#projectForm').style.display = "block";
-            document.querySelector('#navbar').style.display = "block";
-            document.querySelector('#container').style.display = "none";
+            document.querySelector('#projectForm').style.display = 'block';
+            document.querySelector('#navbar').style.display = 'block';
+            document.querySelector('#container').style.display = 'none';
         } else {
             if (myProjects.length > 1) {
                 selectedProject = myProjects.filter((project) => { return project.select == true })[0];
@@ -99,10 +99,10 @@ const controller = () => {
                     myProjects.select = true;
                 };
                 if (selectedProject) {
-                    document.querySelector('#projectForm').style.display = "none";
-                    document.querySelector('#todoForm').style.display = "none";
-                    document.querySelector('#navbar').style.display = "block";
-                    document.querySelector('#container').style.display = "block";
+                    document.querySelector('#projectForm').style.display = 'none';
+                    document.querySelector('#todoForm').style.display = 'none';
+                    document.querySelector('#navbar').style.display = 'block';
+                    document.querySelector('#container').style.display = 'block';
                 } else return;
             });
         });
@@ -110,9 +110,9 @@ const controller = () => {
     const addProject = () => {
         document.querySelectorAll('.addProjectButton').forEach(element => {
             element.addEventListener('click', () => {
-                document.querySelector('#projectForm').style.display = "block";
-                document.querySelector('#navbar').style.display = "block";
-                document.querySelector('#container').style.display = "none";
+                document.querySelector('#projectForm').style.display = 'block';
+                document.querySelector('#navbar').style.display = 'block';
+                document.querySelector('#container').style.display = 'none';
             });
         });
         document.querySelector('#submitProject').addEventListener('click', () => {
@@ -120,10 +120,10 @@ const controller = () => {
                 return;
             } else {
                 myProjects.push(new Project(document.querySelector('#newProject').value, [], true));
-                document.querySelector('#projectForm').style.display = "none";
-                document.querySelector('#todoForm').style.display = "none";
-                document.querySelector('#navbar').style.display = "block";
-                document.querySelector('#container').style.display = "block";
+                document.querySelector('#projectForm').style.display = 'none';
+                document.querySelector('#todoForm').style.display = 'none';
+                document.querySelector('#navbar').style.display = 'block';
+                document.querySelector('#container').style.display = 'block';
                 sortProjects(document.getElementById('newProject').value, Number(myProjects.length)-1);
                 document.getElementById('newProject').value = '';
                 render();
@@ -149,9 +149,9 @@ const controller = () => {
     };
     const addTodo = () => {
         document.querySelector('#addTodoButton').addEventListener('click', () => {
-            document.querySelector('#todoForm').style.display = "block";
-            document.querySelector('#navbar').style.display = "block";
-            document.querySelector('#container').style.display = "none";
+            document.querySelector('#todoForm').style.display = 'block';
+            document.querySelector('#navbar').style.display = 'block';
+            document.querySelector('#container').style.display = 'none';
         });
         document.querySelector('#submitTodo').addEventListener('click', () => {
             if (!document.getElementById('newTodoTitle').value || !document.getElementById('newTodoDate').value) {
@@ -168,10 +168,10 @@ const controller = () => {
                     selectedProject = myProjects[0];
                 };
                 selectedProject.todos.push(newTodo);
-                document.querySelector('#projectForm').style.display = "none";
-                document.querySelector('#todoForm').style.display = "none";
-                document.querySelector('#navbar').style.display = "block";
-                document.querySelector('#container').style.display = "block";
+                document.querySelector('#projectForm').style.display = 'none';
+                document.querySelector('#todoForm').style.display = 'none';
+                document.querySelector('#navbar').style.display = 'block';
+                document.querySelector('#container').style.display = 'block';
                 render();
             };
         });

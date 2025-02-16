@@ -95,7 +95,7 @@ const todoManager = () => {
         todoForm.insertAdjacentHTML('afterbegin', form);
     };
     const displayEditTodoForm = (todo, index) => {
-        const priorities = ['High', 'Medium', 'Low']
+        const priorities = ['High', 'Medium', 'Low'];
         let options = priorities.map((priority) => {
             if (priority == todo.priority) {
                 return `<option selected value="${priority}">${priority}</option>`;
