@@ -94,7 +94,7 @@ const todoManager = () => {
             </div>`;
         todoForm.insertAdjacentHTML('afterbegin', form);
     };
-    const displayEditTodoForm = (todo) => {
+    const displayEditTodoForm = (todo, index) => {
         const priorities = ['High', 'Medium', 'Low']
         let options = priorities.map((priority) => {
             if (priority == todo.priority) {
@@ -113,7 +113,7 @@ const todoManager = () => {
                                                                 ${options}
                                                             </select>
                                                             <div class="flex justify-center p-3">
-                                                                <button value="${todo.title}" id="editTodoButton" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fa-solid fa-floppy-disk"></i></button>
+                                                                <button name="${todo.title}" value="${index}" id="editTodoButton" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button"><i class="fa-solid fa-floppy-disk"></i></button>
                                                             </div>
                                                             </div>
                                                             </div>
